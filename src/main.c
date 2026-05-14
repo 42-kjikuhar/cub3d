@@ -6,11 +6,32 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/14 19:05:01 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/14 19:37:39 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+enum e_setting_flag
+{
+	FLAG_NORTH = (1 << 0),
+	FLAG_SOUTH = (1 << 1),
+	FLAG_WEST = (1 << 2),
+	FLAG_EAST = (1 << 3),
+	FLAG_FLOOR = (1 << 4),
+	FLAG_CEILING = (1 << 5)
+};
+
+typedef struct s_settings
+{
+	int			flags;
+	char		*north_texture;
+	char		*south_texture;
+	char		*west_texture;
+	char		*east_texture;
+	int			floor_color;
+	int			ceiling_color;
+}				t_settings;
 
 typedef struct s_cub3d
 {
@@ -55,15 +76,47 @@ bool	vaildate_argument(int argc, char const *argv[])
 	return (true);
 }
 
+static bool	is_incomplete_settings(int flags)
+{
+
+}
+
+static char *read_next_setting(int fd)
+{
+
+}
+
+static void	cleanup_settings(t_settings *settings)
+{
+
+}
+
+bool	parse_setting_line(char *setting_line, t_settings *settings)
+{
+
+}
+
 bool	parse_settings(int fd, t_settings *settings)
 {
-	char	*line;
+	char	*setting_line;
 
-	while (is_incomplete())
+	while (is_incomplete_settings(settings->flags))
 	{
-		line = get_next_line(fd);
-
+		setting_line = read_next_setting(fd);
+		if (setting_line == NULL)
+		{
+			cleanup_settings(settings);
+			return (false);
+		}
+		if (!parse_setting_line(setting_line, settings))
+		{
+			free(setting_line);
+			cleanup_settings(settings);
+			return (false);
+		}
+		free(setting_line);
 	}
+	return (true);
 }
 
 bool	parse_file(char const *filename, t_settings *settings, t_map *map)
@@ -83,6 +136,7 @@ bool	parse_file(char const *filename, t_settings *settings, t_map *map)
 	}
 	if (!parse_map(fd, map))
 	{
+		cleanup_settings(settings);
 		close(fd);
 		return (false);
 	}
