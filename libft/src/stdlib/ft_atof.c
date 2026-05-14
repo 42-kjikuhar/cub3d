@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stanaka2 < stanaka2@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 02:41:50 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/12 23:28:54 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/14 18:20:11 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ double	ft_atof(const char *str)
 	uint64_t		significand;
 	int				exponent;
 	double			scaling_factor;
-	unsigned int 	i;
+	unsigned int	i;
 
 	sign = 1;
 	if (*str == '-' || *str == '+')
@@ -127,4 +127,3 @@ static int	get_digits(uint64_t n)
 // 		++str;
 // 	return (*str == '\0');
 // }
-

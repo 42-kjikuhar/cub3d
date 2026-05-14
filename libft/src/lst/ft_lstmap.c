@@ -6,13 +6,14 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 14:12:31 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/01 22:12:19 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/14 18:22:39 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static t_list	*node_map(t_list *node, void *(*f)(void *), void (*del)(void *));
+static t_list	*node_map(\
+					t_list *node, void *(*f)(void *), void (*del)(void *));
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {

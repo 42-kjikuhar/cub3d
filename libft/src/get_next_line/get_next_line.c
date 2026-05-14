@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 00:47:51 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/14 18:01:44 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/14 18:19:27 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ char	*get_next_line(int fd)
 		if (buf.read_bytes == 0)
 			break ;
 		append_to_next_line(&next_line, buf.data[buf.used_bytes++]);
-		if (buf.data[buf.used_bytes - 1] == '\n' || buf.data[buf.used_bytes - 1] == '\0')
+		if (buf.data[buf.used_bytes - 1] == '\n' \
+			|| buf.data[buf.used_bytes - 1] == '\0')
+		{
 			break ;
+		}
 	}
 	return (next_line.data);
 }
