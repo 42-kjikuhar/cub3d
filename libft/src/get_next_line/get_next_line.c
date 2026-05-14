@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 00:47:51 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/14 18:19:27 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/14 23:47:37 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static bool	read_file(int fd, t_buf *buf)
 	if (buf->used_bytes == buf->read_bytes)
 	{
 		res = read(fd, buf->data, BUFFER_SIZE);
-		if (res < 0 || res == 0)
+		if (res < 0)
 			return (false);
 		buf->read_bytes = res;
 		buf->used_bytes = 0;
