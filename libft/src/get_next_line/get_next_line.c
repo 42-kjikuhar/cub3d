@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stanaka2 < stanaka2@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 00:47:51 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/13 01:39:51 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/14 18:01:44 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,9 @@ char	*get_next_line(int fd)
 		}
 		if (buf.read_bytes == 0)
 			break ;
-		if (buf.data[buf.used_bytes] == '\n' || buf.data[buf.used_bytes] == '\0')
-		{
-			++buf.used_bytes;
-			break ;
-		}
 		append_to_next_line(&next_line, buf.data[buf.used_bytes++]);
+		if (buf.data[buf.used_bytes - 1] == '\n' || buf.data[buf.used_bytes - 1] == '\0')
+			break ;
 	}
 	return (next_line.data);
 }
@@ -63,6 +60,8 @@ static void	append_to_next_line(t_next_line *next_line, char c)
 {
 	char	*new_ptr;
 
+	if (c == '\0')
+		return ;
 	if (next_line->len + 1 == next_line->allocated_size)
 	{
 		if (next_line->allocated_size < 1024)
