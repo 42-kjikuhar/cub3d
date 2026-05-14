@@ -6,14 +6,14 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 12:56:15 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/14 13:12:55 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/14 15:12:16 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_VECTOR_H
 # define FT_VECTOR_H
 
-# include "./ivec2.h"
-# include "./dvec2.h"
+# include "./ivec2/ivec2.h"
+// # include "./dvec2.h"
 
 #endif
