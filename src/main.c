@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/14 17:00:53 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/14 19:05:01 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 typedef struct s_cub3d
 {
-	t_setting	setting;
+	t_settings	settings;
 	t_map		map;
 	t_player	player;
 	t_mlx		mlx;
 }				t_cub3d;
 
-void	print_error(char *error_message)
+void	print_error(char const *error_message)
 {
 	ft_dprintf(STDERR_FILENO, "Error\n");
-	ft_dprintf(STDERR_FILENO, "usage: ./");
+	ft_dprintf(STDERR_FILENO, "%s\n", error_message);
 }
 
 bool	is_valid_argument(int argc, char const *argv[])
@@ -37,7 +37,7 @@ bool	is_valid_argument(int argc, char const *argv[])
 	if (filename != NULL)
 		++filename;
 	else
-		filename = argv[1];
+		filename = (char *)argv[1];
 	len = ft_strlen(filename);
 	if (len <= 4 || ft_strcmp(filename + len - 4, ".cub") != 0)
 		return (false);
@@ -55,12 +55,49 @@ bool	vaildate_argument(int argc, char const *argv[])
 	return (true);
 }
 
+bool	parse_settings(int fd, t_settings *settings)
+{
+	char	*line;
+
+	while (is_incomplete())
+	{
+		line = get_next_line(fd);
+
+	}
+}
+
+bool	parse_file(char const *filename, t_settings *settings, t_map *map)
+{
+	int		fd;
+
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		print_error(strerror(errno));
+		return (false);
+	}
+	if (!parse_settings(fd, settings))
+	{
+		close(fd);
+		return (false);
+	}
+	if (!parse_map(fd, map))
+	{
+		close(fd);
+		return (false);
+	}
+	close(fd);
+	return (true);
+}
+
 int main(int argc, char const *argv[])
 {
 	t_cub3d	cub3d;
 
-	printf("Hello World!\n");
-	if (vaildate_argument(argc, argv))
+	if (!vaildate_argument(argc, argv))
+		return (EXIT_FAILURE);
+	ft_bzero(&cub3d, sizeof(t_cub3d));
+	if (!parse_file(argv[1], &cub3d.settings, &cub3d.map))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
