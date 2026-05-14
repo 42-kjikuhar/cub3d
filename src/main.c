@@ -6,29 +6,61 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/14 15:49:01 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/14 17:00:53 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#define SUCCESS 0
-#define FAILURE 1
 
 typedef struct s_cub3d
 {
-
+	t_setting	setting;
+	t_map		map;
+	t_player	player;
+	t_mlx		mlx;
 }				t_cub3d;
+
+void	print_error(char *error_message)
+{
+	ft_dprintf(STDERR_FILENO, "Error\n");
+	ft_dprintf(STDERR_FILENO, "usage: ./");
+}
+
+bool	is_valid_argument(int argc, char const *argv[])
+{
+	char	*filename;
+	size_t	len;
+
+	if (argc != 2)
+		return (false);
+	filename = ft_strrchr(argv[1], '/');
+	if (filename != NULL)
+		++filename;
+	else
+		filename = argv[1];
+	len = ft_strlen(filename);
+	if (len <= 4 || ft_strcmp(filename + len - 4, ".cub") != 0)
+		return (false);
+	return (true);
+}
+
+bool	vaildate_argument(int argc, char const *argv[])
+{
+	if (!is_valid_argument(argc, argv))
+	{
+		ft_dprintf(STDERR_FILENO, "Error\n");
+		ft_dprintf(STDERR_FILENO, "usage: %s *.cub\n", argv[0]);
+		return (false);
+	}
+	return (true);
+}
 
 int main(int argc, char const *argv[])
 {
-	t_cub3d	sim;
+	t_cub3d	cub3d;
 
 	printf("Hello World!\n");
-	if (parse_args(argc, argv, &sim) != SUCCESS)
+	if (vaildate_argument(argc, argv))
 		return (EXIT_FAILURE);
-	if (parse_maps(&sim))
-		return (EXIT_FAILURE);
-	running_sim(&sim);
-	free_simulation(&sim);
-	return (0);
+	return (EXIT_SUCCESS);
 }
