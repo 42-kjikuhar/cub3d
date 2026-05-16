@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 13:02:26 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 13:54:49 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@
 # include "libft.h"
 # include "../vec_library/ft_vector.h"
 
-enum e_setting_flag
+enum e_setting_id
 {
-	FLAG_NORTH = (1 << 0),
-	FLAG_SOUTH = (1 << 1),
-	FLAG_WEST = (1 << 2),
-	FLAG_EAST = (1 << 3),
-	FLAG_FLOOR = (1 << 4),
-	FLAG_CEILING = (1 << 5)
+	NORTH_ID,
+	SOUTH_ID,
+	WEST_ID,
+	EAST_ID,
+	FLOOR_ID,
+	CEILING_ID
 };
 
 typedef struct s_settings

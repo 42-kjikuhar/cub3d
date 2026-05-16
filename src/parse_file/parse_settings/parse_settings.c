@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 13:29:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 13:29:35 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 14:04:53 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,49 @@ static void	cleanup_settings(t_settings *settings)
 
 }
 
+static bool	set_texture(char const *value, t_settings *settings,
+	enum e_setting_id texture_id)
+{
+	char	*texture_path;
+
+	if (settings->flags & (1 << texture_id))
+	{
+		print_error("double setting is exist");
+		return (false);
+	}
+	settings->flags |= (1 << texture_id);
+	texture_path = ft_strdup(value);
+	if (texture_path == NULL)
+	{
+		print_error(strerror(errno));
+		return (false);
+	}
+	if (texture_id == NORTH_ID)
+		settings->north_texture = texture_path;
+	else if (texture_id == SOUTH_ID)
+		settings->south_texture = texture_path;
+	else if (texture_id == WEST_ID)
+		settings->west_texture = texture_path;
+	else if (texture_id == EAST_ID)
+		settings->east_texture = texture_path;
+	return (true);
+}
+
 static bool	assign_setting(char const *identifier, char const *value,
 	t_settings *settings)
 {
 	if (ft_strcmp("NO", identifier) == 0)
-		return (set_north_texture(value, settings));
+		return (set_texture(value, settings, NORTH_ID));
 	else if (ft_strcmp("SO", identifier) == 0)
-		return (set_south_texture(value, settings));
+		return (set_texture(value, settings, SOUTH_ID));
 	else if (ft_strcmp("WE", identifier) == 0)
-		return (set_west_texture(value, settings));
+		return (set_texture(value, settings, WEST_ID));
 	else if (ft_strcmp("EA", identifier) == 0)
-		return (set_east_texture(value, settings));
+		return (set_texture(value, settings, EAST_ID));
 	else if (ft_strcmp("F", identifier) == 0)
-		return (set_floor_color(value, settings));
+		return (set_color(value, settings, FLOOR_ID));
 	else if (ft_strcmp("C", identifier) == 0)
-		return (set_ceiling_color(value, settings));
+		return (set_color(value, settings, CEILING_ID));
 	else
 	{
 		print_error("identifier is invalid");
