@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 21:18:35 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 22:29:44 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ typedef struct s_player
 typedef struct s_map
 {
 	char			**data;
-	unsigned int	x_size;
-	unsigned int	y_size;
+	int				x_size;
+	int				y_size;
 	t_ivec2			player_pos;
 	char			player_dir;
 }					t_map;

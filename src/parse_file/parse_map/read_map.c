@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:38:03 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 21:46:49 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 22:30:12 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,16 @@ static bool	compute_map_size(t_list const **line_list, t_map *map)
 	while (current != NULL)
 	{
 		cur_x_size = ft_strlen((*line_list)->content);
-		if (cur_x_size > UINT_MAX)
+		if (cur_x_size > INT_MAX)
 		{
-			print_error("x_size is over UINT_MAX");
+			print_error("x_size is over INT_MAX");
 			return (false);
 		}
 		if (cur_x_size > map->x_size)
 			map->x_size = cur_x_size;
-		if (map->y_size == UINT_MAX)
+		if (map->y_size == INT_MAX)
 		{
-			print_error("y_size is over UINT_MAX");
+			print_error("y_size is over INT_MAX");
 			return (false);
 		}
 		++map->y_size;
