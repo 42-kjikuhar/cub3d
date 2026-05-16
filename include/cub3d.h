@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 13:54:49 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 16:16:00 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ enum e_setting_id
 	WEST_ID,
 	EAST_ID,
 	FLOOR_ID,
-	CEILING_ID
+	CEILING_ID,
+	ID_COUNT
 };
 
 typedef struct s_settings

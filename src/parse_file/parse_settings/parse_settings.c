@@ -6,16 +6,11 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 13:29:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 16:12:49 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 16:32:41 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static bool	is_incomplete_settings(int flags)
-{
-
-}
 
 static char *read_next_setting_line(int fd)
 {
