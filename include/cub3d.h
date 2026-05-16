@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/14 17:45:46 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 12:54:49 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,8 @@
 # include <errno.h>
 # include "libft.h"
 # include "../vec_library/ft_vector.h"
+
+bool	is_blank_line(const char *s)
+void	replace_char(char *str, char from_c, char to_c);
 
 #endif
