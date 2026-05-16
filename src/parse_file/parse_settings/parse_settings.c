@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prase.c                                            :+:      :+:    :+:   */
+/*   parse_settings.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/16 13:01:11 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 13:01:30 by kjikuhar         ###   ########.fr       */
+/*   Created: 2026/05/16 13:29:17 by kjikuhar          #+#    #+#             */
+/*   Updated: 2026/05/16 13:29:35 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,54 @@ static void	cleanup_settings(t_settings *settings)
 
 }
 
+static bool	assign_setting(char const *identifier, char const *value,
+	t_settings *settings)
+{
+	if (ft_strcmp("NO", identifier) == 0)
+		return (set_north_texture(value, settings));
+	else if (ft_strcmp("SO", identifier) == 0)
+		return (set_south_texture(value, settings));
+	else if (ft_strcmp("WE", identifier) == 0)
+		return (set_west_texture(value, settings));
+	else if (ft_strcmp("EA", identifier) == 0)
+		return (set_east_texture(value, settings));
+	else if (ft_strcmp("F", identifier) == 0)
+		return (set_floor_color(value, settings));
+	else if (ft_strcmp("C", identifier) == 0)
+		return (set_ceiling_color(value, settings));
+	else
+	{
+		print_error("identifier is invalid");
+		return (false);
+	}
+}
+
 bool	parse_setting_line(char *setting_line, t_settings *settings)
 {
+	char	**words;
 
+	words = ft_split(setting_line, ' ');
+	if (words == NULL)
+		return (false);
+	if (words[1] == NULL)
+	{
+		print_error("settings is element less");
+		free_splitted(words);
+		return (false);
+	}
+	if (words[2] != NULL)
+	{
+		print_error("element is more");
+		free_splitted(words);
+		return (false);
+	}
+	if (!assign_setting(words[0], words[1], settings))
+	{
+		free_splitted(words);
+		return (false);
+	}
+	free_splitted(words);
+	return (true);
 }
 
 bool	parse_settings(int fd, t_settings *settings)
@@ -75,30 +120,5 @@ bool	parse_settings(int fd, t_settings *settings)
 		}
 		free(setting_line);
 	}
-	return (true);
-}
-
-bool	parse_file(char const *filename, t_settings *settings, t_map *map)
-{
-	int		fd;
-
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-	{
-		print_error(strerror(errno));
-		return (false);
-	}
-	if (!parse_settings(fd, settings))
-	{
-		close(fd);
-		return (false);
-	}
-	if (!parse_map(fd, map))
-	{
-		cleanup_settings(settings);
-		close(fd);
-		return (false);
-	}
-	close(fd);
 	return (true);
 }
