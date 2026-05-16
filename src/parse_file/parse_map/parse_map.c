@@ -6,13 +6,11 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:36:09 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 18:38:01 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 23:27:34 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-
 
 bool	parse_map(int fd, t_map *map)
 {
@@ -27,5 +25,4 @@ bool	parse_map(int fd, t_map *map)
 		return (false);
 	}
 	return (true);
-
 }

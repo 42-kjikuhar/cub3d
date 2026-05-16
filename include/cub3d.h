@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 22:29:44 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 23:28:04 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@
 # include <limits.h>
 # include "libft.h"
 # include "../vec_library/ft_vector.h"
+
+# define	MAP_FLOOR '0'
+# define	MAP_WALL '1'
+# define	MAP_BLANK ' '
+# define	PLAYER_NORTH 'N'
+# define	PLAYER_SOUTH 'S'
+# define	PLAYER_WEST 'W'
+# define	PLAYER_EAST 'E'
 
 typedef struct s_player
 {

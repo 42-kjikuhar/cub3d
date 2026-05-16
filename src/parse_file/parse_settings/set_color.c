@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:11:18 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 16:54:18 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 23:27:04 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ bool	set_color(char const *value, t_settings *settings,
 	else if (color_id == CEILING_ID)
 		settings->south_texture = color;
 	return (true);
-
 }
 
 static bool	parse_color(char const *value, int *color)
@@ -48,7 +47,7 @@ static bool	parse_color(char const *value, int *color)
 		if (!parse_color_channel(&value, &color_channel))
 			return (false);
 		*color |= (color_channel << i * 8);
-		if ((i != BLUE && *value != ',') || (i == BLUE && *value != '\0'));
+		if ((i != BLUE && *value != ',') || (i == BLUE && *value != '\0'))
 			return (false);
 		++value;
 	}

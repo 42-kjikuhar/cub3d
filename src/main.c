@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 13:02:21 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 23:03:09 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ bool	vaildate_argument(int argc, char const *argv[])
 	return (true);
 }
 
-
-int main(int argc, char const *argv[])
+int	main(int argc, char const *argv[])
 {
 	t_cub3d	cub3d;
 

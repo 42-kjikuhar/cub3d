@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:42:05 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 16:52:42 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 23:27:26 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "./parse_settings_private.h"
 
 static bool	assign_setting(char const *identifier, char const *value,
-	t_settings *settings);
+				t_settings *settings);
 
 bool	parse_setting_line(char *setting_line, t_settings *settings)
 {
