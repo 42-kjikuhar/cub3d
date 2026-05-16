@@ -6,18 +6,54 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:11:18 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 16:11:30 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 16:54:18 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "./parse_settings_private.h"
 
-enum e_color_channel
+static bool	parse_color(char const *value, int *color);
+static bool	parse_color_channel(char const **value, int *color_channel);
+
+bool	set_color(char const *value, t_settings *settings,
+	enum e_setting_id color_id)
 {
-	RED,
-	GREEN,
-	BLUE
-};
+	int	color;
+
+	if (settings->flags & (1 << color_id))
+	{
+		print_error("double setting is exist");
+		return (false);
+	}
+	settings->flags |= (1 < color_id);
+	if (!parse_color(value, &color))
+		return (false);
+	if (color_id == FLOOR_ID)
+		settings->floor_color = color;
+	else if (color_id == CEILING_ID)
+		settings->south_texture = color;
+	return (true);
+
+}
+
+static bool	parse_color(char const *value, int *color)
+{
+	int						color_channel;
+	enum e_color_channel	i;
+
+	i = RED;
+	while (i <= BLUE)
+	{
+		if (!parse_color_channel(&value, &color_channel))
+			return (false);
+		*color |= (color_channel << i * 8);
+		if ((i != BLUE && *value != ',') || (i == BLUE && *value != '\0'));
+			return (false);
+		++value;
+	}
+	return (true);
+}
 
 static bool	parse_color_channel(char const **value, int *color_channel)
 {
@@ -42,43 +78,5 @@ static bool	parse_color_channel(char const **value, int *color_channel)
 		}
 		++(*value);
 	}
-	return (true);
-}
-
-static bool	parse_color(char const *value, int *color)
-{
-	int						color_channel;
-	enum e_color_channel	i;
-
-	i = RED;
-	while (i <= BLUE)
-	{
-		if (!parse_color_channel(&value, &color_channel))
-			return (false);
-		*color |= (color_channel << i * 8);
-		if ((i != BLUE && *value != ',') || (i == BLUE && *value != '\0'));
-			return (false);
-		++value;
-	}
-	return (true);
-}
-
-static bool	set_color(char const *value, t_settings *settings,
-	enum e_setting_id color_id)
-{
-	int	color;
-
-	if (settings->flags & (1 << color_id))
-	{
-		print_error("double setting is exist");
-		return (false);
-	}
-	settings->flags |= (1 < color_id);
-	if (!parse_color(value, &color))
-		return (false);
-	if (color_id == FLOOR_ID)
-		settings->floor_color = color;
-	else if (color_id == CEILING_ID)
-		settings->south_texture = color;
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 16:16:00 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 18:01:34 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,20 @@
 # include "libft.h"
 # include "../vec_library/ft_vector.h"
 
-enum e_setting_id
+typedef struct s_player
 {
-	NORTH_ID,
-	SOUTH_ID,
-	WEST_ID,
-	EAST_ID,
-	FLOOR_ID,
-	CEILING_ID,
-	ID_COUNT
-};
+	t_ivec2			pos;
+	t_ivec2			dir;
+}					t_player;
+
+typedef struct s_map
+{
+	unsigned char	**data;
+	unsigned int	x_size;
+	unsigned int	y_size;
+	t_ivec2			player_pos;
+	unsigned char	player_dir;
+}					t_map;
 
 typedef struct s_settings
 {
@@ -47,11 +51,9 @@ typedef struct s_cub3d
 	t_settings	settings;
 	t_map		map;
 	t_player	player;
-	t_mlx		mlx;
+	// t_mlx		mlx;
 }				t_cub3d;
 
-
-bool	is_blank_line(const char *s)
-void	replace_char(char *str, char from_c, char to_c);
+bool	parse_file(char const *filename, t_settings *settings, t_map *map);
 
 #endif

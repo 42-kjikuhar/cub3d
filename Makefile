@@ -6,7 +6,7 @@
 #    By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/14 17:04:11 by kjikuhar         ###   ########.fr        #
+#    Updated: 2026/05/16 17:30:18 by kjikuhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,10 @@ NAME	:= cub3D
 SRC_DIR := src
 OBJ_DIR := obj
 LIBFT_DIR := libft
-SRCS	:= src/main.c
-OBJS	:= $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)/%.o)
+SRCS	:= 	src/main.c \
+			src/parse_file/parse_file.c \
+
+OBJS	:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 CFLAGS	:= -Wall -Wextra -Werror -Ilibft/include -Iinclude -Ivec_library
 
 LIBFT_A	:= $(LIBFT_DIR)/libft.a

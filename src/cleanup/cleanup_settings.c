@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_incomplete_settings.c                           :+:      :+:    :+:   */
+/*   cleanup_settings.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/16 16:30:07 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 16:56:55 by kjikuhar         ###   ########.fr       */
+/*   Created: 2026/05/16 16:40:01 by kjikuhar          #+#    #+#             */
+/*   Updated: 2026/05/16 16:40:16 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "./parse_settings_private.h"
 
-bool	is_incomplete_settings(int flags)
+static void	cleanup_settings(t_settings *settings)
 {
-	return ((flags ^ (1 << ID_COUNT) - 1) != 0);
+	if (settings->north_texture != NULL)
+		free(settings->north_texture);
+	if (settings->south_texture != NULL)
+		free(settings->south_texture);
+	if (settings->west_texture != NULL)
+		free(settings->west_texture);
+	if (settings->east_texture != NULL)
+		free(settings->east_texture);
 }

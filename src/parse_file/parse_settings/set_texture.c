@@ -6,13 +6,14 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:12:32 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 16:12:43 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 16:55:50 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "./parse_settings_private.h"
 
-static bool	set_texture(char const *value, t_settings *settings,
+bool	set_texture(char const *value, t_settings *settings,
 	enum e_setting_id texture_id)
 {
 	char	*texture_path;
