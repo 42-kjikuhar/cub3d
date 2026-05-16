@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:38:03 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 21:26:12 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 21:28:07 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,27 +73,26 @@ static bool	compute_map_size(t_list const **line_list, t_map *map)
 
 static bool	alloc_map(t_map *map)
 {
-	unsigned int	i;
+	unsigned int	y;
 
 	map->data = malloc(sizeof(char *) * map->y_size);
 	if (map == NULL)
 		return (false);
-	i = 0;
-	while (i < map->y_size)
+	y = 0;
+	while (y < map->y_size)
 	{
-		map->data[i] = malloc(sizeof(char) * map->x_size);
-		if (map->data[i] == NULL)
+		map->data[y] = malloc(sizeof(char) * map->x_size);
+		if (map->data[y] == NULL)
 		{
-			while (i-- > 0)
-				free(map->data[i]);
+			while (y-- > 0)
+				free(map->data[y]);
 			free(map->data);
 			return (false);
 		}
-		++i;
+		++y;
 	}
 	return (true);
 }
-
 
 bool	read_map(int fd, t_map *map)
 {
