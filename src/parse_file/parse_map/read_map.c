@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:38:03 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 21:07:26 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 21:26:12 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,13 @@ static bool	alloc_map(t_map *map)
 {
 	unsigned int	i;
 
-	map->data = malloc(sizeof(unsigned char *) * map->y_size);
-	if (!map)
+	map->data = malloc(sizeof(char *) * map->y_size);
+	if (map == NULL)
 		return (false);
 	i = 0;
-	while (i < map->x_size)
+	while (i < map->y_size)
 	{
-		map->data[i] = malloc(sizeof(unsigned char *) * map->x_size);
+		map->data[i] = malloc(sizeof(char) * map->x_size);
 		if (map->data[i] == NULL)
 		{
 			while (i-- > 0)
@@ -93,6 +93,7 @@ static bool	alloc_map(t_map *map)
 	}
 	return (true);
 }
+
 
 bool	read_map(int fd, t_map *map)
 {
