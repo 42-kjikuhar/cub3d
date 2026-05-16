@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 13:29:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 16:32:41 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 16:34:00 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,14 @@ static char *read_next_setting_line(int fd)
 
 static void	cleanup_settings(t_settings *settings)
 {
-
+	if (settings->north_texture != NULL)
+		free(settings->north_texture);
+	if (settings->south_texture != NULL)
+		free(settings->south_texture);
+	if (settings->west_texture != NULL)
+		free(settings->west_texture);
+	if (settings->east_texture != NULL)
+		free(settings->east_texture);
 }
 
 static bool	assign_setting(char const *identifier, char const *value,
