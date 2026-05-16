@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:38:03 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 22:30:12 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 22:31:47 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static bool	compute_map_size(t_list const **line_list, t_map *map)
 
 static bool	alloc_map(t_map *map)
 {
-	unsigned int	y;
+	int	y;
 
 	map->data = malloc(sizeof(char *) * map->y_size);
 	if (map == NULL)
@@ -102,9 +102,10 @@ static bool	alloc_map(t_map *map)
 static void	convert_list_to_array(t_list *line_list, t_map *map)
 {
 	char			*content;
-	unsigned int	y;
-	unsigned int	x;
+	int				x;
+	int				y;
 
+	y = 0;
 	while (y < map->y_size)
 	{
 		content = ft_lst_pop_front(&line_list);
@@ -120,6 +121,7 @@ static void	convert_list_to_array(t_list *line_list, t_map *map)
 			++x;
 		}
 		free(content);
+		++y;
 	}
 }
 
