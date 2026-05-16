@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/14 19:37:39 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/15 16:30:16 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,24 @@ static bool	is_incomplete_settings(int flags)
 
 static char *read_next_setting(int fd)
 {
+	char	*line;
+	char	**words;
 
+	while (true)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+		{
+			cleanup();
+			return (NULL);
+		}
+		words = ft_split(line, ' ');
+		if (words == NULL || words[0] == NULL || words[2] != NULL)
+		{
+
+		}
+		return (line);
+	}
 }
 
 static void	cleanup_settings(t_settings *settings)
