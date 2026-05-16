@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/15 16:30:16 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 12:57:42 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,25 +81,31 @@ static bool	is_incomplete_settings(int flags)
 
 }
 
-static char *read_next_setting(int fd)
+static char *read_next_setting_line(int fd)
 {
-	char	*line;
+	char	*setting_line;
 	char	**words;
 
 	while (true)
 	{
-		line = get_next_line(fd);
-		if (line == NULL)
+		setting_line = get_next_line(fd);
+		if (errno != 0)
 		{
-			cleanup();
+			print_error("fail GNL");
 			return (NULL);
 		}
-		words = ft_split(line, ' ');
-		if (words == NULL || words[0] == NULL || words[2] != NULL)
+		if (setting_line == NULL)
 		{
-
+			print_error("settings is incomplete");
+			return (NULL);
 		}
-		return (line);
+		replace_char(setting_line, '\n', '\0');
+		if (is_blank_line(setting_line))
+		{
+			free(setting_line);
+			continue ;
+		}
+		return (setting_line);
 	}
 }
 
@@ -119,7 +125,7 @@ bool	parse_settings(int fd, t_settings *settings)
 
 	while (is_incomplete_settings(settings->flags))
 	{
-		setting_line = read_next_setting(fd);
+		setting_line = read_next_setting_line(fd);
 		if (setting_line == NULL)
 		{
 			cleanup_settings(settings);
