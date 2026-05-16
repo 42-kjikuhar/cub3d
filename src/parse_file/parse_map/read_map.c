@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:38:03 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 21:28:07 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/16 21:46:49 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static bool	read_map_as_list(int fd, t_list **line_list)
 	}
 }
 
+/* 無駄な終端スペースを省ける余地がある。 */
 static bool	compute_map_size(t_list const **line_list, t_map *map)
 {
 	t_list	*current;
@@ -77,7 +78,10 @@ static bool	alloc_map(t_map *map)
 
 	map->data = malloc(sizeof(char *) * map->y_size);
 	if (map == NULL)
+	{
+		print_error(strerror(errno));
 		return (false);
+	}
 	y = 0;
 	while (y < map->y_size)
 	{
@@ -87,11 +91,36 @@ static bool	alloc_map(t_map *map)
 			while (y-- > 0)
 				free(map->data[y]);
 			free(map->data);
+			print_error(strerror(errno));
 			return (false);
 		}
 		++y;
 	}
 	return (true);
+}
+
+static void	convert_list_to_array(t_list *line_list, t_map *map)
+{
+	char			*content;
+	unsigned int	y;
+	unsigned int	x;
+
+	while (y < map->y_size)
+	{
+		content = ft_lst_pop_front(&line_list);
+		x = 0;
+		while (content[x] != '\0')
+		{
+			map->data[y][x] = content[x];
+			++x;
+		}
+		while (x < map->x_size)
+		{
+			map->data[y][x] = ' ';
+			++x;
+		}
+		free(content);
+	}
 }
 
 bool	read_map(int fd, t_map *map)
@@ -100,22 +129,13 @@ bool	read_map(int fd, t_map *map)
 	t_list	*line_list;
 
 	line_list = NULL;
-	if (!read_map_as_list(fd, &line_list))
+	if (!read_map_as_list(fd, &line_list) \
+	|| !compute_map_size(line_list, map) \
+	|| !alloc_map(map))
 	{
-		print_error();
+		ft_lst_clear(line_list);
 		return (false);
 	}
-	if (!compute_map_size(line_list, map))
-		return (false);
-	if (!alloc_map(map))
-	{
-		print_error(strerror(errno));
-		return (false);
-	}
-	if (!convert_list_to_array(line_list, map))
-	{
-		print_error();
-		return (false);
-	}
+	convert_list_to_array(line_list, map);
 	return (true);
 }
