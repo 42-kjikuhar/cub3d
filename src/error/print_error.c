@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/17 12:03:33 by kjikuhar         ###   ########.fr       */
+/*   Created: 2026/05/17 12:01:39 by kjikuhar          #+#    #+#             */
+/*   Updated: 2026/05/17 12:01:50 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char const *argv[])
+void	print_error(char const *error_message)
 {
-	t_cub3d	cub3d;
-
-	if (!vaildate_argument(argc, argv))
-		return (EXIT_FAILURE);
-	ft_bzero(&cub3d, sizeof(t_cub3d));
-	if (!parse_file(argv[1], &cub3d.settings, &cub3d.map))
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+	ft_dprintf(STDERR_FILENO, "Error\n");
+	ft_dprintf(STDERR_FILENO, "%s\n", error_message);
 }
