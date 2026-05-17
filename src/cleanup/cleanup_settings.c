@@ -6,13 +6,13 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:40:01 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 16:40:16 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/17 12:14:35 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	cleanup_settings(t_settings *settings)
+void	cleanup_settings(t_settings *settings)
 {
 	if (settings->north_texture != NULL)
 		free(settings->north_texture);

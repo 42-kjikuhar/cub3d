@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/17 12:02:48 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/17 12:14:51 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,16 @@ typedef struct s_cub3d
 
 bool	parse_file(char const *filename, t_settings *settings, t_map *map);
 
+/* cleanup */
+void	cleanup_settings(t_settings *settings);
+
 /* error */
 void	print_error(char const *error_message);
+
+/* parse_file */
+bool	parse_file(char const *filename, t_settings *settings, t_map *map);
+
+/* validate_argument*/
+bool	vaildate_argument(int argc, char const *argv[]);
 
 #endif
