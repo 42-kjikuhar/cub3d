@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:42:05 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 23:27:26 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/17 12:31:45 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 static bool	assign_setting(char const *identifier, char const *value,
 				t_settings *settings);
+static void	free_splitted(char **words);
 
 bool	parse_setting_line(char *setting_line, t_settings *settings)
 {
@@ -64,4 +65,18 @@ static bool	assign_setting(char const *identifier, char const *value,
 		print_error("identifier is invalid");
 		return (false);
 	}
+}
+
+static void	free_splitted(char **words)
+{
+	int	i;
+
+	if (words == NULL)
+		return ;
+	i = 0;
+	while (words[i] != NULL)
+	{
+		free(words[i]);
+	}
+	free(words);
 }
