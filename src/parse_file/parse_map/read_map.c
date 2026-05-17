@@ -6,12 +6,13 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:38:03 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 22:31:47 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/17 12:48:24 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "./parse_file_private.h"
+#include "./parse_map_private.h"
+#include "../parse_file_private.h"
 
 static bool	read_map_as_list(int fd, t_list **line_list)
 {
@@ -46,15 +47,15 @@ static bool	read_map_as_list(int fd, t_list **line_list)
 }
 
 /* 無駄な終端スペースを省ける余地がある。 */
-static bool	compute_map_size(t_list const **line_list, t_map *map)
+static bool	compute_map_size(t_list *line_list, t_map *map)
 {
 	t_list	*current;
-	size_t	cur_x_size;
+	int		cur_x_size;
 
-	current = *line_list;
+	current = line_list;
 	while (current != NULL)
 	{
-		cur_x_size = ft_strlen((*line_list)->content);
+		cur_x_size = ft_strlen(current->content);
 		if (cur_x_size > INT_MAX)
 		{
 			print_error("x_size is over INT_MAX");
@@ -70,6 +71,7 @@ static bool	compute_map_size(t_list const **line_list, t_map *map)
 		++map->y_size;
 		current = current->next;
 	}
+	return (true);
 }
 
 static bool	alloc_map(t_map *map)
@@ -127,7 +129,6 @@ static void	convert_list_to_array(t_list *line_list, t_map *map)
 
 bool	read_map(int fd, t_map *map)
 {
-	char	*line;
 	t_list	*line_list;
 
 	line_list = NULL;
@@ -135,7 +136,7 @@ bool	read_map(int fd, t_map *map)
 	|| !compute_map_size(line_list, map) \
 	|| !alloc_map(map))
 	{
-		ft_lst_clear(line_list);
+		ft_lstclear(&line_list, free);
 		return (false);
 	}
 	convert_list_to_array(line_list, map);

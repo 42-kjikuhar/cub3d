@@ -6,17 +6,18 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:36:09 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 23:27:34 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/17 12:34:41 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "./parse_map_private.h"
 
 bool	parse_map(int fd, t_map *map)
 {
 	if (!read_map(fd, map))
 	{
-		print_error();
+		print_error("read_map_error");
 		return (false);
 	}
 	if (!parse_map_data(map))
