@@ -6,11 +6,12 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:35:08 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 23:26:18 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/17 12:25:11 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "./parse_file_private.h"
 
 bool	parse_file(char const *filename, t_settings *settings, t_map *map)
 {
