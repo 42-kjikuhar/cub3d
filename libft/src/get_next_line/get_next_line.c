@@ -6,84 +6,78 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 00:47:51 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/14 23:47:37 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/18 02:12:48 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line/get_next_line.h"
 
-static bool	read_file(int fd, t_buf *buf);
-static void	append_to_next_line(t_next_line *next_line, char c);
+static bool	read_file(int fd, t_buf *buf, t_line *line);
+static bool	append_to_next_line(t_line *line, char c);
 
 char	*get_next_line(int fd)
 {
 	static t_buf	buf;
-	t_next_line		next_line;
+	t_line			line;
 
-	next_line.data = ft_strdup("");
-	next_line.allocated_size = 1;
-	next_line.len = 0;
+	ft_bzero(&line, sizeof(t_line));
+	if (!read_file(fd, &buf, &line))
+	{
+		buf.read_bytes = 0;
+		buf.used_bytes = 0;
+		free(line.data);
+		return (NULL);
+	}
+	return (line.data);
+}
+
+static bool	read_file(int fd, t_buf *buf, t_line *line)
+{
 	while (true)
 	{
-		if (next_line.data == NULL || !read_file(fd, &buf) \
-			|| (buf.read_bytes == 0 && next_line.len == 0))
+		if (buf->used_bytes == buf->read_bytes)
 		{
-			free(next_line.data);
-			ft_bzero(&buf, sizeof(t_buf));
-			return (NULL);
+			buf->used_bytes = 0;
+			buf->read_bytes = read(fd, buf->data, BUFFER_SIZE);
+			if (buf->read_bytes < 0)
+				return (false);
+			else if (buf->read_bytes == 0)
+				return (true);
 		}
-		if (buf.read_bytes == 0)
-			break ;
-		append_to_next_line(&next_line, buf.data[buf.used_bytes++]);
-		if (buf.data[buf.used_bytes - 1] == '\n' \
-			|| buf.data[buf.used_bytes - 1] == '\0')
-		{
-			break ;
-		}
-	}
-	return (next_line.data);
-}
-
-static bool	read_file(int fd, t_buf *buf)
-{
-	ssize_t	res;
-
-	if (buf->used_bytes == buf->read_bytes)
-	{
-		res = read(fd, buf->data, BUFFER_SIZE);
-		if (res < 0)
+		if (!append_to_next_line(line, buf->data[buf->used_bytes]))
 			return (false);
-		buf->read_bytes = res;
-		buf->used_bytes = 0;
+		if (buf->data[buf->used_bytes] == '\n' \
+			|| buf->data[buf->used_bytes] == '\0')
+		{
+			++(buf->used_bytes);
+			return (true);
+		}
+		++(buf->used_bytes);
 	}
-	return (true);
 }
 
-static void	append_to_next_line(t_next_line *next_line, char c)
+static bool	append_to_next_line(t_line *line, char c)
 {
-	char	*new_ptr;
-
-	if (c == '\0')
-		return ;
-	if (next_line->len + 1 == next_line->allocated_size)
+	if (line->allocated_size != 0 && c == '\0')
+		return (true);
+	if (line->allocated_size == 0 \
+		|| line->len + 1 == line->allocated_size)
 	{
-		if (next_line->allocated_size < 1024)
-			next_line->allocated_size = next_line->allocated_size * 2;
+		if (line->allocated_size == 0 && c == '\0')
+			line->allocated_size = 1;
+		else if (line->allocated_size == 0)
+			line->allocated_size = 2;
+		else if (line->allocated_size < 1024)
+			line->allocated_size = line->allocated_size * 2;
 		else
-			next_line->allocated_size = next_line->allocated_size + 1024;
-		new_ptr = (char *)malloc(sizeof(char) * next_line->allocated_size);
-		if (new_ptr != NULL)
-		{
-			ft_memcpy(new_ptr, next_line->data, next_line->len);
-			new_ptr[next_line->len++] = c;
-			new_ptr[next_line->len] = '\0';
-		}
-		free(next_line->data);
-		next_line->data = new_ptr;
+			line->allocated_size = line->allocated_size + 1024;
+		line->data = ft_reallocf(\
+			line->data, line->len, line->allocated_size);
+		if (line->data == NULL)
+			return (false);
 	}
-	else
-	{
-		next_line->data[next_line->len++] = c;
-		next_line->data[next_line->len] = '\0';
-	}
+	if (c != '\0')
+		line->data[line->len++] = c;
+	line->data[line->len] = '\0';
+	return (true);
 }
