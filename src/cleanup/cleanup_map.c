@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cleanup_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/19 21:54:46 by kjikuhar         ###   ########.fr       */
+/*   Created: 2026/05/19 21:51:27 by kjikuhar          #+#    #+#             */
+/*   Updated: 2026/05/19 21:53:11 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char const *argv[])
+void	cleanup_map(t_map *map)
 {
-	t_cub3d	cub3d;
+	int		y;
 
-	if (!vaildate_argument(argc, argv))
-		return (EXIT_FAILURE);
-	ft_bzero(&cub3d, sizeof(t_cub3d));
-	if (!parse_file(argv[1], &cub3d.settings, &cub3d.map))
-		return (EXIT_FAILURE);
-	cleanup_settings(&(cub3d.settings));
-	cleanup_map(&(cub3d.map));
-	return (EXIT_SUCCESS);
+	if (map->data == NULL)
+		return ;
+	y = 0;
+	while (y < map->y_size)
+	{
+		free(map->data[y]);
+	}
+	free(map->data);
 }

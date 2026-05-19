@@ -6,11 +6,15 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 13:29:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 16:46:46 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/17 12:29:35 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "../parse_file_private.h"
+#include "./parse_settings_private.h"
+
+static char	*read_next_setting_line(int fd);
 
 bool	parse_settings(int fd, t_settings *settings)
 {
@@ -38,7 +42,6 @@ bool	parse_settings(int fd, t_settings *settings)
 static char	*read_next_setting_line(int fd)
 {
 	char	*setting_line;
-	char	**words;
 
 	while (true)
 	{

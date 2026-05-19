@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:11:18 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 23:27:04 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/17 12:32:26 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ bool	set_color(char const *value, t_settings *settings,
 	if (color_id == FLOOR_ID)
 		settings->floor_color = color;
 	else if (color_id == CEILING_ID)
-		settings->south_texture = color;
+		settings->ceiling_color = color;
 	return (true);
 }
 

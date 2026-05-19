@@ -6,11 +6,12 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:37:35 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 23:36:02 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/17 12:46:17 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "./parse_map_private.h"
 
 bool	parse_map_data(t_map *map)
 {
