@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: stanaka2 < stanaka2@student.42tokyo.jp>    +#+  +:+       +#+         #
+#    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/24 21:27:03 by stanaka2          #+#    #+#              #
-#    Updated: 2026/05/13 01:09:52 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/19 21:37:09 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,55 +14,67 @@
 #       Phony Targets        #
 # -------------------------- #
 
-.PHONY: all clean fclean re asan debug
+.PHONY: all clean fclean re san debug
 
 # -------------------------- #
 #      Makefile Setting      #
 # -------------------------- #
 
-OS		=	$(shell uname -s)
+OS := $(shell uname -s)
 
-SHELL   =  	bash
+override MAKEFLAGS += -j --no-print-directory
 
-MAKEFLAGS += --no-print-directory
+RM := rm -f
 
-RM = rm -f
+override .DEFAULT_GOAL := all
+
+.DEFAULT:
+	@printf "No match.\n"
+
+.DELETE_ON_ERROR:
+# GNU Make 4.4
+# .NOTPARALLEL: re
+# .IGNORE:
+# .SILENT: clean fclean
 
 # -------------------------- #
 # 　　    　 Target           #
 # -------------------------- #
 
-NAME =	libft.a
+NAME := libft.a
 
 # -------------------------- #
 # 　　　Compiler Flags        #
 # -------------------------- #
 
-CFLAGS  =	-Wall -Wextra -Werror
+CC := cc
 
-ifeq ($(MAKECMDGOALS), asan)
-CFLAGS +=	-g -fsanitize=address
+override CFLAGS += -Wall -Wextra -Werror
+override CFLAGS += -Wconversion -Wno-sign-conversion
+
+ifeq ($(MAKECMDGOALS), san)
+override CFLAGS += -g -fsanitize=address,undefined
 endif
 
 ifeq ($(MAKECMDGOALS), debug)
-CFLAGS +=	-g
+override CFLAGS += -g
 endif
 
 # -------------------------- #
 #          Include           #
 # -------------------------- #
 
-INCLUDE_DIR	=	include
-INCLUDE  	=	-I $(INCLUDE_DIR)
+INCLUDE_DIR := include
+INCLUDE := -I $(INCLUDE_DIR)
 
 # -------------------------- #
 #     Source Directories     #
 # -------------------------- #
 
-SRC_DIR  =	src
-SRC_DIRS =	$(addprefix $(SRC_DIR)/, ctype stdio stdlib string lst math)
-SRC_DIRS +=	$(addprefix $(SRC_DIR)/, get_next_line)
-SRC_DIRS +=	$(addprefix $(SRC_DIR)/, ft_printf \
+SRC_DIR := src
+SRC_DIRS := $(addprefix $(SRC_DIR)/, ctype stdio stdlib string lst math)
+SRC_DIRS += $(addprefix $(SRC_DIR)/, get_next_line)
+SRC_DIRS += $(addprefix $(SRC_DIR)/, ft_printf \
 				$(addprefix ft_printf/, \
 					print_utils print_utils/utils\
 					read_conversion read_conversion/utils \
@@ -79,7 +91,7 @@ SRC_DIRS +=	$(addprefix $(SRC_DIR)/, ft_printf \
 # -------------------------- #
 
 # ctype
-SRCS = ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isblank.c \
+SRCS := ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isblank.c \
 	   ft_iscntrl.c ft_isdigit.c ft_isgraph.c ft_islower.c \
 	   ft_isprint.c ft_ispunct.c ft_isspace.c ft_isupper.c \
 	   ft_isxdigit.c ft_tolower.c ft_toupper.c
@@ -89,7 +101,7 @@ SRCS += ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c \
 		ft_putchar_fd_bytes.c ft_putendl_fd_bytes.c ft_putnbr_fd_bytes.c ft_putstr_fd_bytes.c
 
 # stdlib
-SRCS += ft_abs_uint.c ft_abs_ulong.c ft_atof.c ft_atoi.c ft_calloc.c ft_itoa.c ft_reallocf.c
+SRCS += ft_abs_uint.c ft_abs_ulong.c ft_atof.c ft_atoi.c ft_calloc.c ft_itoa.c ft_realloc.c ft_reallocf.c
 
 # string
 SRCS += ft_bzero.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c \
@@ -141,7 +153,7 @@ SRCS += pf_print_conversion.c
 
 # ft_printf/print_conversion/character
 ifeq ($(OS), Darwin)
-SRCS += pf_conv_c_darwin.c pf_conv_s_darwin.c pf_print_null_darwin.c pf_conv_lc_darwin.c 	pf_conv_ls_darwin.c \
+SRCS += pf_conv_c_darwin.c pf_conv_s_darwin.c pf_print_null_darwin.c pf_conv_lc_darwin.c pf_conv_ls_darwin.c \
 		pf_calc_utf8_len_darwin.c pf_encode_utf8_darwin.c pf_validate_codepoint_darwin.c
 else
 SRCS += pf_conv_c.c pf_conv_s.c pf_print_null.c pf_conv_lc.c pf_conv_ls.c \
@@ -185,49 +197,49 @@ endif
 #    ANSI Escape Sequence    #
 # -------------------------- #
 
-DEF_COLOR	= \033[0;39m
-GRAY 		= \033[0;90m
-RED 		= \033[0;91m
-GREEN 		= \033[0;92m
-YELLOW 		= \033[0;93m
-BLUE 		= \033[0;94m
-MAGENTA 	= \033[0;95m
-CYAN 		= \033[0;96m
-WHITE 		= \033[0;97m
+DEF_COLOR := \033[0;39m
+GRAY := \033[0;90m
+RED := \033[0;91m
+GREEN := \033[0;92m
+YELLOW := \033[0;93m
+BLUE := \033[0;94m
+MAGENTA := \033[0;95m
+CYAN := \033[0;96m
+WHITE := \033[0;97m
 
 # -------------------------- #
 #        VPATH Setup         #
 # -------------------------- #
 
+# vpath %.c <dir>
 $(foreach dir,$(SRC_DIRS), $(eval vpath %.c $(dir)))
 
 # -------------------------- #
 #     Object & Dependency    #
 # -------------------------- #
 
-OBJ_DIR		=	.obj
-OBJS		=	$(patsubst %.c, $(OBJ_DIR)/%.o, $(notdir $(SRCS)))
+OBJ_DIR		:=	.obj
+OBJS		:=	$(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
-DEP_DIR		=	.dep
+DEP_DIR		:=	.dep
+DEPS		:=	$(patsubst %.c, $(DEP_DIR)/%.d, $(SRCS))
 DEPFLAGS	=	-MT $@ -MMD -MP -MF $(DEP_DIR)/$*.d
-DEPS		=	$(patsubst %.c, $(DEP_DIR)/%.d, $(notdir $(SRCS)))
 
 # -------------------------- #
-#         Main Targets       #
+#      Default Targets       #
 # -------------------------- #
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(AR) rcs $@ $?
-	@echo -e "[LIBFT] $(GREEN)Build Complete:$(DEF_COLOR) $@"
+	@printf "[LIBFT] $(GREEN)Build Complete:$(DEF_COLOR) $@\n"
 
 # -------------------------- #
 #         Debug Rules        #
 # -------------------------- #
 
-asan: $(NAME)
-debug:  $(NAME)
+san debug: $(NAME)
 
 # -------------------------- #
 #        Build Rules         #
@@ -248,18 +260,22 @@ $(DEP_DIR):
 
 clean:
 	@$(RM) $(OBJS) $(DEPS)
-	@echo -e "[LIBFT] $(BLUE)Deleted Compiled Files$(DEF_COLOR): *.o *.d"
+	@printf "[LIBFT] $(BLUE)Deleted Compiled Files$(DEF_COLOR): *.o *.d\n"
 
 fclean:
 	@$(RM) $(OBJS) $(DEPS)
-	@echo -e "[LIBFT] $(BLUE)Deleted Compiled Files$(DEF_COLOR): *.o *.d"
+	@printf "[LIBFT] $(BLUE)Deleted Compiled Files$(DEF_COLOR): *.o *.d\n"
 	@$(RM) -r $(NAME) $(OBJ_DIR) $(DEP_DIR)
-	@echo -e "[LIBFT] $(BLUE)Deleted Target File and Object File Dir$(DEF_COLOR): $(NAME) $(OBJ_DIR) $(DEP_DIR)"
+	@printf "[LIBFT] $(BLUE)Deleted Target File and Object File Dir$(DEF_COLOR): $(NAME) $(OBJ_DIR) $(DEP_DIR)\n"
 
-re: fclean all
+re:
+	@$(MAKE) fclean
+	@$(MAKE) all
 
 # -------------------------- #
 #  Include Dependency Files  #
 # -------------------------- #
 
 -include $(DEPS)
+
+$(DEP_DIR)/%.d: ;

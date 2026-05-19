@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/19 21:53:43 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/19 22:15:51 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@
 # include "libft.h"
 # include "../vec_library/ft_vector.h"
 
-# define	MAP_FLOOR '0'
-# define	MAP_WALL '1'
-# define	MAP_BLANK ' '
-# define	PLAYER_NORTH 'N'
-# define	PLAYER_SOUTH 'S'
-# define	PLAYER_WEST 'W'
-# define	PLAYER_EAST 'E'
+# define MAP_FLOOR '0'
+# define MAP_WALL '1'
+# define MAP_BLANK ' '
+# define PLAYER_NORTH 'N'
+# define PLAYER_SOUTH 'S'
+# define PLAYER_WEST 'W'
+# define PLAYER_EAST 'E'
 
 typedef struct s_player
 {

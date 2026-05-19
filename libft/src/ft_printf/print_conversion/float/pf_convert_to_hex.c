@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 02:15:01 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/04/26 19:46:07 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/18 20:49:32 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	convert_to_hex_frac(t_pf_float *fp)
 	i = 0;
 	while (i < fp->print_frac_size)
 	{
-		fp->radix_point[i] = (fp->fraction
+		fp->radix_point[i] = (uint8_t)(fp->fraction
 				>> (fp->fraction_size - ((i + 1) * 4)) & bit_mask);
 		i++;
 	}

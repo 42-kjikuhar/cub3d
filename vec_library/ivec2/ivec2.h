@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ivec2.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:08:07 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/14 13:20:33 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/19 22:16:01 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ typedef struct s_ivec2
 	int	x;
 	int	y;
 }			t_ivec2;
-
 
 t_ivec2	ivec2_add(t_ivec2 a, t_ivec2 b);
 t_ivec2	ivec2_sub(t_ivec2 a, t_ivec2 b);

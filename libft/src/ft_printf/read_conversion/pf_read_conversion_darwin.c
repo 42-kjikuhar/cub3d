@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_read_conversion_darwin.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stanaka2 < stanaka2@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 13:42:37 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/02 16:25:34 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/18 03:29:22 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

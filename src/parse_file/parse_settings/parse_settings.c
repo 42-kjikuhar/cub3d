@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_settings.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 13:29:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/17 12:29:35 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/19 22:13:25 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,13 @@ static char	*read_next_setting_line(int fd)
 
 	while (true)
 	{
-		setting_line = get_next_line(fd);
-		if (errno != 0)
-		{
-			print_error("fail GNL");
+		if (!read_next_line(fd, &setting_line))
 			return (NULL);
-		}
 		if (setting_line == NULL)
 		{
 			print_error("settings is incomplete");
 			return (NULL);
 		}
-		replace_char(setting_line, '\n', '\0');
 		if (is_blank_line(setting_line))
 		{
 			free(setting_line);

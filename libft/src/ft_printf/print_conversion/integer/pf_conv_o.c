@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 17:42:06 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/01 19:17:03 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/18 20:46:43 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	print_conv_o(t_ctx *ctx, t_conv *conv, uintmax_t num)
 		len = 0;
 	padding = 0;
 	if (conv->hash_flag == '#' && (num != 0) && (size_t)conv->precision <= len)
-		conv->precision = len + 1;
+		conv->precision = (int)(len + 1);
 	else if (conv->hash_flag == '#' && num == 0 && conv->precision == 0)
 		padding = 1;
 	if (len < (size_t)conv->precision)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/19 21:54:15 by kjikuhar         ###   ########.fr        #
+#    Updated: 2026/05/19 22:12:27 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS	:= 	src/main.c \
 			src/error/print_error.c \
 			src/validate_argument/validate_argument.c \
 			src/parse_file/parse_file.c \
+			src/parse_file/utils/read_next_line.c \
 			src/parse_file/utils/is_blank_line.c \
 			src/parse_file/utils/replace_char.c \
 			src/parse_file/parse_settings/parse_settings.c \

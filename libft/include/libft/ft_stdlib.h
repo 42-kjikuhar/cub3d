@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_stdlib.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stanaka2 < stanaka2@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/19 15:32:39 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/06 23:27:35 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/17 12:33:18 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int				ft_atoi(const char *nptr);
 double			ft_atof(const char *str);
 void			*ft_calloc(size_t nmemb, size_t size);
 char			*ft_itoa(int n);
+void			*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 void			*ft_reallocf(void *ptr, size_t old_size, size_t new_size);
 
 #endif

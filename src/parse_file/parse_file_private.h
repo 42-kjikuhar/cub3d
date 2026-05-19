@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file_private.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:44:06 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 17:11:18 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/19 22:11:57 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ bool	parse_settings(int fd, t_settings *settings);
 bool	parse_map(int fd, t_map *map);
 
 /* utils */
+bool	read_next_line(int fd, char **next_line);
 bool	is_blank_line(const char *s);
 void	replace_char(char *str, char from_c, char to_c);
 

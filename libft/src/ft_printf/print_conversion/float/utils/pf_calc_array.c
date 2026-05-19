@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 13:46:30 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/04/26 17:51:07 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/18 21:03:51 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	pf_array_half(int8_t *dividend, int array_size)
 
 void	pf_array_double(int8_t *multiplicand, int array_size)
 {
-	int	i;
-	int	carry;
+	int		i;
+	int8_t	carry;
 
 	i = array_size - 1;
 	carry = 0;
@@ -62,8 +62,8 @@ void	pf_array_double(int8_t *multiplicand, int array_size)
 
 void	pf_array_double_hex(int8_t *multiplicand, int array_size)
 {
-	int	i;
-	int	carry;
+	int		i;
+	int8_t	carry;
 
 	i = array_size - 1;
 	carry = 0;

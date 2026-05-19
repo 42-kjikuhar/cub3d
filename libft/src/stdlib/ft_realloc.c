@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/26 19:19:13 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 03:30:16 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/17 12:30:20 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/17 12:32:14 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
 {
-	char	*joined_str;
-	size_t	len1;
-	size_t	len2;
+	void	*new_ptr;
 
-	if (!s1 || !s2)
+	new_ptr = malloc(new_size);
+	if (new_ptr == NULL)
 		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	if (SIZE_MAX - len1 - 1 < len2)
-		return (NULL);
-	joined_str = (char *)malloc(len1 + len2 + 1);
-	if (!joined_str)
-		return (NULL);
-	ft_strlcpy(joined_str, s1, len1 + 1);
-	ft_strlcpy(joined_str + len1, s2, len2 + 1);
-	return (joined_str);
+	if (old_size <= new_size)
+		ft_memcpy(new_ptr, ptr, old_size);
+	else
+		ft_memcpy(new_ptr, ptr, new_size);
+	free(ptr);
+	return (new_ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 02:31:25 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/04/26 22:47:03 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/18 21:03:11 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	pf_decode_binary64(double num, t_pf_float *fp)
 	uint64_t	mem;
 
 	ft_memcpy(&mem, &num, sizeof(mem));
-	fp->sign = mem >> (fp->exponent_size + fp->fraction_size);
-	fp->exponent \
-		= (mem << fp->sign_size) >> (fp->sign_size + fp->fraction_size);
+	fp->sign = (uint8_t)(mem >> (fp->exponent_size + fp->fraction_size));
+	fp->exponent = (uint16_t)((mem << fp->sign_size) \
+									>> (fp->sign_size + fp->fraction_size));
 	fp->fraction = (mem & (((uint64_t)1 << fp->fraction_size) - 1));
 	set_float_value_type(fp);
 	if (fp->value_type == PF_INF || fp->value_type == PF_NAN)

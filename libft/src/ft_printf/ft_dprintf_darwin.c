@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 13:38:52 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/01 11:03:10 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/18 20:45:17 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ int	ft_dprintf(int fd, const char *format, ...)
 	va_end(ap);
 	if (ctx.has_error)
 		return (PF_ERROR);
-	return (ctx.count);
+	return ((int)ctx.count);
 }

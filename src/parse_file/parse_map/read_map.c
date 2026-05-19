@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:38:03 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/19 21:41:50 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/19 22:14:04 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,10 @@ static bool	read_map_as_list(int fd, t_list **line_list)
 
 	while (true)
 	{
-		line = get_next_line(fd);
-		if (errno != 0)
-		{
-			print_error(strerror(errno));
+		if (!read_next_line(fd, &line))
 			return (false);
-		}
 		if (line == NULL)
 			return (true);
-		replace_char(line, '\n', '\0');
 		if (line_list == NULL && is_blank_line(line))
 			free(line);
 		else if (line_list != NULL && !is_blank_line(line))

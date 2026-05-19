@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 00:09:19 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/04/23 01:55:10 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/18 20:44:51 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ void	*ft_memset(void *s, int c, size_t n)
 	unsigned char	*mem;
 
 	mem = (unsigned char *)s;
-	c = (unsigned char)c;
 	while (n--)
 	{
-		*mem = c;
+		*mem = (unsigned char)c;
 		mem++;
 	}
 	return (s);
