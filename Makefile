@@ -6,13 +6,15 @@
 #    By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/19 22:53:04 by kjikuhar         ###   ########.fr        #
+#    Updated: 2026/05/19 22:57:52 by kjikuhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # phony
 .PHONY: all clean fclean re bonus norm san debug
 
+# makefile settings
+OS		:= $(shell uname -s)
 
 # CC		:= cc
 # NAME	:= cub3D
