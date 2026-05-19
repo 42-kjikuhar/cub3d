@@ -3,12 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/19 22:12:27 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/19 22:51:36 by kjikuhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# phony
+.PHONY: all clean fclean re bonus norm san debug
 
 CC		:= cc
 NAME	:= cub3D
