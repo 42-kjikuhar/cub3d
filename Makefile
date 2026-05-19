@@ -6,7 +6,7 @@
 #    By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/17 12:40:10 by kjikuhar         ###   ########.fr        #
+#    Updated: 2026/05/19 21:41:07 by kjikuhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS	:= 	src/main.c \
 			src/parse_file/parse_settings/is_incomplete_settings.c \
 			src/parse_file/parse_settings/set_texture.c \
 			src/parse_file/parse_settings/set_color.c \
+			src/parse_file/parse_settings/utils/free_splitted.c \
 			src/parse_file/parse_map/parse_map.c \
 			src/parse_file/parse_map/read_map.c \
 			src/parse_file/parse_map/parse_map_data.c \
@@ -48,7 +49,7 @@ $(NAME): $(LIBFT_A) $(OBJS)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(OBJ_DIR) $(OBJ_DIR)/cleanup \
 $(OBJ_DIR)/error $(OBJ_DIR)/validate_argument $(OBJ_DIR)/parse_file \
-$(OBJ_DIR)/parse_file/utils $(OBJ_DIR)/parse_file/parse_settings $(OBJ_DIR)/parse_file/parse_map
+$(OBJ_DIR)/parse_file/utils $(OBJ_DIR)/parse_file/parse_settings $(OBJ_DIR)/parse_file/parse_settings/utils $(OBJ_DIR)/parse_file/parse_map
 
 	$(CC) $(CFLAGS) -c -o $@ $^
 

@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:48:55 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 16:57:39 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/19 21:38:42 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ bool	set_texture(char const *value, t_settings *settings,
 			enum e_setting_id texture_id);
 bool	set_color(char const *value, t_settings *settings,
 			enum e_setting_id color_id);
+bool	is_incomplete_settings(int flags);
 
 /* utils */
-bool	is_incomplete_settings(int flags);
+void	free_splitted(char **words);
 
 #endif
