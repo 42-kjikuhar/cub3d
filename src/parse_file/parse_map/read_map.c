@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:38:03 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/19 21:26:19 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/19 21:32:24 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,28 +49,24 @@ static bool	read_map_as_list(int fd, t_list **line_list)
 /* 無駄な終端スペースを省ける余地がある。 */
 static bool	compute_map_size(t_list *line_list, t_map *map)
 {
-	t_list	*current;
 	size_t	cur_x_size;
+	size_t	cur_y_size;
 
-	current = line_list;
-	while (current != NULL)
+	cur_y_size = 0;
+	while (line_list != NULL)
 	{
-		cur_x_size = ft_strlen(current->content);
-		if (cur_x_size > INT_MAX)
+		cur_x_size = ft_strlen(line_list->content);
+		++cur_y_size;
+		if (cur_x_size > INT_MAX || cur_y_size > INT_MAX)
 		{
-			print_error("x_size is over INT_MAX");
+			print_error("map size is over INT_MAX");
 			return (false);
 		}
 		if (cur_x_size > map->x_size)
-			map->x_size = cur_x_size;
-		if (map->y_size == INT_MAX)
-		{
-			print_error("y_size is over INT_MAX");
-			return (false);
-		}
-		++(map->y_size);
-		current = current->next;
+			map->x_size = (int)cur_x_size;
+		line_list = line_list->next;
 	}
+	map->y_size = (int)cur_y_size;
 	return (true);
 }
 
