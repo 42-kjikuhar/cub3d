@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:38:03 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/19 21:25:47 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/19 21:26:19 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static bool	compute_map_size(t_list *line_list, t_map *map)
 			print_error("y_size is over INT_MAX");
 			return (false);
 		}
-		++map->y_size;
+		++(map->y_size);
 		current = current->next;
 	}
 	return (true);
