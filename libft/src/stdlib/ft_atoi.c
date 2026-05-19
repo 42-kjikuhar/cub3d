@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 21:40:26 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/04/19 16:18:12 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/18 20:33:16 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_atoi(const char *nptr)
 		num = num * 10 + (*nptr - '0');
 		nptr++;
 	}
-	return (num * sign);
+	return ((int)(num * sign));
 }
 
 static bool	is_long_overflow(long num, int sign, int n)

@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 02:41:50 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/14 18:20:11 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/18 20:32:55 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static uint64_t	calc_significand(const char *str)
 	{
 		if (*str != '.' && !(i == 0 && *str == '0'))
 		{
-			significand = significand * 10 + (*str - '0');
+			significand = significand * 10 + (uint64_t)(*str - '0');
 			++i;
 		}
 		++str;

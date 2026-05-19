@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 19:51:54 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/01 11:03:25 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/18 20:45:45 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ int	ft_sprintf(char *str, const char *format, ...)
 	va_end(ap);
 	if (ctx.has_error)
 		return (PF_ERROR);
-	return (ctx.count);
+	return ((int)ctx.count);
 }
