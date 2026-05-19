@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/17 12:14:09 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/19 21:54:46 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int	main(int argc, char const *argv[])
 	if (!parse_file(argv[1], &cub3d.settings, &cub3d.map))
 		return (EXIT_FAILURE);
 	cleanup_settings(&(cub3d.settings));
+	cleanup_map(&(cub3d.map));
 	return (EXIT_SUCCESS);
 }

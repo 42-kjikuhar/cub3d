@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/17 12:14:51 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/19 21:53:43 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ bool	parse_file(char const *filename, t_settings *settings, t_map *map);
 
 /* cleanup */
 void	cleanup_settings(t_settings *settings);
+void	cleanup_map(t_map *map);
 
 /* error */
 void	print_error(char const *error_message);

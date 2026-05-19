@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:36:09 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/17 12:34:41 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/19 21:52:12 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	parse_map(int fd, t_map *map)
 	}
 	if (!parse_map_data(map))
 	{
-		free_map(map);
+		cleanup_map(map);
 		return (false);
 	}
 	return (true);

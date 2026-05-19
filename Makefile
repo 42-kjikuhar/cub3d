@@ -6,7 +6,7 @@
 #    By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/19 21:41:07 by kjikuhar         ###   ########.fr        #
+#    Updated: 2026/05/19 21:54:15 by kjikuhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ OBJ_DIR := obj
 LIBFT_DIR := libft
 SRCS	:= 	src/main.c \
 			src/cleanup/cleanup_settings.c \
+			src/cleanup/cleanup_map.c \
 			src/error/print_error.c \
 			src/validate_argument/validate_argument.c \
 			src/parse_file/parse_file.c \
@@ -33,7 +34,6 @@ SRCS	:= 	src/main.c \
 			src/parse_file/parse_map/read_map.c \
 			src/parse_file/parse_map/parse_map_data.c \
 			src/parse_file/parse_map/parse_map_cell.c \
-			src/parse_file/parse_map/free_map.c \
 
 
 OBJS	:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
