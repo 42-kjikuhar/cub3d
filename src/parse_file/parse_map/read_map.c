@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:38:03 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/17 12:48:24 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/19 21:25:47 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static bool	read_map_as_list(int fd, t_list **line_list)
 static bool	compute_map_size(t_list *line_list, t_map *map)
 {
 	t_list	*current;
-	int		cur_x_size;
+	size_t	cur_x_size;
 
 	current = line_list;
 	while (current != NULL)
