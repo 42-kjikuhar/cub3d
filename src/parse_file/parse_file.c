@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/19 21:54:46 by kjikuhar         ###   ########.fr       */
+/*   Created: 2026/05/16 18:35:08 by kjikuhar          #+#    #+#             */
+/*   Updated: 2026/05/17 12:25:11 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "./parse_file_private.h"
 
-int	main(int argc, char const *argv[])
+bool	parse_file(char const *filename, t_settings *settings, t_map *map)
 {
-	t_cub3d	cub3d;
+	int		fd;
 
-	if (!vaildate_argument(argc, argv))
-		return (EXIT_FAILURE);
-	ft_bzero(&cub3d, sizeof(t_cub3d));
-	if (!parse_file(argv[1], &cub3d.settings, &cub3d.map))
-		return (EXIT_FAILURE);
-	cleanup_settings(&(cub3d.settings));
-	cleanup_map(&(cub3d.map));
-	return (EXIT_SUCCESS);
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		print_error(strerror(errno));
+		return (false);
+	}
+	if (!parse_settings(fd, settings))
+	{
+		close(fd);
+		return (false);
+	}
+	if (!parse_map(fd, map))
+	{
+		cleanup_settings(settings);
+		close(fd);
+		return (false);
+	}
+	close(fd);
+	return (true);
 }

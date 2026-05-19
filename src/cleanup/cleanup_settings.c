@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cleanup_settings.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/19 21:54:46 by kjikuhar         ###   ########.fr       */
+/*   Created: 2026/05/16 16:40:01 by kjikuhar          #+#    #+#             */
+/*   Updated: 2026/05/17 12:14:35 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char const *argv[])
+void	cleanup_settings(t_settings *settings)
 {
-	t_cub3d	cub3d;
-
-	if (!vaildate_argument(argc, argv))
-		return (EXIT_FAILURE);
-	ft_bzero(&cub3d, sizeof(t_cub3d));
-	if (!parse_file(argv[1], &cub3d.settings, &cub3d.map))
-		return (EXIT_FAILURE);
-	cleanup_settings(&(cub3d.settings));
-	cleanup_map(&(cub3d.map));
-	return (EXIT_SUCCESS);
+	if (settings->north_texture != NULL)
+		free(settings->north_texture);
+	if (settings->south_texture != NULL)
+		free(settings->south_texture);
+	if (settings->west_texture != NULL)
+		free(settings->west_texture);
+	if (settings->east_texture != NULL)
+		free(settings->east_texture);
 }

@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   replace_char.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/19 21:54:46 by kjikuhar         ###   ########.fr       */
+/*   Created: 2026/05/16 12:39:41 by kjikuhar          #+#    #+#             */
+/*   Updated: 2026/05/16 12:43:31 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char const *argv[])
+void	replace_char(char *str, char from_c, char to_c)
 {
-	t_cub3d	cub3d;
-
-	if (!vaildate_argument(argc, argv))
-		return (EXIT_FAILURE);
-	ft_bzero(&cub3d, sizeof(t_cub3d));
-	if (!parse_file(argv[1], &cub3d.settings, &cub3d.map))
-		return (EXIT_FAILURE);
-	cleanup_settings(&(cub3d.settings));
-	cleanup_map(&(cub3d.map));
-	return (EXIT_SUCCESS);
+	if (str == NULL)
+		return ;
+	if (from_c == '\0')
+		return ;
+	if (from_c == to_c)
+		return ;
+	while (*str != '\0')
+	{
+		if (*str == from_c)
+		{
+			*str = to_c;
+		}
+		str++;
+	}
+	return ;
 }
