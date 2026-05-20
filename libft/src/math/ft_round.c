@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:43:47 by stanaka2          #+#    #+#             */
-/*   Updated: 2025/11/10 18:42:19 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/20 20:34:44 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 double	ft_round(double x)
 {
 	if (x >= 0)
-		return ((long long)(x + 0.5));
+		return ((double)(long long)(x + 0.5));
 	else
-		return ((long long)(x - 0.5));
+		return ((double)(long long)(x - 0.5));
 }

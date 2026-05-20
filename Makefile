@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/20 20:14:54 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/20 20:34:09 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ CC				:= cc
 
 override CFLAGS	+= -Wall -Wextra -Werror
 # when submit, it should change -W3
-override CFLAGS	+= -Wconversion -Wno-sign-conversion -Wreserved-identifier -Wshadow
+override CFLAGS	+= -Wconversion -Wno-sign-conversion -Wshadow
 
 ifeq ($(MAKECMDGOALS), san)
 override CFLAGS	+= -g -fsanitize=address,undefined
@@ -225,7 +225,7 @@ LDLIBS	+= -lm
 all: $(NAME)
 
 $(NAME): $(OBJS) | $(LIBFT) $(LIBMLX)
-	@$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) $^ -o $@
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
 	@printf "[$(NAME)] $(GREEN)Build Complete:$(DEF_COLOR) $@\n"
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(DEP_DIR)

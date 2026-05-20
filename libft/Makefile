@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/24 21:27:03 by stanaka2          #+#    #+#              #
-#    Updated: 2026/05/20 20:18:12 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/20 20:33:33 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ NAME := libft.a
 CC := cc
 
 override CFLAGS += -Wall -Wextra -Werror
-override CFLAGS += -Wconversion -Wno-sign-conversion -Wreserved-identifier -Wshadow
+override CFLAGS += -Wconversion -Wno-sign-conversion -Wshadow
 
 ifeq ($(MAKECMDGOALS), san)
 override CFLAGS += -g -fsanitize=address,undefined
@@ -76,7 +76,7 @@ override ARFLAGS := rcs
 
 INCLUDE_DIRS := include
 
-override CPPFLAGS += $(foreach dir, $(INCLUDE_DIRS), -I$(INCLUDE_DIRS))
+override CPPFLAGS += $(foreach dir, $(INCLUDE_DIRS), -I$(dir))
 
 # -------------------------- #
 #     Source Directories     #
