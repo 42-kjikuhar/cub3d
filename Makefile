@@ -6,7 +6,7 @@
 #    By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/20 21:34:05 by kjikuhar         ###   ########.fr        #
+#    Updated: 2026/05/20 23:17:08 by kjikuhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -208,9 +208,10 @@ $(LIBMLX): | $(LIBMLX_DIR)
 	@$(MAKE) -s -C $(LIBMLX_DIR) > /dev/null 2>&1
 	@printf "[$(NAME)] $(GREEN)Build Complete:$(DEF_COLOR) $@\n"
 
+override CPPFLAGS	+= -I$(LIBMLX_DIR)
 override LDFLAGS	+= -L$(LIBMLX_DIR)
 ifeq ($(OS), Darwin)
-override CPPFLAGS	+= /usr/X11/include
+override CPPFLAGS	+= -I/usr/X11/include
 override LDFLAGS	+= -L/usr/X11/lib
 endif
 override LDLIBS	+= -lmlx -lXext -lX11
