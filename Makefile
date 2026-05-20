@@ -6,7 +6,7 @@
 #    By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/20 20:41:17 by kjikuhar         ###   ########.fr        #
+#    Updated: 2026/05/20 20:43:25 by kjikuhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -196,6 +196,7 @@ install:
 
 uninstall:
 	@$(RM) -r $(LIBMLX_DIR)
+	@printf "[cub3D] $(GREEN)Uninstall Complete:$(DEF_COLOR) $@\n"
 
 $(LIBMLX_DIR):
 	$(MAKE) install
