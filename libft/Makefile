@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/24 21:27:03 by stanaka2          #+#    #+#              #
-#    Updated: 2026/05/19 21:37:09 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/20 20:33:33 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #       Phony Targets        #
 # -------------------------- #
 
-.PHONY: all clean fclean re san debug
+.PHONY: all clean fclean re san debug norm help
 
 # -------------------------- #
 #      Makefile Setting      #
@@ -24,12 +24,12 @@ OS := $(shell uname -s)
 
 override MAKEFLAGS += -j --no-print-directory
 
-RM := rm -f
-
 override .DEFAULT_GOAL := all
 
 .DEFAULT:
-	@printf "No match.\n"
+	@printf "$(RED)make: *** No rule to make target '$@'.  Stop.$(DEF_COLOR)\n"
+	@$(MAKE) help;
+	@exit 2
 
 .DELETE_ON_ERROR:
 # GNU Make 4.4
@@ -37,44 +37,54 @@ override .DEFAULT_GOAL := all
 # .IGNORE:
 # .SILENT: clean fclean
 
+help:
+	@printf "$(CYAN)Usage:$(DEF_COLOR)\n"
+	@printf "$(GREEN)all$(DEF_COLOR)        Build $(NAME)\n"
+	@printf "$(GREEN)clean$(DEF_COLOR)      Remove object files, dependency files\n"
+	@printf "$(GREEN)fclean$(DEF_COLOR)     Remove all generated files\n"
+	@printf "$(GREEN)re$(DEF_COLOR)         Rebuild from scratch\n"
+	@printf "$(YELLOW)san$(DEF_COLOR)        Build with Sanitizer=Address,Undefine\n"
+	@printf "$(YELLOW)debug$(DEF_COLOR)      Build with debug symbols\n"
+	@printf "$(YELLOW)norm$(DEF_COLOR)       Run norminette\n"
+
 # -------------------------- #
-# 　　    　 Target           #
+#           Target           #
 # -------------------------- #
 
 NAME := libft.a
 
 # -------------------------- #
-# 　　　Compiler Flags        #
+#       Compiler Flags       #
 # -------------------------- #
 
 CC := cc
 
 override CFLAGS += -Wall -Wextra -Werror
-override CFLAGS += -Wconversion -Wno-sign-conversion
+override CFLAGS += -Wconversion -Wno-sign-conversion -Wshadow
 
 ifeq ($(MAKECMDGOALS), san)
 override CFLAGS += -g -fsanitize=address,undefined
-endif
-
-ifeq ($(MAKECMDGOALS), debug)
+else ifeq ($(MAKECMDGOALS), debug)
 override CFLAGS += -g
 endif
+
+override ARFLAGS := rcs
 
 # -------------------------- #
 #          Include           #
 # -------------------------- #
 
-INCLUDE_DIR := include
-INCLUDE := -I $(INCLUDE_DIR)
+INCLUDE_DIRS := include
+
+override CPPFLAGS += $(foreach dir, $(INCLUDE_DIRS), -I$(dir))
 
 # -------------------------- #
 #     Source Directories     #
 # -------------------------- #
 
-SRC_DIR := src
-SRC_DIRS := $(addprefix $(SRC_DIR)/, ctype stdio stdlib string lst math)
-SRC_DIRS += $(addprefix $(SRC_DIR)/, get_next_line)
-SRC_DIRS += $(addprefix $(SRC_DIR)/, ft_printf \
+SRC_DIRS := $(addprefix src/, ctype stdio stdlib string lst math)
+SRC_DIRS += $(addprefix src/, get_next_line)
+SRC_DIRS += $(addprefix src/, ft_printf \
 				$(addprefix ft_printf/, \
 					print_utils print_utils/utils\
 					read_conversion read_conversion/utils \
@@ -85,6 +95,9 @@ SRC_DIRS += $(addprefix $(SRC_DIR)/, ft_printf \
 					print_conversion/special \
 				)\
 			)
+
+# vpath %.c <dir>
+$(foreach dir,$(SRC_DIRS), $(eval vpath %.c $(dir)))
 
 # -------------------------- #
 #        Source Files        #
@@ -194,6 +207,72 @@ SRCS += pf_print_inf.c pf_print_nan.c
 endif
 
 # -------------------------- #
+#        Object Files        #
+# -------------------------- #
+
+OBJ_DIR := .obj
+
+$(OBJ_DIR):
+	@-mkdir -p $@
+
+OBJS := $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
+
+# -------------------------- #
+#      Dependency Files      #
+# -------------------------- #
+
+DEP_DIR := .dep
+
+$(DEP_DIR):
+	@-mkdir -p $@
+
+DEPS := $(patsubst %.c, $(DEP_DIR)/%.d, $(SRCS))
+override DEPFLAGS = -MT $@ -MMD -MP -MF $(DEP_DIR)/$*.d
+
+-include $(DEPS)
+$(DEP_DIR)/%.d: ;
+
+# -------------------------- #
+#        Build Rules         #
+# -------------------------- #
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	@$(AR) $(ARFLAGS) $@ $?
+	@printf "[LIBFT] $(GREEN)Build Complete:$(DEF_COLOR) $@\n"
+
+$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(DEP_DIR)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(DEPFLAGS) -c $< -o $@
+
+# -------------------------- #
+#       Cleanup Rules        #
+# -------------------------- #
+
+clean:
+	@$(RM) $(OBJS) $(DEPS)
+	@printf "[LIBFT] $(BLUE)Delete Complete$(DEF_COLOR): *.o *.d\n"
+
+fclean:
+	@$(RM) $(OBJS) $(DEPS)
+	@printf "[LIBFT] $(BLUE)Delete Complete$(DEF_COLOR): *.o *.d\n"
+	@$(RM) -r $(NAME) $(OBJ_DIR) $(DEP_DIR)
+	@printf "[LIBFT] $(BLUE)Delete Complete$(DEF_COLOR): $(NAME) $(OBJ_DIR) $(DEP_DIR)\n"
+
+re:
+	@$(MAKE) fclean
+	@$(MAKE) all
+
+# -------------------------- #
+#         Debug Rules        #
+# -------------------------- #
+
+san debug: $(NAME)
+
+norm:
+	@norminette -o src include $(LIBFT_DIR) | grep Error || true
+
+# -------------------------- #
 #    ANSI Escape Sequence    #
 # -------------------------- #
 
@@ -206,76 +285,3 @@ BLUE := \033[0;94m
 MAGENTA := \033[0;95m
 CYAN := \033[0;96m
 WHITE := \033[0;97m
-
-# -------------------------- #
-#        VPATH Setup         #
-# -------------------------- #
-
-# vpath %.c <dir>
-$(foreach dir,$(SRC_DIRS), $(eval vpath %.c $(dir)))
-
-# -------------------------- #
-#     Object & Dependency    #
-# -------------------------- #
-
-OBJ_DIR		:=	.obj
-OBJS		:=	$(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
-
-DEP_DIR		:=	.dep
-DEPS		:=	$(patsubst %.c, $(DEP_DIR)/%.d, $(SRCS))
-DEPFLAGS	=	-MT $@ -MMD -MP -MF $(DEP_DIR)/$*.d
-
-# -------------------------- #
-#      Default Targets       #
-# -------------------------- #
-
-all: $(NAME)
-
-$(NAME): $(OBJS)
-	@$(AR) rcs $@ $?
-	@printf "[LIBFT] $(GREEN)Build Complete:$(DEF_COLOR) $@\n"
-
-# -------------------------- #
-#         Debug Rules        #
-# -------------------------- #
-
-san debug: $(NAME)
-
-# -------------------------- #
-#        Build Rules         #
-# -------------------------- #
-
-$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(DEP_DIR)
-	@$(CC) $(CFLAGS) $(INCLUDE) $(DEPFLAGS) -c $< -o $@
-
-$(OBJ_DIR):
-	@-mkdir -p $@
-
-$(DEP_DIR):
-	@-mkdir -p $@
-
-# -------------------------- #
-#       Cleanup Rules        #
-# -------------------------- #
-
-clean:
-	@$(RM) $(OBJS) $(DEPS)
-	@printf "[LIBFT] $(BLUE)Deleted Compiled Files$(DEF_COLOR): *.o *.d\n"
-
-fclean:
-	@$(RM) $(OBJS) $(DEPS)
-	@printf "[LIBFT] $(BLUE)Deleted Compiled Files$(DEF_COLOR): *.o *.d\n"
-	@$(RM) -r $(NAME) $(OBJ_DIR) $(DEP_DIR)
-	@printf "[LIBFT] $(BLUE)Deleted Target File and Object File Dir$(DEF_COLOR): $(NAME) $(OBJ_DIR) $(DEP_DIR)\n"
-
-re:
-	@$(MAKE) fclean
-	@$(MAKE) all
-
-# -------------------------- #
-#  Include Dependency Files  #
-# -------------------------- #
-
--include $(DEPS)
-
-$(DEP_DIR)/%.d: ;

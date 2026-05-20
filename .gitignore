@@ -1,6 +1,14 @@
+a.out.dSYM
+.DS_Store
+
 cub3D
-obj/
+.obj
+.dep
+
 libft/.obj
 libft/.dep
 libft/libft.a
+
+minilibx
+
 en.subject.pdf

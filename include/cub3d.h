@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/19 22:15:51 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/20 10:22:47 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 # include <errno.h>
 # include <limits.h>
 # include "libft.h"
-# include "../vec_library/ft_vector.h"
+
+# include "vec2/ivec2.h"
+# include "vec2/dvec2.h"
 
 # define MAP_FLOOR '0'
 # define MAP_WALL '1'

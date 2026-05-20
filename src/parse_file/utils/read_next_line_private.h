@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/19 16:40:07 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/19 22:11:41 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/20 10:47:51 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # include <stdbool.h>
 # include <errno.h>
 # include <string.h>
-
-# include "libft.h"
 
 # define BUFFER_SIZE 1024
 

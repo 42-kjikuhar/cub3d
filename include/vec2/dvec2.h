@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_round.c                                         :+:      :+:    :+:   */
+/*   dvec2.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/30 18:43:47 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/20 20:38:35 by kjikuhar         ###   ########.fr       */
+/*   Created: 2026/05/20 10:20:46 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/20 10:21:44 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef DVEC2_H
+# define DVEC2_H
 
-double	ft_round(double x)
+typedef struct s_dvec2
 {
-	if (x >= 0)
-		return ((double)(long long)(x + 0.5));
-	else
-		return ((double)(long long)(x - 0.5));
-}
+	double	x;
+	double	y;
+}	t_dvec2;
+
+#endif
