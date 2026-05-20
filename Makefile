@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/20 23:53:45 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/21 00:39:07 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -200,7 +200,7 @@ uninstall:
 	@printf "[cub3D] $(GREEN)Uninstall Complete:$(DEF_COLOR) $(LIBMLX_DIR)\n"
 
 $(LIBMLX_DIR):
-	$(MAKE) install
+	@$(MAKE) install
 
 LIBMLX		:= $(LIBMLX_DIR)/libmlx.a
 
@@ -232,7 +232,7 @@ $(NAME): $(OBJS) | $(LIBFT) $(LIBMLX)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
 	@printf "[$(NAME)] $(GREEN)Build Complete:$(DEF_COLOR) $@\n"
 
-$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(DEP_DIR)
+$(OBJ_DIR)/%.o: %.c | $(LIBMLX_DIR) $(OBJ_DIR) $(DEP_DIR)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(DEPFLAGS) -c $< -o $@
 
 # -------------------------- #
