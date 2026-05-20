@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/20 22:05:41 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/20 22:32:44 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # include <string.h>
 # include <errno.h>
 # include <limits.h>
+# include <math.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
+
 # include "libft.h"
 
 # include "vec2/ivec2.h"
@@ -30,6 +34,13 @@
 # define PLAYER_SOUTH 'S'
 # define PLAYER_WEST 'W'
 # define PLAYER_EAST 'E'
+
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+# endif
+# define DEG_TO_RAD 0.01745329251994329547 // (M_PI / 180.0)
+# define RAD_TO_DEG 57.29577951308232286465 // (180.0 / M_PI)
+# define FOV 66
 
 typedef struct s_settings
 {
