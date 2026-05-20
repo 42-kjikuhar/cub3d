@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/20 23:35:36 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/21 00:46:54 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,11 @@ int		expose_hook(void *param)
 
 int		key_press_hook(int keycode, void *param)
 {
-	(void)keycode;
-	(void)param;
+	t_cub3d	*cub3d;
+
+	cub3d = (t_cub3d *)param;
+	if (keycode ==  XK_Escape)
+		mlx_loop_end(cub3d->mlx.mlx_ptr);
 	return (0);
 }
 
