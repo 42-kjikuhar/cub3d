@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/24 21:27:03 by stanaka2          #+#    #+#              #
-#    Updated: 2026/05/20 00:11:04 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/20 09:42:00 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,13 +36,13 @@ override .DEFAULT_GOAL := all
 # .SILENT: clean fclean
 
 # -------------------------- #
-# 　　    　 Target           #
+#           Target           #
 # -------------------------- #
 
 NAME := libft.a
 
 # -------------------------- #
-# 　　　Compiler Flags        #
+#       Compiler Flags       #
 # -------------------------- #
 
 CC := cc
@@ -84,6 +84,9 @@ SRC_DIRS += $(addprefix src/, ft_printf \
 					print_conversion/special \
 				)\
 			)
+
+# vpath %.c <dir>
+$(foreach dir,$(SRC_DIRS), $(eval vpath %.c $(dir)))
 
 # -------------------------- #
 #        Source Files        #
@@ -193,31 +196,11 @@ SRCS += pf_print_inf.c pf_print_nan.c
 endif
 
 # -------------------------- #
-#    ANSI Escape Sequence    #
-# -------------------------- #
-
-DEF_COLOR := \033[0;39m
-GRAY := \033[0;90m
-RED := \033[0;91m
-GREEN := \033[0;92m
-YELLOW := \033[0;93m
-BLUE := \033[0;94m
-MAGENTA := \033[0;95m
-CYAN := \033[0;96m
-WHITE := \033[0;97m
-
-# -------------------------- #
-#        VPATH Setup         #
-# -------------------------- #
-
-# vpath %.c <dir>
-$(foreach dir,$(SRC_DIRS), $(eval vpath %.c $(dir)))
-
-# -------------------------- #
 #        Object Files        #
 # -------------------------- #
 
 OBJ_DIR		:=	.obj
+
 $(OBJ_DIR):
 	@-mkdir -p $@
 
@@ -228,6 +211,7 @@ OBJS		:=	$(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 # -------------------------- #
 
 DEP_DIR		:=	.dep
+
 $(DEP_DIR):
 	@-mkdir -p $@
 
@@ -238,7 +222,7 @@ override DEPFLAGS = -MT $@ -MMD -MP -MF $(DEP_DIR)/$*.d
 $(DEP_DIR)/%.d: ;
 
 # -------------------------- #
-#      Default Targets       #
+#        Build Rules         #
 # -------------------------- #
 
 all: $(NAME)
@@ -247,21 +231,8 @@ $(NAME): $(OBJS)
 	@$(AR) $(ARFLAGS) $@ $?
 	@printf "[LIBFT] $(GREEN)Build Complete:$(DEF_COLOR) $@\n"
 
-# -------------------------- #
-#        Build Rules         #
-# -------------------------- #
-
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(DEP_DIR)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(DEPFLAGS) -c $< -o $@
-
-# -------------------------- #
-#         Debug Rules        #
-# -------------------------- #
-
-san debug: $(NAME)
-
-norm:
-	@norminette src include
 
 # -------------------------- #
 #       Cleanup Rules        #
@@ -280,3 +251,26 @@ fclean:
 re:
 	@$(MAKE) fclean
 	@$(MAKE) all
+
+# -------------------------- #
+#         Debug Rules        #
+# -------------------------- #
+
+san debug: $(NAME)
+
+norm:
+	@norminette -o src include $(LIBFT_DIR) | grep Error || true
+
+# -------------------------- #
+#    ANSI Escape Sequence    #
+# -------------------------- #
+
+DEF_COLOR := \033[0;39m
+GRAY := \033[0;90m
+RED := \033[0;91m
+GREEN := \033[0;92m
+YELLOW := \033[0;93m
+BLUE := \033[0;94m
+MAGENTA := \033[0;95m
+CYAN := \033[0;96m
+WHITE := \033[0;97m
