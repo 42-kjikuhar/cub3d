@@ -6,19 +6,31 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/20 23:14:24 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/20 23:35:36 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "cub3d.h"
 
-t_dvec2 	dvec2(double x, double y);
+void	ft_mlx_destroy(t_mlx *mlx);
+
+t_dvec2 	dvec2(double x, double y)
+{
+	t_dvec2 vec;
+
+	vec.x = x;
+	vec.y = y;
+	return (vec);
+}
 
 void	init_player(t_player *player, t_map const *map)
 {
 	double	plane_length;
+
 	player->pos = dvec2(map->player_pos.x + 0.5, map->player_pos.y + 0.5);
-	plane_length = tan(DEG_TO_RAD * FOV * 0.5);
+	// plane_length = tan(DEG_TO_RAD * FOV * 0.5);
+	plane_length = 1.0;
 	if (map->player_dir == PLAYER_NORTH)
 	{
 		player->dir = dvec2(0, -1);
@@ -41,11 +53,46 @@ void	init_player(t_player *player, t_map const *map)
 	}
 }
 
+bool	create_connection(t_mlx *mlx)
+{
+	mlx->mlx_ptr = mlx_init();
+	if (mlx->mlx_ptr == NULL)
+	{
+		print_error("fail to create connection");
+		return (false);
+	}
+	return (true);
+}
+
+bool	create_window_image(t_mlx *mlx)
+{
+	(void)mlx;
+	return (true);
+}
+
+bool	create_assets(t_mlx *mlx, t_settings *settings)
+{
+	(void)mlx;
+	(void)settings;
+	return (true);
+}
+
+bool	create_window(t_mlx *mlx)
+{
+	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, W_WIDTH, W_HEIGHT, W_TITLE);
+	if (mlx->win_ptr == NULL)
+	{
+		print_error("fail to create window");
+		return (false);
+	}
+	return (true);
+}
+
 bool	ft_mlx_init(t_mlx *mlx, t_settings *settings)
 {
 	if (!create_connection(mlx) \
 	|| !create_window_image(mlx) \
-	|| !create_image(mlx, settings) \
+	|| !create_assets(mlx, settings) \
 	|| !create_window(mlx))
 	{
 		ft_mlx_destroy(mlx);
@@ -61,14 +108,16 @@ int		expose_hook(void *param)
 	return (0);
 }
 
-int		key_press_hook(void *param)
+int		key_press_hook(int keycode, void *param)
 {
+	(void)keycode;
 	(void)param;
 	return (0);
 }
 
-int		key_release_hook(void *param)
+int		key_release_hook(int keycode, void *param)
 {
+	(void)keycode;
 	(void)param;
 	return (0);
 }
@@ -127,9 +176,9 @@ int	main(int argc, char const *argv[])
 		cleanup_map(&(cub3d.map));
 		return (EXIT_FAILURE);
 	}
-	ft_mlx_hooks();
-	mlx_loop();
-	ft_mlx_destroy();
+	ft_mlx_hooks(&cub3d);
+	mlx_loop(cub3d.mlx.mlx_ptr);
+	ft_mlx_destroy(&(cub3d.mlx));
 	cleanup_settings(&(cub3d.settings));
 	cleanup_map(&(cub3d.map));
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/20 22:58:46 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/20 23:27:47 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@
 
 # include "vec2/ivec2.h"
 # include "vec2/dvec2.h"
+
+# define W_WIDTH 1920
+# define W_HEIGHT 1080
+# define W_TITLE "cub3D"
+# define COLOR_BIT_SIZE 32
+# define TEXTURE_SIZE 64
 
 # define MAP_FLOOR '0'
 # define MAP_WALL '1'
@@ -94,8 +100,6 @@ typedef struct s_mlx
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_img		win_img;
-	int			width;
-	int			height;
 	t_assets	assets;
 }				t_mlx;
 
