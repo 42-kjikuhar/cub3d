@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/20 23:53:34 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/21 01:19:22 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include "mlx.h"
 # include "libft.h"
 
+# include "error.h"
 # include "vec2/ivec2.h"
 # include "vec2/dvec2.h"
 
@@ -116,9 +117,6 @@ bool	parse_file(char const *filename, t_settings *settings, t_map *map);
 /* cleanup */
 void	cleanup_settings(t_settings *settings);
 void	cleanup_map(t_map *map);
-
-/* error */
-void	print_error(char const *error_message);
 
 /* parse_file */
 bool	parse_file(char const *filename, t_settings *settings, t_map *map);

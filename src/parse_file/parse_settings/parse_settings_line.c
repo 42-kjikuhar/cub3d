@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_settings_line.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:42:05 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/19 21:36:51 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/21 01:33:30 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ bool	parse_setting_line(char *setting_line, t_settings *settings)
 		return (false);
 	if (words[1] == NULL)
 	{
-		print_error("settings is element less");
+		print_error(ERROR_SETTING_MISSING_VALUE);
 		free_splitted(words);
 		return (false);
 	}
 	if (words[2] != NULL)
 	{
-		print_error("element is more");
+		print_error(ERROR_SETTING_EXTRA_VALUE);
 		free_splitted(words);
 		return (false);
 	}
@@ -61,7 +61,7 @@ static bool	assign_setting(char const *identifier, char const *value,
 		return (set_color(value, settings, CEILING_ID));
 	else
 	{
-		print_error("identifier is invalid");
+		print_error(ERROR_SETTING_UNKNOWN_ID);
 		return (false);
 	}
 }

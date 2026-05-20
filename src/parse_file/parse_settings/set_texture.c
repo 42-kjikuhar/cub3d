@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_texture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:12:32 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 16:55:50 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/21 01:37:32 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool	set_texture(char const *value, t_settings *settings,
 
 	if (settings->flags & (1 << texture_id))
 	{
-		print_error("double setting is exist");
+		print_error(ERROR_SETTING_DUPLICATE);
 		return (false);
 	}
 	settings->flags |= (1 << texture_id);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_cell.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 23:35:02 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/16 23:35:53 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/21 01:23:41 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static bool	is_surrounded_floor_cell(t_map *map, int x, int y)
 	|| is_blank_cell(map, x - 1, y) \
 	|| is_blank_cell(map, x + 1, y))
 	{
-		print_error("ka be nu ke si te te ku sa");
+		print_error(ERROR_MAP_NOT_CLOSED);
 		return (false);
 	}
 	return (true);
@@ -68,7 +68,7 @@ bool	parse_map_cell(t_map *map, int x, int y)
 	{
 		if (map->player_dir != '\0')
 		{
-			print_error("player_cell exists more two");
+			print_error(ERROR_MAP_MULTI_PLAYER);
 			return (false);
 		}
 		map->player_dir = map->data[y][x];

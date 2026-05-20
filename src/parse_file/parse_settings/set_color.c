@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:11:18 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 00:10:17 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/21 01:36:58 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ bool	set_color(char const *value, t_settings *settings,
 
 	if (settings->flags & (1 << color_id))
 	{
-		print_error("double setting is exist");
+		print_error(ERROR_SETTING_DUPLICATE);
 		return (false);
 	}
 	settings->flags |= (1 << color_id);
@@ -51,7 +51,7 @@ static bool	parse_color(char const *value, int *color)
 		if (((i == RED || i == GREEN) && *value != ',') \
 			|| (i == BLUE && *value != '\0'))
 		{
-			print_error("color format is invalid");
+			print_error(ERROR_COLOR_FORMAT);
 			return (false);
 		}
 		++value;
@@ -64,12 +64,12 @@ static bool	parse_color_channel(char const **value, int *color_channel)
 {
 	if (!ft_isdigit((*value)[0]))
 	{
-		print_error("color format is invalid");
+		print_error(ERROR_COLOR_FORMAT);
 		return (false);
 	}
 	if ((*value)[0] == '0' && ft_isdigit((*value)[1]))
 	{
-		print_error("reading 0 is invalid");
+		print_error(ERROR_COLOR_LEADING_ZERO);
 		return (false);
 	}
 	*color_channel = 0;
@@ -78,7 +78,7 @@ static bool	parse_color_channel(char const **value, int *color_channel)
 		*color_channel = *color_channel * 10 + (**value - '0');
 		if (*color_channel > 255)
 		{
-			print_error("color value range needs 0~255");
+			print_error(ERROR_COLOR_RANGE);
 			return (false);
 		}
 		++(*value);
