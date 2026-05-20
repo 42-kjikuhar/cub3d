@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/20 10:22:47 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/20 22:05:41 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,6 @@
 # define PLAYER_WEST 'W'
 # define PLAYER_EAST 'E'
 
-typedef struct s_player
-{
-	t_ivec2			pos;
-	t_ivec2			dir;
-}					t_player;
-
-typedef struct s_map
-{
-	char			**data;
-	int				x_size;
-	int				y_size;
-	t_ivec2			player_pos;
-	char			player_dir;
-}					t_map;
-
 typedef struct s_settings
 {
 	int			flags;
@@ -57,12 +42,57 @@ typedef struct s_settings
 	int			ceiling_color;
 }				t_settings;
 
+typedef struct s_map
+{
+	char			**data;
+	int				x_size;
+	int				y_size;
+	t_ivec2			player_pos;
+	char			player_dir;
+}					t_map;
+
+typedef struct s_player
+{
+	t_dvec2			pos;
+	t_dvec2			dir;
+	t_dvec2			plane;
+}					t_player;
+
+typedef struct s_img
+{
+	void		*img_ptr;
+	int			width;
+	int			height;
+	char		*pixel;
+	int			*bits_per_pixel;
+	int			size_line;
+	int			endian;
+}				t_img;
+
+typedef struct s_assets
+{
+	t_img		north_wall;
+	t_img		south_wall;
+	t_img		west_wall;
+	t_img		east_wall;
+}				t_assets;
+
+typedef struct s_mlx
+{
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_img		win_img;
+	int			width;
+	int			height;
+	t_assets	assets;
+}				t_mlx;
+
 typedef struct s_cub3d
 {
 	t_settings	settings;
 	t_map		map;
 	t_player	player;
-	// t_mlx		mlx;
+	t_mlx		mlx;
 }				t_cub3d;
 
 bool	parse_file(char const *filename, t_settings *settings, t_map *map);
