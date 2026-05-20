@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/20 10:31:23 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/20 16:11:53 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,20 +14,43 @@
 #       Phony Targets        #
 # -------------------------- #
 
-.PHONY: all bonus clean fclean re install norm san debug
+.PHONY: all bonus clean fclean re install uninstall norm san debug help
 
 # -------------------------- #
 #      Makefile Setting      #
 # -------------------------- #
 
-OS		:= $(shell uname -s)
-override MAKEFLAGS += --no-print-directory
-override .DEFAULT_GOAL := all
+OS	:= $(shell uname -s)
+
+override MAKEFLAGS		+= --no-print-directory
+
+override .DEFAULT_GOAL	:= all
 
 .DEFAULT:
-	@printf "No match. We want to write help here.\n"
+	@printf "$(RED)make: *** No rule to make target '$@'.  Stop.$(DEF_COLOR)\n"
+	@$(MAKE) help;
+	@exit 2
 
 .DELETE_ON_ERROR:
+
+help:
+	@printf "$(CYAN)Usage:$(DEF_COLOR)\n"
+	@printf "$(GREEN)all$(DEF_COLOR)        Build $(NAME)\n"
+	@printf "$(GREEN)clean$(DEF_COLOR)      Remove object files, dependency files\n"
+	@printf "$(GREEN)fclean$(DEF_COLOR)     Remove all generated files\n"
+	@printf "$(GREEN)re$(DEF_COLOR)         Rebuild from scratch\n"
+	@printf "$(BLUE)install$(DEF_COLOR)    Install minilibx\n"
+	@printf "$(BLUE)uninstall$(DEF_COLOR)  Remove minilibx\n"
+	@printf "$(YELLOW)san$(DEF_COLOR)        Build with Sanitizer=Address,Undefine\n"
+	@printf "$(YELLOW)debug$(DEF_COLOR)      Build with debug symbols\n"
+	@printf "$(YELLOW)norm$(DEF_COLOR)       Run norminette\n"
+
+# -------------------------- #
+#         Extra Flags        #
+# -------------------------- #
+
+EXTRA_CFLAGS	:= $(CFLAGS)
+EXTRA_CPPFLAGS	:= $(CPPFLAGS)
 
 # -------------------------- #
 #           Target           #
@@ -40,16 +63,17 @@ NAME	:= cub3D
 # -------------------------- #
 
 CC				:= cc
+
 override CFLAGS	+= -Wall -Wextra -Werror
 # when submit, it should change -W3
 override CFLAGS	+= -Wconversion -Wno-sign-conversion
 
 ifeq ($(MAKECMDGOALS), san)
-override CFLAGS += -g -fsanitize=address,undefined
-endif
-
-ifeq ($(MAKECMDGOALS), debug)
-override CFLAGS += -g
+override CFLAGS	+= -g -fsanitize=address,undefined
+EXTRA_CFLAGS	+= -g -fsanitize=address,undefined
+else ifeq ($(MAKECMDGOALS), debug)
+override CFLAGS	+= -g
+EXTRA_CFLAGS	+= -g
 endif
 
 # -------------------------- #
@@ -57,14 +81,15 @@ endif
 # -------------------------- #
 
 INCLUDE_DIRS		:= include
+
 override CPPFLAGS	+= $(foreach dir, $(INCLUDE_DIRS), -I$(dir))
 
 # -------------------------- #
 #     Source Directories     #
 # -------------------------- #
 
-SRC_DIRS			:= src
-SRC_DIRS			+= $(addprefix src/, \
+SRC_DIRS	:= src
+SRC_DIRS	+= $(addprefix src/, \
 							cleanup \
 							error \
 							validate_argument \
@@ -86,7 +111,6 @@ $(foreach dir, $(SRC_DIRS), $(eval vpath %.c $(dir)))
 # -------------------------- #
 
 SRCS	:= 	main.c
-
 # cleanup
 SRCS	+=	cleanup_settings.c \
 			cleanup_map.c
@@ -121,24 +145,24 @@ SRCS	+=	dvec2_add.c
 #        Object Files        #
 # -------------------------- #
 
-OBJ_DIR		:= .obj
+OBJ_DIR	:= .obj
 
 $(OBJ_DIR):
 	@-mkdir -p $@
 
-OBJS		:= $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
+OBJS	:= $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
 # -------------------------- #
 #      Dependency Files      #
 # -------------------------- #
 
-DEP_DIR		:= .dep
+DEP_DIR	:= .dep
 
 $(DEP_DIR):
 	@-mkdir -p $@
 
-DEPS		:= $(patsubst %.c, $(DEP_DIR)/%.d, $(SRCS))
-override DEPFLAGS	+= -MT $@ -MMD -MP -MF $(DEP_DIR)/$*.d
+DEPS	:= $(patsubst %.c, $(DEP_DIR)/%.d, $(SRCS))
+DEPFLAGS	= -MT $@ -MMD -MP -MF $(DEP_DIR)/$*.d
 
 -include $(DEPS)
 $(DEP_DIR)/%.d: ;
@@ -147,38 +171,44 @@ $(DEP_DIR)/%.d: ;
 #         LIBFT Rule         #
 # -------------------------- #
 
-LIBFT_DIR := libft
+LIBFT_DIR	:= libft
 
-LIBFT := $(LIBFT_DIR)/libft.a
+LIBFT		:= $(LIBFT_DIR)/libft.a
 
 $(LIBFT):
 	@printf "[$(NAME)] $(YELLOW)Build:$(DEF_COLOR) $@\n"
-	@$(MAKE) -C $(LIBFT_DIR)
+	@$(MAKE) -C $(LIBFT_DIR) CFLAGS='$(EXTRA_CFLAGS)' CPPFLAGS='$(EXTRA_CPPFLAGS)'
 
-override CPPFLAGS += -I$(LIBFT_DIR)/include
-override LDFLAGS += -L$(LIBFT_DIR)
-override LDLIBS += -lft
+override CPPFLAGS	+= -I$(LIBFT_DIR)/include
+override LDFLAGS	+= -L$(LIBFT_DIR)
+override LDLIBS		+= -lft
 
 # -------------------------- #
-#       MINILIBX Rule        #
+#       LIBMLX Rule        #
 # -------------------------- #
 
-MINILIBX_DIR := minilibx
+LIBMLX_DIR	:= minilibx
 
-install: | ${MINILIBX_DIR}
-
-${MINILIBX_DIR}:
-	@git clone https://github.com/42Paris/minilibx-linux.git ${MINILIBX_DIR}
+install:
+	@$(MAKE) uninstall
+	@git clone https://github.com/42Paris/minilibx-linux.git ${LIBMLX_DIR}
 	@printf "[cub3D] $(GREEN)Install Complete:$(DEF_COLOR) $@\n"
 
-LIBMLX := ${MINILIBX_DIR}/libmlx.a
+uninstall:
+	@$(RM) -r $(LIBMLX_DIR)
 
-${LIBMLX}: | ${MINILIBX_DIR}
-	@make -s -C ${MINILIBX_DIR} > /dev/null 2>&1
+$(LIBMLX_DIR):
+	$(MAKE) install
 
-override LDFLAGS += -L${MINILIBX_DIR}
+LIBMLX		:= $(LIBMLX_DIR)/libmlx.a
+
+$(LIBMLX): | $(LIBMLX_DIR)
+	@$(MAKE) -s -C $(LIBMLX_DIR) > /dev/null 2>&1
+	@printf "[$(NAME)] $(GREEN)Build Complete:$(DEF_COLOR) $@\n"
+
+override LDFLAGS	+= -L$(LIBMLX_DIR)
 ifeq ($(OS), Darwin)
-override LDFLAGS += -L/usr/X11/lib
+override LDFLAGS	+= -L/usr/X11/lib
 endif
 override LDLIBS	+= -lmlx -lXext -lX11
 
@@ -186,7 +216,7 @@ override LDLIBS	+= -lmlx -lXext -lX11
 #       Library Rules        #
 # -------------------------- #
 
-override LDLIBS	+= -lm
+LDLIBS	+= -lm
 
 # -------------------------- #
 #        Build Rules         #
@@ -194,7 +224,7 @@ override LDLIBS	+= -lm
 
 all: $(NAME)
 
-$(NAME): $(OBJS) | $(LIBFT) ${LIBMLX}
+$(NAME): $(OBJS) | $(LIBFT) $(LIBMLX)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) $^ -o $@
 	@printf "[$(NAME)] $(GREEN)Build Complete:$(DEF_COLOR) $@\n"
 
@@ -208,18 +238,19 @@ $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(DEP_DIR)
 # Remove object and dependency files only
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
-	@-$(MAKE) -s -C ${MINILIBX_DIR} clean > /dev/null
+	@-$(MAKE) -s -C $(LIBMLX_DIR) clean > /dev/null 2>&1
 	@$(RM) $(OBJS) $(DEPS)
-	@printf "[$(NAME)] $(BLUE)Deleted Compiled Files$(DEF_COLOR): *.o *.d\n"
+	@printf "[$(NAME)] $(BLUE)Deleted Complete$(DEF_COLOR): *.o *.d\n"
 
 # Remove everything
 fclean:
 	@$(MAKE) -C $(LIBFT_DIR) fclean
-	@-$(MAKE) -s -C ${MINILIBX_DIR} clean > /dev/null
+	@-$(MAKE) -s -C $(LIBMLX_DIR) clean > /dev/null 2>&1
+	@printf "[$(NAME)] $(BLUE)Delete Complete$(DEF_COLOR): $(LIBMLX) $(LIBMLX_DIR)/obj\n"
 	@$(RM) $(OBJS) $(DEPS)
-	@printf "[$(NAME)] $(BLUE)Deleted Compiled Files$(DEF_COLOR): *.o *.d\n"
+	@printf "[$(NAME)] $(BLUE)Delete Complete$(DEF_COLOR): *.o *.d\n"
 	@$(RM) -r $(NAME) $(OBJ_DIR) $(DEP_DIR)
-	@printf "[$(NAME)] $(BLUE)Deleted Target File and Object File Dir$(DEF_COLOR): $(NAME) $(OBJ_DIR) $(DEP_DIR)\n"
+	@printf "[$(NAME)] $(BLUE)Delete Complete$(DEF_COLOR): $(NAME) $(OBJ_DIR) $(DEP_DIR)\n"
 
 # Full rebuild: clean everything and rebuild
 re:

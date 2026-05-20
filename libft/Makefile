@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/24 21:27:03 by stanaka2          #+#    #+#              #
-#    Updated: 2026/05/20 09:42:00 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/20 17:04:35 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #       Phony Targets        #
 # -------------------------- #
 
-.PHONY: all clean fclean re san debug norm
+.PHONY: all clean fclean re san debug norm help
 
 # -------------------------- #
 #      Makefile Setting      #
@@ -27,13 +27,25 @@ override MAKEFLAGS += -j --no-print-directory
 override .DEFAULT_GOAL := all
 
 .DEFAULT:
-	@printf "No match.\n"
+	@printf "$(RED)make: *** No rule to make target '$@'.  Stop.$(DEF_COLOR)\n"
+	@$(MAKE) help;
+	@exit 2
 
 .DELETE_ON_ERROR:
 # GNU Make 4.4
 # .NOTPARALLEL: re
 # .IGNORE:
 # .SILENT: clean fclean
+
+help:
+	@printf "$(CYAN)Usage:$(DEF_COLOR)\n"
+	@printf "$(GREEN)all$(DEF_COLOR)        Build $(NAME)\n"
+	@printf "$(GREEN)clean$(DEF_COLOR)      Remove object files, dependency files\n"
+	@printf "$(GREEN)fclean$(DEF_COLOR)     Remove all generated files\n"
+	@printf "$(GREEN)re$(DEF_COLOR)         Rebuild from scratch\n"
+	@printf "$(YELLOW)san$(DEF_COLOR)        Build with Sanitizer=Address,Undefine\n"
+	@printf "$(YELLOW)debug$(DEF_COLOR)      Build with debug symbols\n"
+	@printf "$(YELLOW)norm$(DEF_COLOR)       Run norminette\n"
 
 # -------------------------- #
 #           Target           #
@@ -52,9 +64,7 @@ override CFLAGS += -Wconversion -Wno-sign-conversion
 
 ifeq ($(MAKECMDGOALS), san)
 override CFLAGS += -g -fsanitize=address,undefined
-endif
-
-ifeq ($(MAKECMDGOALS), debug)
+else ifeq ($(MAKECMDGOALS), debug)
 override CFLAGS += -g
 endif
 
@@ -65,6 +75,7 @@ override ARFLAGS := rcs
 # -------------------------- #
 
 INCLUDE_DIRS := include
+
 override CPPFLAGS += $(foreach dir, $(INCLUDE_DIRS), -I$(INCLUDE_DIRS))
 
 # -------------------------- #
@@ -199,23 +210,23 @@ endif
 #        Object Files        #
 # -------------------------- #
 
-OBJ_DIR		:=	.obj
+OBJ_DIR := .obj
 
 $(OBJ_DIR):
 	@-mkdir -p $@
 
-OBJS		:=	$(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
+OBJS := $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
 # -------------------------- #
 #      Dependency Files      #
 # -------------------------- #
 
-DEP_DIR		:=	.dep
+DEP_DIR := .dep
 
 $(DEP_DIR):
 	@-mkdir -p $@
 
-DEPS		:=	$(patsubst %.c, $(DEP_DIR)/%.d, $(SRCS))
+DEPS := $(patsubst %.c, $(DEP_DIR)/%.d, $(SRCS))
 override DEPFLAGS = -MT $@ -MMD -MP -MF $(DEP_DIR)/$*.d
 
 -include $(DEPS)
@@ -240,13 +251,13 @@ $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(DEP_DIR)
 
 clean:
 	@$(RM) $(OBJS) $(DEPS)
-	@printf "[LIBFT] $(BLUE)Deleted Compiled Files$(DEF_COLOR): *.o *.d\n"
+	@printf "[LIBFT] $(BLUE)Delete Complete$(DEF_COLOR): *.o *.d\n"
 
 fclean:
 	@$(RM) $(OBJS) $(DEPS)
-	@printf "[LIBFT] $(BLUE)Deleted Compiled Files$(DEF_COLOR): *.o *.d\n"
+	@printf "[LIBFT] $(BLUE)Delete Complete$(DEF_COLOR): *.o *.d\n"
 	@$(RM) -r $(NAME) $(OBJ_DIR) $(DEP_DIR)
-	@printf "[LIBFT] $(BLUE)Deleted Target File and Object File Dir$(DEF_COLOR): $(NAME) $(OBJ_DIR) $(DEP_DIR)\n"
+	@printf "[LIBFT] $(BLUE)Delete Complete$(DEF_COLOR): $(NAME) $(OBJ_DIR) $(DEP_DIR)\n"
 
 re:
 	@$(MAKE) fclean
