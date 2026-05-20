@@ -6,7 +6,7 @@
 #    By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/20 20:43:25 by kjikuhar         ###   ########.fr        #
+#    Updated: 2026/05/20 21:34:05 by kjikuhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ help:
 	@printf "$(YELLOW)san$(DEF_COLOR)        Build with Sanitizer=Address,Undefine\n"
 	@printf "$(YELLOW)debug$(DEF_COLOR)      Build with debug symbols\n"
 	@printf "$(YELLOW)norm$(DEF_COLOR)       Run norminette\n"
+	@printf "$(GRAY)help$(DEF_COLOR)       Show make rules\n"
 
 # -------------------------- #
 #         Extra Flags        #
@@ -184,7 +185,7 @@ override LDFLAGS	+= -L$(LIBFT_DIR)
 override LDLIBS		+= -lft
 
 # -------------------------- #
-#       LIBMLX Rule        #
+#       LIBMLX Rule          #
 # -------------------------- #
 
 LIBMLX_DIR	:= minilibx
@@ -209,6 +210,7 @@ $(LIBMLX): | $(LIBMLX_DIR)
 
 override LDFLAGS	+= -L$(LIBMLX_DIR)
 ifeq ($(OS), Darwin)
+override CPPFLAGS	+= /usr/X11/include
 override LDFLAGS	+= -L/usr/X11/lib
 endif
 override LDLIBS	+= -lmlx -lXext -lX11
