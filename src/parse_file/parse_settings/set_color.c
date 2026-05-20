@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:11:18 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 01:36:58 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/21 01:51:48 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static bool	parse_color(char const *value, int *color)
 {
 	int						color_channel;
 	enum e_color_channel	i;
-
 
 	i = RED;
 	while (i <= BLUE)

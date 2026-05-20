@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 01:18:22 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/21 01:45:31 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/21 01:51:33 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@
 # define ERROR_MAP_EMPTY "Map is empty."
 # define ERROR_MAP_EMPTY_LINE "Map cannot have empty lines."
 # define ERROR_MAP_INVALID_CHAR "Invalid map character is detected."
-# define ERROR_MAP_NOT_CLOSED "Map floor cell is not closed/surrounded by walls."
+# define ERROR_MAP_NOT_CLOSED \
+			"Map floor cell is not closed/surrounded by walls."
 # define ERROR_MAP_MULTI_PLAYER "Multiple player cells are detected."
 # define ERROR_MAP_NO_PLAYER "Map requires a player cell. Expected: N S W E"
 
