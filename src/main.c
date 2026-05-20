@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/20 22:40:50 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/20 23:14:24 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,75 @@ void	init_player(t_player *player, t_map const *map)
 	}
 }
 
-bool	ft_mlx_init();
-void	ft_mlx_hooks();
-void	ft_mlx_destroy();
+bool	ft_mlx_init(t_mlx *mlx, t_settings *settings)
+{
+	if (!create_connection(mlx) \
+	|| !create_window_image(mlx) \
+	|| !create_image(mlx, settings) \
+	|| !create_window(mlx))
+	{
+		ft_mlx_destroy(mlx);
+		return (false);
+	}
+	mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
+	return (true);
+}
+
+int		expose_hook(void *param)
+{
+	(void)param;
+	return (0);
+}
+
+int		key_press_hook(void *param)
+{
+	(void)param;
+	return (0);
+}
+
+int		key_release_hook(void *param)
+{
+	(void)param;
+	return (0);
+}
+
+int		loop_hook(void *param)
+{
+	(void)param;
+	return (0);
+}
+
+void	ft_mlx_hooks(t_cub3d *cub3d)
+{
+	mlx_expose_hook(cub3d->mlx.win_ptr, expose_hook, (void *)cub3d);
+	mlx_hook(cub3d->mlx.win_ptr, ClientMessage, NoEventMask, \
+		mlx_loop_end, cub3d->mlx.mlx_ptr);
+	mlx_hook(cub3d->mlx.win_ptr, KeyPress, KeyPressMask, \
+		key_press_hook, (void *)cub3d);
+	mlx_key_hook(cub3d->mlx.win_ptr, key_release_hook, (void *)cub3d);
+	mlx_loop_hook(cub3d->mlx.mlx_ptr, loop_hook, (void *)cub3d);
+}
+
+void	ft_mlx_destroy(t_mlx *mlx)
+{
+	if (mlx->assets.north_wall.img_ptr != NULL)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->assets.north_wall.img_ptr);
+	if (mlx->assets.south_wall.img_ptr != NULL)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->assets.south_wall.img_ptr);
+	if (mlx->assets.west_wall.img_ptr != NULL)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->assets.west_wall.img_ptr);
+	if (mlx->assets.east_wall.img_ptr != NULL)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->assets.east_wall.img_ptr);
+	if (mlx->win_img.img_ptr != NULL)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->win_img.img_ptr);
+	if (mlx->win_ptr != NULL)
+		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
+	if (mlx->mlx_ptr != NULL)
+	{
+		mlx_destroy_display(mlx->mlx_ptr);
+		free(mlx->mlx_ptr);
+	}
+}
 
 int	main(int argc, char const *argv[])
 {
@@ -55,7 +121,7 @@ int	main(int argc, char const *argv[])
 	if (!parse_file(argv[1], &(cub3d.settings), &(cub3d.map)))
 		return (EXIT_FAILURE);
 	init_player(&(cub3d.player), &(cub3d.map));
-	if (!ft_mlx_init())
+	if (!ft_mlx_init(&(cub3d.mlx), &(cub3d.settings)))
 	{
 		cleanup_settings(&(cub3d.settings));
 		cleanup_map(&(cub3d.map));
