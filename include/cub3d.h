@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/20 23:42:05 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/20 23:53:34 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,21 @@
 # include <string.h>
 # include <errno.h>
 # include <limits.h>
+# include <math.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
+
+# include "mlx.h"
 # include "libft.h"
 
 # include "vec2/ivec2.h"
 # include "vec2/dvec2.h"
 
+# define W_WIDTH 1920
+# define W_HEIGHT 1080
+# define W_TITLE "cub3D"
+# define COLOR_BIT_SIZE 32
+# define TEXTURE_SIZE 64
 
 # define MAP_FLOOR '0'
 # define MAP_WALL '1'
@@ -31,6 +41,13 @@
 # define PLAYER_SOUTH 'S'
 # define PLAYER_WEST 'W'
 # define PLAYER_EAST 'E'
+
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+# endif
+# define DEG_TO_RAD 0.01745329251994329547 // (M_PI / 180.0)
+# define RAD_TO_DEG 57.29577951308232286465 // (180.0 / M_PI)
+# define FOV 66
 
 typedef struct s_settings
 {
@@ -83,8 +100,6 @@ typedef struct s_mlx
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_img		win_img;
-	int			width;
-	int			height;
 	t_assets	assets;
 }				t_mlx;
 
