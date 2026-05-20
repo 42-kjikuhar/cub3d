@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/20 22:05:41 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/20 23:42:05 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 # include "vec2/ivec2.h"
 # include "vec2/dvec2.h"
+
 
 # define MAP_FLOOR '0'
 # define MAP_WALL '1'
@@ -109,5 +110,7 @@ bool	parse_file(char const *filename, t_settings *settings, t_map *map);
 
 /* validate_argument*/
 bool	vaildate_argument(int argc, char const *argv[]);
+
+bool	strhoge(int fd);
 
 #endif

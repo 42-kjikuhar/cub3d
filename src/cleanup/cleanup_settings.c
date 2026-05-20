@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup_settings.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:40:01 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/17 12:14:35 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/20 23:42:46 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
