@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/20 20:34:09 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/20 20:41:17 by kjikuhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -191,7 +191,7 @@ LIBMLX_DIR	:= minilibx
 
 install:
 	@$(MAKE) uninstall
-	@git clone https://github.com/42Paris/minilibx-linux.git ${LIBMLX_DIR}
+	@git clone https://github.com/42Paris/minilibx-linux.git $(LIBMLX_DIR)
 	@printf "[cub3D] $(GREEN)Install Complete:$(DEF_COLOR) $@\n"
 
 uninstall:
