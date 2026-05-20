@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ivec2.h                                            :+:      :+:    :+:   */
+/*   ivec2_sub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 13:08:07 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/19 22:16:01 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/14 13:11:40 by kjikuhar          #+#    #+#             */
+/*   Updated: 2026/05/20 10:24:31 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IVEC2_H
-# define IVEC2_H
+#include "vec2/ivec2.h"
 
-typedef struct s_ivec2
+t_ivec2	ivec2_sub(t_ivec2 a, t_ivec2 b)
 {
-	int	x;
-	int	y;
-}			t_ivec2;
+	t_ivec2	diff;
 
-t_ivec2	ivec2_add(t_ivec2 a, t_ivec2 b);
-t_ivec2	ivec2_sub(t_ivec2 a, t_ivec2 b);
-
-#endif
+	diff.x = a.x - b.x;
+	diff.y = a.y - b.y;
+	return (diff);
+}

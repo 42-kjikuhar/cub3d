@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/20 09:50:26 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/20 10:31:23 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,10 @@ SRC_DIRS			+= $(addprefix src/, \
 								parse_settings parse_settings/utils \
 								parse_map \
 							) \
+							$(addprefix vec2/, \
+								ivec2 \
+								dvec2 \
+							) \
 						)
 
 $(foreach dir, $(SRC_DIRS), $(eval vpath %.c $(dir)))
@@ -84,29 +88,34 @@ $(foreach dir, $(SRC_DIRS), $(eval vpath %.c $(dir)))
 SRCS	:= 	main.c
 
 # cleanup
-SRCS 	+=	cleanup_settings.c \
+SRCS	+=	cleanup_settings.c \
 			cleanup_map.c
 # error
-SRCS 	+=	print_error.c
+SRCS	+=	print_error.c
 # validate_argument
-SRCS 	+=	validate_argument.c
+SRCS	+=	validate_argument.c
 # parse_file
-SRCS 	+=	parse_file.c \
+SRCS	+=	parse_file.c \
 			read_next_line.c \
 			is_blank_line.c \
 			replace_char.c
 # parse_file/parse_settings
-SRCS 	+=	parse_settings.c \
+SRCS	+=	parse_settings.c \
 			parse_settings_line.c \
 			is_incomplete_settings.c \
 			set_texture.c \
 			set_color.c \
 			free_splitted.c
 # parse_file/parse_map
-SRCS 	+=	parse_map.c \
+SRCS	+=	parse_map.c \
 			read_map.c \
 			parse_map_data.c \
 			parse_map_cell.c
+# vec2/ivec2
+SRCS	+=	ivec2_add.c \
+			ivec2_sub.c
+# vec2/dvec2
+SRCS	+=	dvec2_add.c
 
 # -------------------------- #
 #        Object Files        #

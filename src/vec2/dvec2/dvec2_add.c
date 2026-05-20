@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vector.h                                        :+:      :+:    :+:   */
+/*   dvec2_add.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 12:56:15 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/14 15:12:16 by kjikuhar         ###   ########.fr       */
+/*   Created: 2026/05/20 10:25:57 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/20 10:26:21 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_VECTOR_H
-# define FT_VECTOR_H
+#include "vec2/dvec2.h"
 
-# include "./ivec2/ivec2.h"
-// # include "./dvec2.h"
+t_dvec2	dvec2_add(t_dvec2 a, t_dvec2 b)
+{
+	t_dvec2	sum;
 
-#endif
+	sum.x = a.x + b.x;
+	sum.y = a.y + b.y;
+	return (sum);
+}
