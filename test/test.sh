@@ -129,3 +129,4 @@ done
 echo -e "${GREEN}$PASS passed${NC}, ${RED}$FAIL failed${NC}"
 
 rm -f $ERROR_LOG
+make fclean
