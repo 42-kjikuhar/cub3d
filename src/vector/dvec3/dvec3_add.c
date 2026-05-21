@@ -6,8 +6,18 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 22:08:06 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 22:10:05 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/21 22:28:39 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector/dvec3.h"
+
+t_dvec3	dvec3_add(t_dvec3 a, t_dvec3 b)
+{
+	t_dvec3	v;
+
+	v.x = a.x + b.x;
+	v.y = a.y + b.y;
+	v.z = a.z + b.z;
+	return (v);
+}
