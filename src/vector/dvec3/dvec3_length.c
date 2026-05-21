@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ivec2_sub.c                                        :+:      :+:    :+:   */
+/*   dvec3_length.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 13:11:40 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/20 10:24:31 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/21 22:08:06 by kjikuhar          #+#    #+#             */
+/*   Updated: 2026/05/21 22:40:00 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec2/ivec2.h"
+#include "vector/dvec3.h"
 
-t_ivec2	ivec2_sub(t_ivec2 a, t_ivec2 b)
+double	dvec3_length(t_dvec3 v)
 {
-	t_ivec2	diff;
-
-	diff.x = a.x - b.x;
-	diff.y = a.y - b.y;
-	return (diff);
+	return (sqrt(v.x * v.x + v.y * v.y + v.z * v.z));
 }

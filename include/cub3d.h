@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 09:55:47 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/21 22:47:23 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # include "libft.h"
 
 # include "error.h"
-# include "vec2/ivec2.h"
-# include "vec2/dvec2.h"
+# include "vector/ivec2.h"
+# include "vector/dvec3.h"
 
 # ifndef DEBUG
 #  define DEBUG 0
@@ -76,9 +76,9 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	t_dvec2			pos;
-	t_dvec2			dir;
-	t_dvec2			plane;
+	t_dvec3			pos;
+	t_dvec3			dir;
+	t_dvec3			plane;
 }					t_player;
 
 typedef struct s_img

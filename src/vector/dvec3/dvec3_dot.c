@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ivec2_add.c                                        :+:      :+:    :+:   */
+/*   dvec3_dot.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 13:11:40 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/20 10:24:44 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/21 22:08:06 by kjikuhar          #+#    #+#             */
+/*   Updated: 2026/05/21 22:35:56 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec2/ivec2.h"
+#include "vector/dvec3.h"
 
-t_ivec2	ivec2_add(t_ivec2 a, t_ivec2 b)
+double	dvec3_dot(t_dvec3 a, t_dvec3 b)
 {
-	t_ivec2	sum;
-
-	sum.x = a.x + b.x;
-	sum.y = a.y + b.y;
-	return (sum);
+	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }

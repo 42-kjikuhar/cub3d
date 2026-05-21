@@ -3,34 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 17:29:00 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/21 21:31:32 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
 #include "cub3d.h"
+#include <math.h>
 
 void	ft_mlx_destroy(t_mlx *mlx);
-
-t_dvec2 	dvec2(double x, double y)
-{
-	t_dvec2 vec;
-
-	vec.x = x;
-	vec.y = y;
-	return (vec);
-}
 
 void	init_player(t_player *player, t_map const *map)
 {
 	double	plane_length;
 
 	player->pos = dvec2(map->player_pos.x + 0.5, map->player_pos.y + 0.5);
-	// plane_length = tan(DEG_TO_RAD * FOV * 0.5);
-	plane_length = 1.0;
+	plane_length = tan(DEG_TO_RAD * FOV * 0.5);
+	// plane_length = 1.0;
 	if (map->player_dir == PLAYER_NORTH)
 	{
 		player->dir = dvec2(0, -1);

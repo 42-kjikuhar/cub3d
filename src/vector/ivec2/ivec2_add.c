@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dvec2_add.c                                        :+:      :+:    :+:   */
+/*   ivec2_add.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/20 10:25:57 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/20 10:26:21 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/14 13:11:40 by kjikuhar          #+#    #+#             */
+/*   Updated: 2026/05/21 22:46:12 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec2/dvec2.h"
+#include "vector/ivec2.h"
 
-t_dvec2	dvec2_add(t_dvec2 a, t_dvec2 b)
+t_ivec2	ivec2_add(t_ivec2 a, t_ivec2 b)
 {
-	t_dvec2	sum;
+	t_ivec2	sum;
 
 	sum.x = a.x + b.x;
 	sum.y = a.y + b.y;
