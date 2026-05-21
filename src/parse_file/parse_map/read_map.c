@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:38:03 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/19 22:14:04 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/21 00:15:50 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static bool	read_map_as_list(int fd, t_list **line_list)
 			return (false);
 		if (line == NULL)
 			return (true);
-		if (line_list == NULL && is_blank_line(line))
+		if (*line_list == NULL && is_blank_line(line))
 			free(line);
-		else if (line_list != NULL && !is_blank_line(line))
+		else if (*line_list != NULL && is_blank_line(line))
 		{
 			free(line);
 			print_error("map has blank line, it is invalid");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:11:18 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/17 12:32:26 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/21 00:10:17 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ bool	set_color(char const *value, t_settings *settings,
 		print_error("double setting is exist");
 		return (false);
 	}
-	settings->flags |= (1 < color_id);
+	settings->flags |= (1 << color_id);
 	if (!parse_color(value, &color))
 		return (false);
 	if (color_id == FLOOR_ID)
@@ -41,15 +41,21 @@ static bool	parse_color(char const *value, int *color)
 	int						color_channel;
 	enum e_color_channel	i;
 
+
 	i = RED;
 	while (i <= BLUE)
 	{
 		if (!parse_color_channel(&value, &color_channel))
 			return (false);
 		*color |= (color_channel << i * 8);
-		if ((i != BLUE && *value != ',') || (i == BLUE && *value != '\0'))
+		if (((i == RED || i == GREEN) && *value != ',') \
+			|| (i == BLUE && *value != '\0'))
+		{
+			print_error("color format is invalid");
 			return (false);
+		}
 		++value;
+		++i;
 	}
 	return (true);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/20 21:34:05 by kjikuhar         ###   ########.fr        #
+#    Updated: 2026/05/21 00:39:07 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -193,24 +193,25 @@ LIBMLX_DIR	:= minilibx
 install:
 	@$(MAKE) uninstall
 	@git clone https://github.com/42Paris/minilibx-linux.git $(LIBMLX_DIR)
-	@printf "[cub3D] $(GREEN)Install Complete:$(DEF_COLOR) $@\n"
+	@printf "[cub3D] $(GREEN)Install Complete:$(DEF_COLOR) $(LIBMLX_DIR)\n"
 
 uninstall:
 	@$(RM) -r $(LIBMLX_DIR)
-	@printf "[cub3D] $(GREEN)Uninstall Complete:$(DEF_COLOR) $@\n"
+	@printf "[cub3D] $(GREEN)Uninstall Complete:$(DEF_COLOR) $(LIBMLX_DIR)\n"
 
 $(LIBMLX_DIR):
-	$(MAKE) install
+	@$(MAKE) install
 
 LIBMLX		:= $(LIBMLX_DIR)/libmlx.a
 
 $(LIBMLX): | $(LIBMLX_DIR)
-	@$(MAKE) -s -C $(LIBMLX_DIR) > /dev/null 2>&1
+	@-$(MAKE) -s -C $(LIBMLX_DIR) > /dev/null 2>&1
 	@printf "[$(NAME)] $(GREEN)Build Complete:$(DEF_COLOR) $@\n"
 
+override CPPFLAGS	+= -I$(LIBMLX_DIR)
 override LDFLAGS	+= -L$(LIBMLX_DIR)
 ifeq ($(OS), Darwin)
-override CPPFLAGS	+= /usr/X11/include
+override CPPFLAGS	+= -I/usr/X11/include
 override LDFLAGS	+= -L/usr/X11/lib
 endif
 override LDLIBS	+= -lmlx -lXext -lX11
@@ -231,7 +232,7 @@ $(NAME): $(OBJS) | $(LIBFT) $(LIBMLX)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
 	@printf "[$(NAME)] $(GREEN)Build Complete:$(DEF_COLOR) $@\n"
 
-$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(DEP_DIR)
+$(OBJ_DIR)/%.o: %.c | $(LIBMLX_DIR) $(OBJ_DIR) $(DEP_DIR)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(DEPFLAGS) -c $< -o $@
 
 # -------------------------- #
