@@ -205,7 +205,7 @@ $(LIBMLX_DIR):
 LIBMLX		:= $(LIBMLX_DIR)/libmlx.a
 
 $(LIBMLX): | $(LIBMLX_DIR)
-	@$(MAKE) -s -C $(LIBMLX_DIR) > /dev/null 2>&1
+	@-$(MAKE) -s -C $(LIBMLX_DIR) > /dev/null 2>&1
 	@printf "[$(NAME)] $(GREEN)Build Complete:$(DEF_COLOR) $@\n"
 
 override CPPFLAGS	+= -I$(LIBMLX_DIR)
