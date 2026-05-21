@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/21 20:57:18 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/21 21:29:06 by kjikuhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -212,7 +212,7 @@ override LDLIBS	+= -lmlx -lXext -lX11
 #       Library Rules        #
 # -------------------------- #
 
-LDLIBS	+= -lm
+override LDLIBS	+= -lm
 
 # -------------------------- #
 #        Build Rules         #
