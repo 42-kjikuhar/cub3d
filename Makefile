@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/21 12:28:36 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/21 20:06:38 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -264,7 +264,7 @@ debug:
 	@$(MAKE) re CPPFLAGS='$(EXTRA_CPPFLAGS) -g'
 
 test:
-	@bash test/test.sh
+	@bash TEST/test.sh
 
 norm:
 	@norminette -o src include $(LIBFT_DIR) | grep Error || true

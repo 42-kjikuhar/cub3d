@@ -4,7 +4,7 @@ PASS=0
 FAIL=0
 PROGRAM=./cub3D
 TIMEOUT=2
-ERROR_LOG=test/error.log
+ERROR_LOG=TEST/error.log
 
 # 色
 RED='\033[0;31m'
@@ -106,7 +106,7 @@ run_test() {
 echo "=== Valid TEST ==="
 PASS=0
 FAIL=0
-for file in test/valid/*; do
+for file in TEST/valid/*; do
 	[ -f "$file" ] || continue
 	run_test "$file" 0 ""
 done
@@ -123,13 +123,13 @@ run_test "" 1 ""
 run_test "no_exist_map.cub" 1 ""
 run_test "1.cub 2.cub" 1 ""
 
-rm -f test/map/invalid/read.cub
-cp test/map/valid/simple.cub test/map/invalid/read.cub
-chmod -r test/map/invalid/read.cub
-run_test "test/map/invalid/read.cub" 1 ""
-rm -f test/map/invalid/read.cub
+rm -f TEST/invalid/read.cub
+cp TEST/valid/simple.cub TEST/invalid/read.cub
+chmod -r TEST/invalid/read.cub
+run_test "TEST/invalid/read.cub" 1 ""
+rm -f TEST/invalid/read.cub
 
-for case_dir in test/invalid/*/; do
+for case_dir in TEST/invalid/*/; do
 	[ -d "$case_dir" ] || continue
 	expected_txt=""
 	[ -f "${case_dir}expected.txt" ] && expected_txt="${case_dir}expected.txt"
