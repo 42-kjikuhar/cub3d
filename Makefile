@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/21 00:39:07 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/21 20:57:18 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #       Phony Targets        #
 # -------------------------- #
 
-.PHONY: all bonus clean fclean re install uninstall norm san debug help
+.PHONY: all bonus clean fclean re install uninstall norm san debug test help
 
 # -------------------------- #
 #      Makefile Setting      #
@@ -68,14 +68,6 @@ CC				:= cc
 override CFLAGS	+= -Wall -Wextra -Werror
 # when submit, it should change -W3
 override CFLAGS	+= -Wconversion -Wno-sign-conversion -Wshadow
-
-ifeq ($(MAKECMDGOALS), san)
-override CFLAGS	+= -g -fsanitize=address,undefined
-EXTRA_CFLAGS	+= -g -fsanitize=address,undefined
-else ifeq ($(MAKECMDGOALS), debug)
-override CFLAGS	+= -g
-EXTRA_CFLAGS	+= -g
-endif
 
 # -------------------------- #
 #          Include           #
@@ -259,13 +251,20 @@ fclean:
 # Full rebuild: clean everything and rebuild
 re:
 	@$(MAKE) fclean
-	@$(MAKE) all
+	@$(MAKE) all CFLAGS='$(EXTRA_CFLAGS)' CPPFLAGS='$(EXTRA_CPPFLAGS)'
 
 # -------------------------- #
 #        Debug Rules         #
 # -------------------------- #
 
-san debug: $(NAME)
+san:
+	@$(MAKE) re CPPFLAGS='$(EXTRA_CPPFLAGS) -g -fsanitize=address,undefined'
+
+debug:
+	@$(MAKE) re CPPFLAGS='$(EXTRA_CPPFLAGS) -g'
+
+test:
+	@bash TEST/test.sh
 
 norm:
 	@norminette -o src include $(LIBFT_DIR) | grep Error || true

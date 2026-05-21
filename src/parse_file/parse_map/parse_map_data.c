@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_data.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:37:35 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/17 12:46:17 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/21 01:25:11 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ bool	parse_map_data(t_map *map)
 	}
 	if (map->player_dir == '\0')
 	{
-		print_error("no player");
+		print_error(ERROR_MAP_NO_PLAYER);
 		return (false);
 	}
 	return (true);

@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/17 13:53:14 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/19 22:10:52 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/21 17:29:23 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static bool	read_file(int fd, t_buf *buf, t_line *line)
 				return (true);
 			if (ft_memchr(buf->data, '\0', buf->read_bytes) != NULL)
 			{
-				print_error("Not a text file");
+				print_error(ERROR_FILE_BINARY);
 				return (false);
 			}
 		}

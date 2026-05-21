@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 13:29:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/19 22:13:25 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/21 01:35:28 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static char	*read_next_setting_line(int fd)
 			return (NULL);
 		if (setting_line == NULL)
 		{
-			print_error("settings is incomplete");
+			print_error(ERROR_SETTING_INCOMPLETE);
 			return (NULL);
 		}
 		if (is_blank_line(setting_line))

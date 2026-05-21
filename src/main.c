@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 00:46:54 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/21 17:29:00 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ bool	create_connection(t_mlx *mlx)
 	mlx->mlx_ptr = mlx_init();
 	if (mlx->mlx_ptr == NULL)
 	{
-		print_error("fail to create connection");
+		print_error(ERROR_MLX_CONNECTION);
 		return (false);
 	}
 	return (true);
@@ -82,7 +82,7 @@ bool	create_window(t_mlx *mlx)
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, W_WIDTH, W_HEIGHT, W_TITLE);
 	if (mlx->win_ptr == NULL)
 	{
-		print_error("fail to create window");
+		print_error(ERROR_MLX_WINDOW);
 		return (false);
 	}
 	return (true);
@@ -127,7 +127,11 @@ int		key_release_hook(int keycode, void *param)
 
 int		loop_hook(void *param)
 {
-	(void)param;
+	t_cub3d	*cub3d;
+
+	cub3d = (t_cub3d *)param;
+	if (DEBUG)
+		mlx_loop_end(cub3d->mlx.mlx_ptr);
 	return (0);
 }
 

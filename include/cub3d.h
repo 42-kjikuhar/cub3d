@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/20 23:53:34 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/21 09:55:47 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,13 @@
 # include "mlx.h"
 # include "libft.h"
 
+# include "error.h"
 # include "vec2/ivec2.h"
 # include "vec2/dvec2.h"
+
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
 
 # define W_WIDTH 1920
 # define W_HEIGHT 1080
@@ -116,9 +121,6 @@ bool	parse_file(char const *filename, t_settings *settings, t_map *map);
 /* cleanup */
 void	cleanup_settings(t_settings *settings);
 void	cleanup_map(t_map *map);
-
-/* error */
-void	print_error(char const *error_message);
 
 /* parse_file */
 bool	parse_file(char const *filename, t_settings *settings, t_map *map);

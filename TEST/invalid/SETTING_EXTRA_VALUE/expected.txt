@@ -1,0 +1,2 @@
+Error
+Invalid setting: must have a single value.

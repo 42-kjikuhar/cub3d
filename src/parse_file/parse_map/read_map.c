@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:38:03 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 00:15:50 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/21 01:48:02 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static bool	read_map_as_list(int fd, t_list **line_list)
 		else if (*line_list != NULL && is_blank_line(line))
 		{
 			free(line);
-			print_error("map has blank line, it is invalid");
+			print_error(ERROR_MAP_EMPTY_LINE);
 			return (false);
 		}
 		else if (!ft_lst_push_back(line_list, line))
@@ -54,7 +54,7 @@ static bool	compute_map_size(t_list *line_list, t_map *map)
 		++cur_y_size;
 		if (cur_x_size > INT_MAX || cur_y_size > INT_MAX)
 		{
-			print_error("map size is over INT_MAX");
+			print_error(ERROR_MAP_TOO_LARGE);
 			return (false);
 		}
 		if (cur_x_size > (size_t)map->x_size)
@@ -62,6 +62,11 @@ static bool	compute_map_size(t_list *line_list, t_map *map)
 		line_list = line_list->next;
 	}
 	map->y_size = (int)cur_y_size;
+	if (map->y_size == 0)
+	{
+		print_error(ERROR_MAP_EMPTY);
+		return (false);
+	}
 	return (true);
 }
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_argument                                  :+:      :+:    :+:   */
+/*   validate_argument.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/17 11:59:39 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/17 11:59:59 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/21 09:41:31 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ bool	vaildate_argument(int argc, char const *argv[])
 	if (!is_valid_argument(argc, argv))
 	{
 		ft_dprintf(STDERR_FILENO, "Error\n");
-		ft_dprintf(STDERR_FILENO, "usage: %s *.cub\n", argv[0]);
+		ft_dprintf(STDERR_FILENO, "Usage: %s *.cub\n", argv[0]);
 		return (false);
 	}
 	return (true);
