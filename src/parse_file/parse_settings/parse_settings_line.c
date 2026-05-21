@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:42:05 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 01:33:30 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/21 17:29:45 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	parse_setting_line(char *setting_line, t_settings *settings)
 		return (false);
 	if (words[1] == NULL)
 	{
-		print_error(ERROR_SETTING_MISSING_VALUE);
+		print_error(ERROR_SETTING_NO_VALUE);
 		free_splitted(words);
 		return (false);
 	}
