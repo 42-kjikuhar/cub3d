@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/21 11:03:03 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/21 12:28:36 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,14 +68,6 @@ CC				:= cc
 override CFLAGS	+= -Wall -Wextra -Werror
 # when submit, it should change -W3
 override CFLAGS	+= -Wconversion -Wno-sign-conversion -Wshadow
-
-ifeq ($(MAKECMDGOALS), san)
-override CFLAGS	+= -g -fsanitize=address,undefined
-EXTRA_CFLAGS	+= -g -fsanitize=address,undefined
-else ifeq ($(MAKECMDGOALS), debug)
-override CFLAGS	+= -g
-EXTRA_CFLAGS	+= -g
-endif
 
 # -------------------------- #
 #          Include           #
@@ -265,7 +257,11 @@ re:
 #        Debug Rules         #
 # -------------------------- #
 
-san debug: $(NAME)
+san:
+	@$(MAKE) re CPPFLAGS='$(EXTRA_CPPFLAGS) -g -fsanitize=address,undefined'
+
+debug:
+	@$(MAKE) re CPPFLAGS='$(EXTRA_CPPFLAGS) -g'
 
 test:
 	@bash test/test.sh

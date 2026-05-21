@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/24 21:27:03 by stanaka2          #+#    #+#              #
-#    Updated: 2026/05/20 20:33:33 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/21 12:39:09 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@
 
 OS := $(shell uname -s)
 
-override MAKEFLAGS += -j --no-print-directory
+override MAKEFLAGS += --no-print-directory
 
 override .DEFAULT_GOAL := all
 
@@ -48,6 +48,13 @@ help:
 	@printf "$(YELLOW)norm$(DEF_COLOR)       Run norminette\n"
 
 # -------------------------- #
+#         Extra Flags        #
+# -------------------------- #
+
+EXTRA_CFLAGS	:= $(CFLAGS)
+EXTRA_CPPFLAGS	:= $(CPPFLAGS)
+
+# -------------------------- #
 #           Target           #
 # -------------------------- #
 
@@ -61,12 +68,6 @@ CC := cc
 
 override CFLAGS += -Wall -Wextra -Werror
 override CFLAGS += -Wconversion -Wno-sign-conversion -Wshadow
-
-ifeq ($(MAKECMDGOALS), san)
-override CFLAGS += -g -fsanitize=address,undefined
-else ifeq ($(MAKECMDGOALS), debug)
-override CFLAGS += -g
-endif
 
 override ARFLAGS := rcs
 
@@ -267,7 +268,11 @@ re:
 #         Debug Rules        #
 # -------------------------- #
 
-san debug: $(NAME)
+san:
+	@$(MAKE) re CPPFLAGS='$(EXTRA_CPPFLAGS) -g -fsanitize=address,undefined'
+
+debug:
+	@$(MAKE) re CPPFLAGS='$(EXTRA_CPPFLAGS) -g'
 
 norm:
 	@norminette -o src include $(LIBFT_DIR) | grep Error || true
