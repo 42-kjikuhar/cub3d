@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 01:18:22 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/21 17:33:22 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/21 18:04:38 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@
 # define ERROR_SETTING_INCOMPLETE \
 	"Missing setting: NO SO WE EA F C required."
 # define ERROR_SETTING_UNKNOWN_ID \
-	"Invalid setting: unknown identifier. expected NO SO WE EA F C."
+	"Invalid setting: unknown identifier. Expected NO SO WE EA F C."
+# define ERROR_SETTING_DUPLICATE \
+	"Invalid setting: duplicated identifier detected."
 # define ERROR_SETTING_NO_VALUE \
 	"Invalid setting: value required."
 # define ERROR_SETTING_EXTRA_VALUE \
 	"Invalid setting: must have a single value."
-# define ERROR_SETTING_DUPLICATE \
-	"Invalid setting: duplicated identifier detected."
 
 /* Color */
 # define ERROR_COLOR_FORMAT \
@@ -41,6 +41,8 @@
 	"Invalid color: value out of range (0-255)."
 
 /* Map */
+# define ERROR_MAP_NOT_LAST \
+	"Invalid map: map must be placed at last."
 # define ERROR_MAP_TOO_LARGE \
 	"Invalid map: too large (x <= INT_MAX && y <= INT_MAX)."
 # define ERROR_MAP_EMPTY \
@@ -48,7 +50,7 @@
 # define ERROR_MAP_EMPTY_LINE \
 	"Invalid map: empty lines not allowed."
 # define ERROR_MAP_INVALID_CHAR \
-	"Invalid map: unknown character detected."
+	"Invalid map: invalid character detected."
 # define ERROR_MAP_NOT_CLOSED \
 	"Invalid map: floor cell not closed/surrounded by walls."
 # define ERROR_MAP_MULTI_PLAYER \
