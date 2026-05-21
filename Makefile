@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/21 20:06:38 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/21 20:57:18 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -197,7 +197,7 @@ $(LIBMLX_DIR):
 LIBMLX		:= $(LIBMLX_DIR)/libmlx.a
 
 $(LIBMLX): | $(LIBMLX_DIR)
-	@$(MAKE) -s -C $(LIBMLX_DIR) > /dev/null 2>&1
+	@-$(MAKE) -s -C $(LIBMLX_DIR) > /dev/null 2>&1
 	@printf "[$(NAME)] $(GREEN)Build Complete:$(DEF_COLOR) $@\n"
 
 override CPPFLAGS	+= -I$(LIBMLX_DIR)
