@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ivec2_sub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:11:40 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/20 10:24:31 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/21 22:46:18 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec2/ivec2.h"
+#include "vector/ivec2.h"
 
 t_ivec2	ivec2_sub(t_ivec2 a, t_ivec2 b)
 {
