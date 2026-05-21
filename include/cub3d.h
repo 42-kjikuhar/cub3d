@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 23:07:06 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/21 23:18:51 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include "error.h"
 # include "vector/ivec2.h"
 # include "vector/dvec3.h"
+# include "ft_mlx.h"
 
 # ifndef DEBUG
 #  define DEBUG 0

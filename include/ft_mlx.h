@@ -6,13 +6,14 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 22:50:14 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 23:08:49 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/21 23:11:43 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_MLX_H
 # define FT_MLX_H
 
+# include <stdbool.h>
 # include "types.h"
 
 struct s_img

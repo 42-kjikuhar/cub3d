@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 21:31:32 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/21 23:16:57 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,6 @@ void	init_player(t_player *player, t_map const *map)
 	}
 }
 
-bool	create_connection(t_mlx *mlx)
-{
-	mlx->mlx_ptr = mlx_init();
-	if (mlx->mlx_ptr == NULL)
-	{
-		print_error(ERROR_MLX_CONNECTION);
-		return (false);
-	}
-	return (true);
-}
 
 bool	create_window_image(t_mlx *mlx)
 {
@@ -79,19 +69,7 @@ bool	create_window(t_mlx *mlx)
 	return (true);
 }
 
-bool	ft_mlx_init(t_mlx *mlx, t_settings *settings)
-{
-	if (!create_connection(mlx) \
-	|| !create_window_image(mlx) \
-	|| !create_assets(mlx, settings) \
-	|| !create_window(mlx))
-	{
-		ft_mlx_destroy(mlx);
-		return (false);
-	}
-	mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
-	return (true);
-}
+
 
 int		expose_hook(void *param)
 {
