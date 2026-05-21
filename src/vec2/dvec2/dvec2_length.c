@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dvec2.h                                            :+:      :+:    :+:   */
+/*   dvec2_length.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/20 10:20:46 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/21 21:33:53 by kjikuhar         ###   ########.fr       */
+/*   Created: 2026/05/21 21:32:49 by kjikuhar          #+#    #+#             */
+/*   Updated: 2026/05/21 21:35:54 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DVEC2_H
-# define DVEC2_H
+#include "vec2/dvec2.h"
 
-#include <math.h>
-
-typedef struct s_dvec2
+double	dvec2_length(t_dvec2 v)
 {
-	double	x;
-	double	y;
-}	t_dvec2;
-
-#endif
+	return (sqrt(v.x * v.x + v.y * v.y));
+}
