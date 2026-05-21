@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 22:47:23 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/21 23:07:06 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,32 +81,7 @@ typedef struct s_player
 	t_dvec3			plane;
 }					t_player;
 
-typedef struct s_img
-{
-	void		*img_ptr;
-	int			width;
-	int			height;
-	char		*pixel;
-	int			*bits_per_pixel;
-	int			size_line;
-	int			endian;
-}				t_img;
 
-typedef struct s_assets
-{
-	t_img		north_wall;
-	t_img		south_wall;
-	t_img		west_wall;
-	t_img		east_wall;
-}				t_assets;
-
-typedef struct s_mlx
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	t_img		win_img;
-	t_assets	assets;
-}				t_mlx;
 
 typedef struct s_cub3d
 {
