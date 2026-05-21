@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 01:19:22 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/21 09:55:47 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@
 # include "error.h"
 # include "vec2/ivec2.h"
 # include "vec2/dvec2.h"
+
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
 
 # define W_WIDTH 1920
 # define W_HEIGHT 1080

@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/21 00:39:07 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/21 11:03:03 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #       Phony Targets        #
 # -------------------------- #
 
-.PHONY: all bonus clean fclean re install uninstall norm san debug help
+.PHONY: all bonus clean fclean re install uninstall norm san debug test help
 
 # -------------------------- #
 #      Makefile Setting      #
@@ -259,13 +259,16 @@ fclean:
 # Full rebuild: clean everything and rebuild
 re:
 	@$(MAKE) fclean
-	@$(MAKE) all
+	@$(MAKE) all CFLAGS='$(EXTRA_CFLAGS)' CPPFLAGS='$(EXTRA_CPPFLAGS)'
 
 # -------------------------- #
 #        Debug Rules         #
 # -------------------------- #
 
 san debug: $(NAME)
+
+test:
+	@bash test/test.sh
 
 norm:
 	@norminette -o src include $(LIBFT_DIR) | grep Error || true

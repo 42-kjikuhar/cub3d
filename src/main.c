@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 01:44:35 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/21 10:06:06 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,11 @@ int		key_release_hook(int keycode, void *param)
 
 int		loop_hook(void *param)
 {
-	(void)param;
+	t_cub3d	*cub3d;
+
+	cub3d = (t_cub3d *)param;
+	if (DEBUG)
+		mlx_loop_end(cub3d->mlx.mlx_ptr);
 	return (0);
 }
 
