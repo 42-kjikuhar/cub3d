@@ -1,2 +1,0 @@
-Error
-Invalid map: multiple player cells detected.

@@ -1,2 +1,0 @@
-Error
-Invalid map: floor cell not closed/surrounded by walls.

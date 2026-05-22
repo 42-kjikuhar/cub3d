@@ -1,2 +1,0 @@
-Error
-Invalid color: expected R,G,B (0-255).

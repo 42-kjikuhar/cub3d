@@ -1,2 +1,0 @@
-Error
-Invalid color: value out of range (0-255).

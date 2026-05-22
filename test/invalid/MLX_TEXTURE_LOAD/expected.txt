@@ -1,2 +1,0 @@
-Error
-MLX: Failed to load xpm file texture.

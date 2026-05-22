@@ -1,2 +1,0 @@
-Error
-Invalid map: too large (x <= INT_MAX && y <= INT_MAX).

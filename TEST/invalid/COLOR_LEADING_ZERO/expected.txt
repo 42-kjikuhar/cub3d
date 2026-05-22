@@ -1,2 +1,0 @@
-Error
-Invalid color: leading zero not allowed.
