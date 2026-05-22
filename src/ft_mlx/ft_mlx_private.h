@@ -6,16 +6,16 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 17:32:52 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/22 17:33:00 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/22 17:52:20 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_MLX_PRIVATE_H
 # define FT_MLX_PRIVATE_H
 
-#include <stdbool.h>
+# include <stdbool.h>
 
-#include "types.h"
+# include "types.h"
 
 bool	create_connection(t_mlx *mlx);
 bool	create_window_image(t_mlx *mlx);

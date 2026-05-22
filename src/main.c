@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/22 17:34:42 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/22 17:51:58 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	init_player(t_player *player, t_map const *map)
 
 	player->pos = dvec3(map->player_pos.x + 0.5, map->player_pos.y + 0.5, 0.5);
 	plane_length = tan(DEG_TO_RAD * FOV * 0.5);
-	// plane_length = 1.0;
 	if (map->player_dir == PLAYER_NORTH)
 	{
 		player->dir = dvec3(0, -1, 0);

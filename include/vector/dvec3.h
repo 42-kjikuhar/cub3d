@@ -6,14 +6,14 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 22:13:19 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/22 17:31:21 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/22 17:53:09 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DVEC3_H
 # define DVEC3_H
 
-#include "types.h"
+# include "types.h"
 
 struct s_dvec3
 {
