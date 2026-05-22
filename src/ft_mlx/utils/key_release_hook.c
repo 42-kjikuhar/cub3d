@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 16:50:19 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/22 17:24:31 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/22 17:41:53 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int	key_release_hook(int keycode, void *param)
 {
+	t_cub3d	*cub3d;
+
+	cub3d = (t_cub3d *)param;
+	(void)cub3d;
 	(void)keycode;
-	(void)param;
 	return (0);
 }
