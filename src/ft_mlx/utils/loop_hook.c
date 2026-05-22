@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ivec2_add.c                                        :+:      :+:    :+:   */
+/*   loop_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 13:11:40 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/20 10:24:44 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/22 16:49:56 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/22 17:24:27 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec2/ivec2.h"
+#include "cub3d.h"
 
-t_ivec2	ivec2_add(t_ivec2 a, t_ivec2 b)
+int	loop_hook(void *param)
 {
-	t_ivec2	sum;
+	t_cub3d	*cub3d;
 
-	sum.x = a.x + b.x;
-	sum.y = a.y + b.y;
-	return (sum);
+	cub3d = (t_cub3d *)param;
+	if (DEBUG)
+		mlx_loop_end(cub3d->mlx.mlx_ptr);
+	return (0);
 }

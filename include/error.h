@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 01:18:22 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/21 18:04:38 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/22 16:26:21 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@
 	"MLX: Failed to create window."
 # define ERROR_MLX_IMAGE \
 	"MLX: Failed to create image."
+# define ERROR_MLX_IMAGE_DATA \
+	"MLX: Failed to get image data."
 # define ERROR_MLX_TEXTURE_LOAD \
 	"MLX: Failed to load xpm file texture."
-# define ERROR_MLX_TEXTURE_DATA \
-	"MLX: Failed to get texture data."
 
 void	print_error(char const *error_message);
 

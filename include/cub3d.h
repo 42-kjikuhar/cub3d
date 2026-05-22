@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 09:55:47 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/22 15:33:05 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@
 # include "mlx.h"
 # include "libft.h"
 
+# include "types.h"
 # include "error.h"
-# include "vec2/ivec2.h"
-# include "vec2/dvec2.h"
+# include "vector/ivec2.h"
+# include "vector/dvec3.h"
+# include "ft_mlx.h"
 
 # ifndef DEBUG
 #  define DEBUG 0
@@ -54,67 +56,39 @@
 # define RAD_TO_DEG 57.29577951308232286465 // (180.0 / M_PI)
 # define FOV 66
 
-typedef struct s_settings
+struct s_settings
 {
-	int			flags;
-	char		*north_texture;
-	char		*south_texture;
-	char		*west_texture;
-	char		*east_texture;
-	int			floor_color;
-	int			ceiling_color;
-}				t_settings;
+	int		flags;
+	char	*north_texture;
+	char	*south_texture;
+	char	*west_texture;
+	char	*east_texture;
+	int		floor_color;
+	int		ceiling_color;
+};
 
-typedef struct s_map
+struct s_map
 {
-	char			**data;
-	int				x_size;
-	int				y_size;
-	t_ivec2			player_pos;
-	char			player_dir;
-}					t_map;
+	char		**data;
+	int			x_size;
+	int			y_size;
+	t_ivec2		player_pos;
+	char		player_dir;
+};
 
-typedef struct s_player
+struct s_player
 {
-	t_dvec2			pos;
-	t_dvec2			dir;
-	t_dvec2			plane;
-}					t_player;
-
-typedef struct s_img
-{
-	void		*img_ptr;
-	int			width;
-	int			height;
-	char		*pixel;
-	int			*bits_per_pixel;
-	int			size_line;
-	int			endian;
-}				t_img;
-
-typedef struct s_assets
-{
-	t_img		north_wall;
-	t_img		south_wall;
-	t_img		west_wall;
-	t_img		east_wall;
-}				t_assets;
-
-typedef struct s_mlx
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	t_img		win_img;
-	t_assets	assets;
-}				t_mlx;
-
-typedef struct s_cub3d
+	t_dvec3	pos;
+	t_dvec3	dir;
+	t_dvec3	plane;
+};
+struct s_cub3d
 {
 	t_settings	settings;
 	t_map		map;
 	t_player	player;
 	t_mlx		mlx;
-}				t_cub3d;
+};
 
 bool	parse_file(char const *filename, t_settings *settings, t_map *map);
 

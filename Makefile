@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/21 20:57:18 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/22 17:15:33 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,10 +91,11 @@ SRC_DIRS	+= $(addprefix src/, \
 								parse_settings parse_settings/utils \
 								parse_map \
 							) \
-							$(addprefix vec2/, \
+							$(addprefix vector/, \
 								ivec2 \
-								dvec2 \
+								dvec3 \
 							) \
+							ft_mlx ft_mlx/utils \
 						)
 
 $(foreach dir, $(SRC_DIRS), $(eval vpath %.c $(dir)))
@@ -132,7 +133,27 @@ SRCS	+=	parse_map.c \
 SRCS	+=	ivec2_add.c \
 			ivec2_sub.c
 # vec2/dvec2
-SRCS	+=	dvec2_add.c
+SRCS	+=	dvec3_add.c \
+			dvec3_dot.c \
+			dvec3_normalize.c \
+			dvec3_sub.c \
+			dvec3_cross.c \
+			dvec3_length.c \
+			dvec3_scale.c \
+			dvec3.c
+# ft_mlx
+SRCS	+=	ft_mlx_destroy.c \
+			ft_mlx_hooks.c \
+			ft_mlx_init.c \
+			create_assets.c \
+			create_window_image.c \
+			expose_hook.c \
+			key_press_hook.c \
+			loop_hook.c \
+			create_connection.c \
+			create_window.c \
+			init_image_info.c \
+			key_release_hook.c
 
 # -------------------------- #
 #        Object Files        #
@@ -154,7 +175,7 @@ DEP_DIR	:= .dep
 $(DEP_DIR):
 	@-mkdir -p $@
 
-DEPS	:= $(patsubst %.c, $(DEP_DIR)/%.d, $(SRCS))
+DEPS		:= $(patsubst %.c, $(DEP_DIR)/%.d, $(SRCS))
 DEPFLAGS	= -MT $@ -MMD -MP -MF $(DEP_DIR)/$*.d
 
 -include $(DEPS)
@@ -212,7 +233,7 @@ override LDLIBS	+= -lmlx -lXext -lX11
 #       Library Rules        #
 # -------------------------- #
 
-LDLIBS	+= -lm
+override LDLIBS	+= -lm
 
 # -------------------------- #
 #        Build Rules         #

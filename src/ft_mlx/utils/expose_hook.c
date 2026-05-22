@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ivec2_sub.c                                        :+:      :+:    :+:   */
+/*   expose_hook.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 13:11:40 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/20 10:24:31 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/22 16:50:48 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/22 17:24:41 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec2/ivec2.h"
+#include "cub3d.h"
 
-t_ivec2	ivec2_sub(t_ivec2 a, t_ivec2 b)
+int	expose_hook(void *param)
 {
-	t_ivec2	diff;
-
-	diff.x = a.x - b.x;
-	diff.y = a.y - b.y;
-	return (diff);
+	(void)param;
+	return (0);
 }

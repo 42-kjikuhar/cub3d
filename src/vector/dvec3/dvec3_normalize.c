@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dvec2_add.c                                        :+:      :+:    :+:   */
+/*   dvec3_normalize.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/20 10:25:57 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/20 10:26:21 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/21 22:08:06 by kjikuhar          #+#    #+#             */
+/*   Updated: 2026/05/22 17:22:38 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec2/dvec2.h"
+#include "cub3d.h"
 
-t_dvec2	dvec2_add(t_dvec2 a, t_dvec2 b)
+t_dvec3	dvec3_normalize(t_dvec3 v)
 {
-	t_dvec2	sum;
-
-	sum.x = a.x + b.x;
-	sum.y = a.y + b.y;
-	return (sum);
+	return (dvec3_scale(1 / dvec3_length(v), v));
 }

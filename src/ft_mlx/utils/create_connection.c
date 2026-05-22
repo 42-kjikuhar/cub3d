@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dvec2.h                                            :+:      :+:    :+:   */
+/*   create_connection.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/20 10:20:46 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/20 10:21:44 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/21 23:14:25 by kjikuhar          #+#    #+#             */
+/*   Updated: 2026/05/22 16:18:00 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DVEC2_H
-# define DVEC2_H
+#include "cub3d.h"
 
-typedef struct s_dvec2
+bool	create_connection(t_mlx *mlx)
 {
-	double	x;
-	double	y;
-}	t_dvec2;
-
-#endif
+	mlx->mlx_ptr = mlx_init();
+	if (mlx->mlx_ptr == NULL)
+	{
+		print_error(ERROR_MLX_CONNECTION);
+		return (false);
+	}
+	return (true);
+}
