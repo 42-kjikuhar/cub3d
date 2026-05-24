@@ -123,6 +123,10 @@ run_test "" 1 ""
 run_test "no_exist_map.cub" 1 ""
 run_test "1.cub 2.cub" 1 ""
 
+rm -r TEST/assets/not_readable.xpm
+cp TEST/assets/barrel.xpm TEST/assets/not_readble.xpm
+chmod -r TEST/assets/barrel.xpm
+
 rm -f TEST/invalid/read.cub
 cp TEST/valid/simple.cub TEST/invalid/read.cub
 chmod -r TEST/invalid/read.cub
@@ -142,5 +146,6 @@ done
 
 echo -e "${GREEN}$PASS passed${NC}, ${RED}$FAIL failed${NC}"
 
+rm -r TEST/assets/not_readable.xpm
 rm -f $ERROR_LOG
 make fclean
