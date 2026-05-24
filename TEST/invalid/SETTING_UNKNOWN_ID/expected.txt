@@ -1,2 +1,2 @@
 Error
-Invalid setting: unknown identifier. expected NO SO WE EA F C.
+Invalid setting: unknown identifier. Expected NO SO WE EA F C.
