@@ -1,0 +1,8 @@
+NO ./assets/bluestone.xpm
+SO ./assets/colorstone.xpm
+WE ./assets/wood.xpm
+EA ./assets/redbrick.xpm
+
+F 220,100,0
+C 225,30,0
+
