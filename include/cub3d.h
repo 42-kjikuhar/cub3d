@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/22 17:31:30 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:56:54 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,16 @@
 # include "vector/ivec2.h"
 # include "vector/dvec3.h"
 # include "ft_mlx.h"
+# include "drawer.h"
 
 # ifndef DEBUG
 #  define DEBUG 0
 # endif
 
-# define W_WIDTH 1920
-# define W_HEIGHT 1080
+// # define W_WIDTH 1920
+// # define W_HEIGHT 1080
+# define W_WIDTH 1000
+# define W_HEIGHT 600
 # define W_TITLE "cub3D"
 # define COLOR_BIT_SIZE 32
 # define TEXTURE_SIZE 64

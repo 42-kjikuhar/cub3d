@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/24 12:26:44 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/25 12:03:01 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,6 +96,7 @@ SRC_DIRS	+= $(addprefix src/, \
 								dvec3 \
 							) \
 							ft_mlx ft_mlx/utils \
+							drawer drawer/utils \
 						)
 
 $(foreach dir, $(SRC_DIRS), $(eval vpath %.c $(dir)))
@@ -155,6 +156,10 @@ SRCS	+=	ft_mlx_destroy.c \
 			create_window.c \
 			init_image_info.c \
 			key_release_hook.c
+# drawer
+SRCS	+=	floor_drawer.c \
+			sky_drawer.c \
+			calc_horizontal_height.c \
 
 # -------------------------- #
 #        Object Files        #

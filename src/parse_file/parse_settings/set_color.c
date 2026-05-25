@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:11:18 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 01:51:48 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:25:53 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ bool	set_color(char const *value, t_settings *settings,
 		return (false);
 	}
 	settings->flags |= (1 << color_id);
+	color = 0;
 	if (!parse_color(value, &color))
 		return (false);
 	if (color_id == FLOOR_ID)
