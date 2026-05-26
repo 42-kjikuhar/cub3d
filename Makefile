@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/25 12:03:01 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/26 20:36:02 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,6 +96,7 @@ SRC_DIRS	+= $(addprefix src/, \
 								dvec3 \
 							) \
 							ft_mlx ft_mlx/utils \
+							player player/utils \
 							drawer drawer/utils \
 						)
 
@@ -156,6 +157,10 @@ SRCS	+=	ft_mlx_destroy.c \
 			create_window.c \
 			init_image_info.c \
 			key_release_hook.c
+# player
+SRCS	+=	init_player.c \
+			calc_camera_right.c \
+			calc_camera_up.c
 # drawer
 SRCS	+=	floor_drawer.c \
 			sky_drawer.c \

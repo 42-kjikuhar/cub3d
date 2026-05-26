@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:38:03 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 01:48:02 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/26 19:38:09 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,15 @@ static bool	alloc_map(t_map *map)
 	return (true);
 }
 
+// left hand coordinate system
 static void	convert_list_to_array(t_list *line_list, t_map *map)
 {
-	char			*content;
-	int				x;
-	int				y;
+	char	*content;
+	int		x;
+	int		y;
 
-	y = 0;
-	while (y < map->y_size)
+	y = map->y_size - 1;
+	while (y >= 0)
 	{
 		content = ft_lst_pop_front(&line_list);
 		x = 0;
@@ -119,7 +120,7 @@ static void	convert_list_to_array(t_list *line_list, t_map *map)
 			++x;
 		}
 		free(content);
-		++y;
+		--y;
 	}
 }
 

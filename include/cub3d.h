@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/25 11:56:54 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/26 20:37:50 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include "vector/ivec2.h"
 # include "vector/dvec3.h"
 # include "ft_mlx.h"
+# include "player.h"
 # include "drawer.h"
 
 # ifndef DEBUG
@@ -38,6 +39,7 @@
 
 // # define W_WIDTH 1920
 // # define W_HEIGHT 1080
+# define FOV 66
 # define W_WIDTH 1000
 # define W_HEIGHT 600
 # define W_TITLE "cub3D"
@@ -57,7 +59,6 @@
 # endif
 # define DEG_TO_RAD 0.01745329251994329547 // (M_PI / 180.0)
 # define RAD_TO_DEG 57.29577951308232286465 // (180.0 / M_PI)
-# define FOV 66
 
 struct s_settings
 {
@@ -83,7 +84,11 @@ struct s_player
 {
 	t_dvec3	pos;
 	t_dvec3	dir;
-	t_dvec3	plane;
+	t_dvec3	right;
+	t_dvec3	up;
+	double	aspect_ratio;
+	double	half_screen_width;
+	double	half_screen_height;
 };
 struct s_cub3d
 {
