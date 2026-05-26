@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 20:21:33 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/26 21:08:01 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/26 23:05:50 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ void	init_player(t_player *player, t_map const *map)
 	player->right = calc_camera_right(player->dir);
 	player->up = calc_camera_up(player->right, player->dir);
 	player->aspect_ratio = (double)W_WIDTH / W_HEIGHT;
-	player->half_screen_width = tan(FOV * 0.5 * DEG_TO_RAD);
-	player->half_screen_height = player->half_screen_width / player->aspect_ratio;
+	player->screen_half_width = tan(FOV * 0.5 * DEG_TO_RAD);
+	player->screen_half_height = player->screen_half_width / player->aspect_ratio;
 }

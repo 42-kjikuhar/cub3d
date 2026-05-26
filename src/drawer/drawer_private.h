@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 22:53:27 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/26 20:46:53 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/26 22:45:15 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include "types.h"
 # include "cub3d.h"
 
+# define WALL_HEIGHT 1
+
 typedef struct	s_ray
 {
 	t_dvec3	origin;
@@ -26,7 +28,7 @@ typedef struct	s_ray
 	double	delta_dist_x;
 	double	delta_dist_y;
 	t_ivec2	cell;
-	t_ivec2	step;
+	t_ivec2	cell_step;
 	double	delta_height_x;
 	double	delta_height_y;
 	double	wall_dist_x;
@@ -58,8 +60,16 @@ typedef struct s_wall
 	t_ivec2	texture_pixel;
 	int		top;
 	int		bottom;
+	int		height;
+	int		draw_start;
+	int		draw_end;
 }	t_wall;
 
 double	calc_horizontal_height(t_player const *player);
+t_ray	init_ray(t_player const *player, int win_x);
+t_hit	dda_algorithm(t_map const *map, t_ray *ray);
+t_wall	compute_wall(t_mlx *mlx, t_player const *player, \
+	t_ray const *ray, t_hit const *hit);
+void	draw_wall(t_mlx *mlx, int const win_x, t_wall *wall);
 
 #endif

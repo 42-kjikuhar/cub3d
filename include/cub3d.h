@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/26 20:37:50 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/26 21:23:58 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,6 @@ struct s_map
 	char		player_dir;
 };
 
-struct s_player
-{
-	t_dvec3	pos;
-	t_dvec3	dir;
-	t_dvec3	right;
-	t_dvec3	up;
-	double	aspect_ratio;
-	double	half_screen_width;
-	double	half_screen_height;
-};
 struct s_cub3d
 {
 	t_settings	settings;

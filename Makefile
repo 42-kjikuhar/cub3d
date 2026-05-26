@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/26 20:36:02 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/26 22:36:28 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -165,6 +165,11 @@ SRCS	+=	init_player.c \
 SRCS	+=	floor_drawer.c \
 			sky_drawer.c \
 			calc_horizontal_height.c \
+			wall_drawer.c \
+			init_ray.c \
+			dda_algorithm.c \
+			compute_wall.c \
+			draw_wall.c
 
 # -------------------------- #
 #        Object Files        #
