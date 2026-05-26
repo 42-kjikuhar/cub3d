@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 22:53:27 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/26 16:39:59 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/26 20:46:53 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct	s_ray
 	t_dvec3	origin;
 	t_dvec3	vector;
 	double	length;
-	double	delta_dist_x
+	double	delta_dist_x;
 	double	delta_dist_y;
 	t_ivec2	cell;
 	t_ivec2	step;
