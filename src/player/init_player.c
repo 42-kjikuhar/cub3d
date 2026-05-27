@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 22:42:23 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/27 22:42:53 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/27 22:50:42 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@ void	init_player(t_player *player, t_map const *map)
 	plane_length = tan(DEG_TO_RAD * FOV * 0.5);
 	if (map->player_dir == PLAYER_NORTH)
 	{
-		player->dir = dvec3(0, -1, 0);
+		player->dir = dvec3(0, 1, 0);
 		player->plane = dvec3(plane_length, 0, 0);
 	}
 	else if (map->player_dir == PLAYER_SOUTH)
 	{
-		player->dir = dvec3(0, 1, 0);
+		player->dir = dvec3(0, -1, 0);
 		player->plane = dvec3(-plane_length, 0, 0);
 	}
 	else if (map->player_dir == PLAYER_WEST)
 	{
 		player->dir = dvec3(-1, 0, 0);
-		player->plane = dvec3(0, plane_length, 0);
+		player->plane = dvec3(0, -plane_length, 0);
 	}
 	else if (map->player_dir == PLAYER_EAST)
 	{
 		player->dir = dvec3(1, 0, 0);
-		player->plane = dvec3(0, -plane_length, 0);
+		player->plane = dvec3(0, plane_length, 0);
 	}
 }
