@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawer.c                                           :+:      :+:    :+:   */
+/*   compute_wall.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/27 00:06:44 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 19:17:48 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/26 13:08:17 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/27 21:33:30 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "./drawer_private.h"
 
-void	initial_drawer(t_cub3d *cub3d)
+t_wall	compute_wall(t_mlx *mlx, t_player const *player, \
+	t_ray const *ray, t_hit const *hit)
 {
-	clear_depth_buffer();
-	floor_drawer(cub3d);
-	sky_drawer(cub3d);
-	drawer(cub3d);
-}
+	t_wall	wall;
 
-void	drawer(t_cub3d *cub3d)
-{
-	wall_drawer(cub3d);
-	mlx_put_image_to_window(cub3d->mlx.mlx_ptr, cub3d->mlx.win_ptr, \
-										cub3d->mlx.win_img.img_ptr, 0, 0);
-	clear_depth_buffer();
-	floor_drawer(cub3d);
-	sky_drawer(cub3d);
+	wall.side = compute_wall_side_face(mlx, player, ray, hit);
+	wall.top = compute_wall_top_face(player, ray, &(wall.side));
+	return (wall);
 }

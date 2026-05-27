@@ -6,14 +6,15 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 22:52:46 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 12:02:59 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/27 21:43:08 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "./drawer_private.h"
 
-static void	draw_wall(t_mlx *mlx, int const win_x, t_wall *wall);
+static void	draw_wall_side_face(t_mlx *mlx, int const win_x, t_wall_side_face *side);
+static void	draw_wall_top_face(t_mlx *mlx, int const win_x, t_wall_top_face *top);
 
 void	wall_drawer(t_cub3d *cub3d)
 {
@@ -26,36 +27,58 @@ void	wall_drawer(t_cub3d *cub3d)
 	while (win_x < W_WIDTH)
 	{
 		ray = init_ray(&(cub3d->player), win_x);
-		// while (true)
-		// {
+		while (true)
+		{
 			hit = dda_algorithm(&(cub3d->map), &ray);
-			// if (hit.hit_side == NO_HIT)
-			// 	break ;
+			if (hit.hit_side == NO_HIT)
+				break ;
 			wall = compute_wall(&(cub3d->mlx), &(cub3d->player), &ray, &hit);
-			draw_wall(&(cub3d->mlx), win_x, &wall);
-		// }
+			draw_wall_side_face(&(cub3d->mlx), win_x, &(wall.side));
+			draw_wall_top_face(&(cub3d->mlx), win_x, &(wall.top));
+		}
 		++win_x;
 	}
 }
 
-static void	draw_wall(t_mlx *mlx, int const win_x, t_wall *wall)
+// depthの線形補間は未実装
+static void	draw_wall_side_face(t_mlx *mlx, int const win_x, t_wall_side_face *side)
 {
 	double	texture_v;
-	double	step;
+	double	texture_step;
 	int		win_y;
 
-	step = (double)wall->texture->height / wall->height;
-	texture_v = (wall->draw_start - wall->top) * step;
-	win_y = wall->draw_start;
-	while (win_y <= wall->draw_end)
+	texture_step = (double)side->texture->height / side->size;
+	texture_v = (side->draw_start - side->top) * texture_step;
+	win_y = side->draw_start;
+	while (win_y <= side->draw_end)
 	{
-		wall->texture_pixel.y = (int)texture_v;
-		if (wall->texture_pixel.y == wall->texture->height)
-			wall->texture_pixel.y--;
-		*get_pixel_addr(&(mlx->win_img), win_x, win_y) \
-			= *get_pixel_addr(\
-				wall->texture, wall->texture_pixel.x, wall->texture_pixel.y);
-		texture_v += step;
+		side->texture_pixel.y = (int)texture_v;
+		if (side->texture_pixel.y == side->texture->height)
+			side->texture_pixel.y -= 1;
+		if (try_depth_buffer(side->top_depth, win_x, win_y))
+		{
+			*get_pixel_addr(&(mlx->win_img), win_x, win_y) \
+				= *get_pixel_addr(side->texture, side->texture_pixel.x, side->texture_pixel.y);
+		}
+		texture_v += texture_step;
+		++win_y;
+	}
+}
+
+// depthの線形補間は未実装
+static void	draw_wall_top_face(t_mlx *mlx, int const win_x, t_wall_top_face *top)
+{
+	int	color;
+	int	win_y;
+
+	color = mlx_get_color_value(mlx->mlx_ptr, top->color);
+	win_y = top->draw_start;
+	while (win_y <= top->draw_end)
+	{
+		if (try_depth_buffer(top->back_depth, win_x, win_y))
+		{
+			*get_pixel_addr(&(mlx->win_img), win_x, win_y) = color;
+		}
 		++win_y;
 	}
 }

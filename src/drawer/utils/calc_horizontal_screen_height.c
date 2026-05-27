@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawer.c                                           :+:      :+:    :+:   */
+/*   calc_horizontal_screen_height.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/27 00:06:44 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 19:17:48 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/25 11:52:52 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/27 20:46:23 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "./drawer_private.h"
 
-void	initial_drawer(t_cub3d *cub3d)
+double	calc_horizontal_screen_height(t_player const *player)
 {
-	clear_depth_buffer();
-	floor_drawer(cub3d);
-	sky_drawer(cub3d);
-	drawer(cub3d);
-}
+	double	cos_p;
 
-void	drawer(t_cub3d *cub3d)
-{
-	wall_drawer(cub3d);
-	mlx_put_image_to_window(cub3d->mlx.mlx_ptr, cub3d->mlx.win_ptr, \
-										cub3d->mlx.win_img.img_ptr, 0, 0);
-	clear_depth_buffer();
-	floor_drawer(cub3d);
-	sky_drawer(cub3d);
+	cos_p = sqrt(player->dir.x * player->dir.x + player->dir.y * player->dir.y);
+	if (player->dir.z >= player->screen_half_height * cos_p)
+		return (W_HEIGHT + 0.5);
+	else if (player->dir.z <= -player->screen_half_height * cos_p)
+		return (-0.5);
+	return ((W_HEIGHT / 2) \
+		+ (W_HEIGHT / 2) * player->dir.z / (cos_p * player->screen_half_height));
 }

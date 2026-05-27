@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_horizontal_height.c                           :+:      :+:    :+:   */
+/*   depth_buffer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/25 11:52:52 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 12:02:34 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/27 19:03:45 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/27 19:16:47 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-double	calc_horizontal_height(t_player const *player)
-{
-	double	cos_p;
+static double	g_depth_buffer[W_HEIGHT][W_WIDTH];
 
-	cos_p = sqrt(player->dir.x * player->dir.x + player->dir.y * player->dir.y);
-	if (player->dir.z >= player->screen_half_height * cos_p)
-		return (W_HEIGHT + 0.5);
-	else if (player->dir.z <= -player->screen_half_height * cos_p)
-		return (-0.5);
-	return ((W_HEIGHT / 2) \
-		+ (W_HEIGHT / 2) * player->dir.z / (cos_p * player->screen_half_height));
+void	clear_depth_buffer(void)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < W_HEIGHT)
+	{
+		x = 0;
+		while (x < W_WIDTH)
+		{
+			g_depth_buffer[y][x++] = INFINITY;
+		}
+		++y;
+	}
+}
+
+bool	try_depth_buffer(double depth, int x, int y)
+{
+	if (depth >= g_depth_buffer[y][x])
+		return (false);
+	g_depth_buffer[y][x] = depth;
+	return (true);
 }

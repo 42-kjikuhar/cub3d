@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/27 09:00:59 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/27 20:49:56 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -173,11 +173,15 @@ SRCS	+=	init_player.c \
 SRCS	+=	drawer.c \
 			floor_drawer.c \
 			sky_drawer.c \
-			calc_horizontal_height.c \
+			calc_horizontal_screen_height.c \
 			wall_drawer.c \
 			init_ray.c \
 			dda_algorithm.c \
-			compute_wall.c
+			compute_wall.c \
+			compute_wall_side_face.c \
+			compute_wall_top_face.c \
+			compute_wall_point.c \
+			depth_buffer.c
 
 # -------------------------- #
 #        Object Files        #
