@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 22:50:14 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/22 17:31:36 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/24 12:27:18 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,15 @@ struct s_mlx
 	t_assets	assets;
 };
 
-bool	ft_mlx_init(t_mlx *mlx, t_settings *settings);
-void	ft_mlx_hooks(t_cub3d *cub3d);
-void	ft_mlx_destroy(t_mlx *mlx);
+bool			ft_mlx_init(t_mlx *mlx, t_settings *settings);
+void			ft_mlx_hooks(t_cub3d *cub3d);
+void			ft_mlx_destroy(t_mlx *mlx);
+unsigned int	*get_pixel_addr(t_img *img, int const x, int const y);
 
 /* utils */
-int		expose_hook(void *param);
-int		key_press_hook(int keycode, void *param);
-int		key_release_hook(int keycode, void *param);
-int		loop_hook(void *param);
+int				expose_hook(void *param);
+int				key_press_hook(int keycode, void *param);
+int				key_release_hook(int keycode, void *param);
+int				loop_hook(void *param);
 
 #endif

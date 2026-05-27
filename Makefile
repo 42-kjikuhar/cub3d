@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/22 17:34:46 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/24 12:26:44 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -145,6 +145,7 @@ SRCS	+=	dvec3_add.c \
 SRCS	+=	ft_mlx_destroy.c \
 			ft_mlx_hooks.c \
 			ft_mlx_init.c \
+			get_pixel_addr.c \
 			create_assets.c \
 			create_window_image.c \
 			expose_hook.c \

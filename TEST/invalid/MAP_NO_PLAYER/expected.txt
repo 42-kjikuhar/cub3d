@@ -1,0 +1,2 @@
+Error
+Invalid map: player cell required (N S W E).
