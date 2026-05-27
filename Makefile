@@ -6,7 +6,7 @@
 #    By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/27 22:44:36 by kjikuhar         ###   ########.fr        #
+#    Updated: 2026/05/27 22:46:02 by kjikuhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,11 +130,11 @@ SRCS	+=	parse_map.c \
 			read_map.c \
 			parse_map_data.c \
 			parse_map_cell.c
-# vec2/ivec2
+# vector/ivec2
 SRCS	+=	ivec2.c \
 			ivec2_add.c \
 			ivec2_sub.c
-# vec2/dvec2
+# vector/dvec3
 SRCS	+=	dvec3_add.c \
 			dvec3_dot.c \
 			dvec3_normalize.c \
