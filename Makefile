@@ -6,7 +6,7 @@
 #    By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/27 22:13:55 by kjikuhar         ###   ########.fr        #
+#    Updated: 2026/05/27 22:44:36 by kjikuhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,6 +96,7 @@ SRC_DIRS	+= $(addprefix src/, \
 								dvec3 \
 							) \
 							ft_mlx ft_mlx/utils \
+							player \
 						)
 
 $(foreach dir, $(SRC_DIRS), $(eval vpath %.c $(dir)))
@@ -156,6 +157,9 @@ SRCS	+=	ft_mlx_destroy.c \
 			create_window.c \
 			init_image_info.c \
 			key_release_hook.c
+
+# player
+SRCS	+=	init_player.c \
 
 # -------------------------- #
 #        Object Files        #

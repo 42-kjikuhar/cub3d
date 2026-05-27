@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/22 17:31:30 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/27 22:43:20 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include "vector/ivec2.h"
 # include "vector/dvec3.h"
 # include "ft_mlx.h"
+# include "player.h"
 
 # ifndef DEBUG
 #  define DEBUG 0
@@ -76,12 +77,6 @@ struct s_map
 	char		player_dir;
 };
 
-struct s_player
-{
-	t_dvec3	pos;
-	t_dvec3	dir;
-	t_dvec3	plane;
-};
 struct s_cub3d
 {
 	t_settings	settings;
