@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ivec2.h                                            :+:      :+:    :+:   */
+/*   ivec2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 13:08:07 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/27 22:11:13 by kjikuhar         ###   ########.fr       */
+/*   Created: 2026/05/27 22:11:37 by kjikuhar          #+#    #+#             */
+/*   Updated: 2026/05/27 22:13:05 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IVEC2_H
-# define IVEC2_H
+#include "cub3d.h"
 
-# include "types.h"
-
-struct s_ivec2
+t_ivec2	ivec2(int x, int y)
 {
-	int	x;
-	int	y;
-};
-
-t_ivec2	ivec2(int x, int y);
-t_ivec2	ivec2_add(t_ivec2 a, t_ivec2 b);
-t_ivec2	ivec2_sub(t_ivec2 a, t_ivec2 b);
-
-#endif
+	return ((t_ivec2){x, y});
+}

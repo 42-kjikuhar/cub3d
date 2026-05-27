@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/24 12:26:44 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/27 22:13:55 by kjikuhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,7 +130,8 @@ SRCS	+=	parse_map.c \
 			parse_map_data.c \
 			parse_map_cell.c
 # vec2/ivec2
-SRCS	+=	ivec2_add.c \
+SRCS	+=	ivec2.c \
+			ivec2_add.c \
 			ivec2_sub.c
 # vec2/dvec2
 SRCS	+=	dvec3_add.c \
