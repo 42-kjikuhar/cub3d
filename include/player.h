@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 20:22:19 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 09:34:37 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/27 12:04:29 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 // "PLAYER_OFFSET must be less than 0.5."
 # define PLAYER_OFFSET 0.05
 // "MOVE_SPEED must be less than (PLAYER_OFFSET * 2)."
-# define MOVE_SPEED 0.05
+# define MOVE_SPEED 0.025
 
 enum e_action_flag
 {

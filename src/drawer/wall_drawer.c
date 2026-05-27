@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 22:52:46 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 11:43:42 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/27 12:02:59 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	wall_drawer(t_cub3d *cub3d)
 			wall = compute_wall(&(cub3d->mlx), &(cub3d->player), &ray, &hit);
 			draw_wall(&(cub3d->mlx), win_x, &wall);
 		// }
-		if (win_x == W_WIDTH / 2)
-			printf("%d\n", wall.height);
 		++win_x;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 11:52:52 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 11:55:49 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/27 12:02:34 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,4 @@ double	calc_horizontal_height(t_player const *player)
 		return (-0.5);
 	return ((W_HEIGHT / 2) \
 		+ (W_HEIGHT / 2) * player->dir.z / (cos_p * player->screen_half_height));
-}
-
-double	calc_horizontal_height(t_player const *player)
-{
-	if (player->dir.z >= player->screen_half_height)
-		return (W_HEIGHT + 0.5);
-	else if (player->dir.z <= -player->screen_half_height)
-		return (-0.5);
-	return ((W_HEIGHT / 2) \
-	+ (W_HEIGHT / 2) * player->dir.z / player->screen_half_height);
 }
