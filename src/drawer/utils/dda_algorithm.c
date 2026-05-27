@@ -6,12 +6,12 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 13:21:45 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/26 23:01:20 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/27 08:59:09 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "drawer_private.h"
+#include "../drawer_private.h"
 
 static void	check_wall_hit(t_map const *map, t_ray *ray, t_hit *hit);
 
@@ -51,7 +51,10 @@ static void	check_wall_hit(t_map const *map, t_ray *ray, t_hit *hit)
 				hit->hit_side |= WEST_SIDE;
 			else
 				hit->hit_side |= EAST_SIDE;
-			hit->pos_x = ray->cell.x;
+			if (ray->cell_step.x > 0)
+				hit->pos_x = ray->cell.x;
+			else
+				hit->pos_x = ray->cell.x + 1;
 			hit->pos_y = ray->origin.y \
 							+ ray->wall_dist_x / ray->length * ray->vector.y;
 		}
@@ -64,7 +67,10 @@ static void	check_wall_hit(t_map const *map, t_ray *ray, t_hit *hit)
 				hit->hit_side |= NORTH_SIDE;
 			hit->pos_x = ray->origin.x \
 							+ ray->wall_dist_y / ray->length * ray->vector.x;
-			hit->pos_y = ray->cell.y;
+			if (ray->cell_step.y > 0)
+				hit->pos_y = ray->cell.y;
+			else
+				hit->pos_y = ray->cell.y + 1;
 		}
 	}
 }

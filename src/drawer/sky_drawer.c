@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 22:59:34 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/25 14:27:08 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/27 09:04:44 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 
 void	sky_drawer(t_cub3d *cub3d)
 {
-	int const	horizontal_height \
-		= (int)ceil(calc_horizontal_height(&(cub3d->player)));
-	int	const	color \
-		= mlx_get_color_value(cub3d->mlx.mlx_ptr, cub3d->settings.ceiling_color);
-	int			win_x;
-	int		 	win_y;
+	int	horizontal_height;
+	int	color;
+	int	win_x;
+	int	win_y;
 
+	horizontal_height = (int)ceil(calc_horizontal_height(&(cub3d->player)));
+	color \
+		= mlx_get_color_value(cub3d->mlx.mlx_ptr, cub3d->settings.ceiling_color);
 	win_x = 0;
 	while (win_x < W_WIDTH)
 	{

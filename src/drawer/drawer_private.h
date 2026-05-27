@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 22:53:27 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/26 22:45:15 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/27 01:27:54 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 # define WALL_HEIGHT 1
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	t_dvec3	origin;
 	t_dvec3	vector;
@@ -46,7 +46,7 @@ enum e_hit_side
 	BOTTOM_SIDE = (1 << 5),
 };
 
-typedef struct	s_hit
+typedef struct s_hit
 {
 	double	perp_wall_dist;
 	uint8_t	hit_side;
@@ -65,11 +65,13 @@ typedef struct s_wall
 	int		draw_end;
 }	t_wall;
 
+void	floor_drawer(t_cub3d *cub3d);
+void	sky_drawer(t_cub3d *cub3d);
+void	wall_drawer(t_cub3d *cub3d);
 double	calc_horizontal_height(t_player const *player);
 t_ray	init_ray(t_player const *player, int win_x);
 t_hit	dda_algorithm(t_map const *map, t_ray *ray);
 t_wall	compute_wall(t_mlx *mlx, t_player const *player, \
 	t_ray const *ray, t_hit const *hit);
-void	draw_wall(t_mlx *mlx, int const win_x, t_wall *wall);
 
 #endif

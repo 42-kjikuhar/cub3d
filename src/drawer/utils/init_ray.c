@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 21:14:02 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/26 22:38:19 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/27 10:57:03 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_ray	init_ray(t_player const *player, int win_x)
 {
 	t_ray			ray;
 	double const	t = (((double)win_x / W_WIDTH) - 0.5) * 2.0;
-
 	ray.origin = player->pos;
 	ray.vector = dvec3_add(player->dir, \
 					dvec3_scale(t * player->screen_half_width, player->right));
@@ -31,8 +30,8 @@ t_ray	init_ray(t_player const *player, int win_x)
 	ray.cell.x = (int)(ray.origin.x);
 	ray.cell.y = (int)(ray.origin.y);
 	set_cell_step(&ray);
-	ray.delta_height_x = ray.delta_dist_x * tan(ray.vector.z);
-	ray.delta_height_y = ray.delta_dist_y * tan(ray.vector.z);
+	ray.delta_height_x = ray.delta_dist_x * (ray.vector.z / ray.length);
+	ray.delta_height_y = ray.delta_dist_y * (ray.vector.z / ray.length);
 	set_initial_wall_distance(&ray);
 	return (ray);
 }
@@ -53,22 +52,22 @@ static void	set_initial_wall_distance(t_ray *ray)
 {
 	if (ray->vector.x > 0)
 	{
-		ray->wall_dist_x \
-			= (1.0 - (ray->origin.x - floor(ray->origin.x))) * ray->delta_dist_x;
+		ray->wall_dist_x = (1.0 - (ray->origin.x - floor(ray->origin.x))) \
+														* ray->delta_dist_x;
 	}
 	else
 	{
-		ray->wall_dist_x \
-			= (ray->origin.x - floor(ray->origin.x)) * ray->delta_dist_x;
+		ray->wall_dist_x = (ray->origin.x - floor(ray->origin.x)) \
+														* ray->delta_dist_x;
 	}
 	if (ray->vector.y > 0)
 	{
-		ray->wall_dist_y \
-			= (1.0 - (ray->origin.y - floor(ray->origin.y))) * ray->delta_dist_y;
+		ray->wall_dist_y = (1.0 - (ray->origin.y - floor(ray->origin.y))) \
+														* ray->delta_dist_y;
 	}
 	else
 	{
-		ray->wall_dist_y \
-			= (ray->origin.y - floor(ray->origin.y)) * ray->delta_dist_y;
+		ray->wall_dist_y = (ray->origin.y - floor(ray->origin.y)) \
+														* ray->delta_dist_y;
 	}
 }

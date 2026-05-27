@@ -6,12 +6,12 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:08:17 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/26 22:59:51 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/27 11:57:17 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "drawer_private.h"
+#include "../drawer_private.h"
 
 static t_img	*select_texture(t_mlx *mlx, t_hit const *hit);
 static double	calc_texture_u(const t_hit *hit);
@@ -77,7 +77,8 @@ static int	calc_screen_height(\
 	double	v;
 
 	to_object = dvec3_sub(object_pos, ray->origin);
-	depth = dvec3_dot(player->dir, to_object);
+	// depth = dvec3_dot(player->dir, to_object);
+	depth = player->dir.x * to_object.x + player->dir.y * to_object.y;
 	v = dvec3_dot(to_object, player->up) / (player->screen_half_height * depth);
 	return ((int)round(((1.0 - v) / 2.0) * W_HEIGHT));
 }

@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_pixel_addr.c                                   :+:      :+:    :+:   */
+/*   ivec2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/23 17:55:08 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/27 01:30:58 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/27 00:34:44 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/27 00:35:45 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-unsigned int	*get_pixel_addr(t_img *img, int const x, int const y)
+t_ivec2	ivec2(int x, int y)
 {
-	return ((unsigned int *)(img->pixel \
-				+ y * img->line_size + x * img->bits_per_pixel / 8));
+	return ((t_ivec2){x, y});
 }

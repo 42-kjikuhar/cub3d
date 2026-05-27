@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:08:07 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/22 17:53:14 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/27 00:36:53 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ struct s_ivec2
 	int	y;
 };
 
+t_ivec2	ivec2(int x, int y);
 t_ivec2	ivec2_add(t_ivec2 a, t_ivec2 b);
 t_ivec2	ivec2_sub(t_ivec2 a, t_ivec2 b);
 

@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/26 22:36:28 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/27 09:00:59 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,17 +132,21 @@ SRCS	+=	parse_map.c \
 			parse_map_data.c \
 			parse_map_cell.c
 # vec2/ivec2
-SRCS	+=	ivec2_add.c \
+SRCS	+=	ivec2.c \
+			ivec2_add.c \
 			ivec2_sub.c
 # vec2/dvec2
-SRCS	+=	dvec3_add.c \
+SRCS	+=	dvec3.c \
+			dvec3_add.c \
 			dvec3_dot.c \
 			dvec3_normalize.c \
 			dvec3_sub.c \
 			dvec3_cross.c \
 			dvec3_length.c \
 			dvec3_scale.c \
-			dvec3.c
+			dvec3_rotate_x.c \
+			dvec3_rotate_y.c \
+			dvec3_rotate_z.c
 # ft_mlx
 SRCS	+=	ft_mlx_destroy.c \
 			ft_mlx_hooks.c \
@@ -160,16 +164,20 @@ SRCS	+=	ft_mlx_destroy.c \
 # player
 SRCS	+=	init_player.c \
 			calc_camera_right.c \
-			calc_camera_up.c
+			calc_camera_up.c \
+			handle_player_actions.c \
+			move_player.c \
+			is_colliding_with_wall.c \
+			rotate_player.c \
 # drawer
-SRCS	+=	floor_drawer.c \
+SRCS	+=	drawer.c \
+			floor_drawer.c \
 			sky_drawer.c \
 			calc_horizontal_height.c \
 			wall_drawer.c \
 			init_ray.c \
 			dda_algorithm.c \
-			compute_wall.c \
-			draw_wall.c
+			compute_wall.c
 
 # -------------------------- #
 #        Object Files        #
