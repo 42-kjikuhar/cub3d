@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/26 21:23:58 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/28 17:42:31 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,6 @@ struct s_cub3d
 	t_mlx		mlx;
 };
 
-bool	parse_file(char const *filename, t_settings *settings, t_map *map);
-
 /* cleanup */
 void	cleanup_settings(t_settings *settings);
 void	cleanup_map(t_map *map);
@@ -99,7 +97,5 @@ bool	parse_file(char const *filename, t_settings *settings, t_map *map);
 
 /* validate_argument*/
 bool	vaildate_argument(int argc, char const *argv[]);
-
-bool	strhoge(int fd);
 
 #endif

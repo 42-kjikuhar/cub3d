@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 22:52:46 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 21:43:08 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/28 20:17:32 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ static void	draw_wall_top_face(t_mlx *mlx, int const win_x, t_wall_top_face *top
 void	wall_drawer(t_cub3d *cub3d)
 {
 	int		win_x;
-	t_ray	ray;
+	t_dda	dda;
 	t_hit	hit;
 	t_wall	wall;
 
 	win_x = 0;
 	while (win_x < W_WIDTH)
 	{
-		ray = init_ray(&(cub3d->player), win_x);
+		dda = init_dda_info(&(cub3d->player), win_x);
 		while (true)
 		{
-			hit = dda_algorithm(&(cub3d->map), &ray);
+			hit = search_hitting_wall(&(cub3d->map), &dda);
 			if (hit.hit_side == NO_HIT)
 				break ;
-			wall = compute_wall(&(cub3d->mlx), &(cub3d->player), &ray, &hit);
+			wall = compute_wall(&(cub3d->mlx), &(cub3d->player), &hit);
 			draw_wall_side_face(&(cub3d->mlx), win_x, &(wall.side));
 			draw_wall_top_face(&(cub3d->mlx), win_x, &(wall.top));
 		}

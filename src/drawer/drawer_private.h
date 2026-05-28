@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 22:53:27 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/28 00:07:55 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/28 21:11:57 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,20 @@
 
 # define WALL_HEIGHT 1
 
-typedef struct s_ray
+typedef struct s_dda
 {
 	t_dvec3	origin;
-	t_dvec3	vector;
-	double	length;
+	t_dvec3	ray;
+	double	screen_dist;
 	double	delta_dist_x;
 	double	delta_dist_y;
+	double	dist_x;
+	double	dist_y;
 	t_ivec2	cell;
 	t_ivec2	cell_step;
 	double	delta_height_x;
 	double	delta_height_y;
-	double	wall_dist_x;
-	double	wall_dist_y;
-}	t_ray;
+}	t_dda;
 
 enum e_hit_side
 {
@@ -46,10 +46,9 @@ enum e_hit_side
 
 typedef struct s_hit
 {
-	double	perp_wall_dist;
-	uint8_t	hit_side;
-	double	pos_x;
-	double	pos_y;
+	enum e_hit_side	hit_side;
+	t_dvec3			front_pos;
+	t_dvec3			back_pos;
 }	t_hit;
 
 typedef struct s_wall_side_face
@@ -87,14 +86,14 @@ void				floor_drawer(t_cub3d *cub3d);
 void				sky_drawer(t_cub3d *cub3d);
 void				wall_drawer(t_cub3d *cub3d);
 double				calc_horizontal_screen_height(t_player const *player);
-t_ray				init_ray(t_player const *player, int win_x);
-t_hit				dda_algorithm(t_map const *map, t_ray *ray);
-t_wall				compute_wall(t_mlx *mlx, t_player const *player, \
-						t_ray const *ray, t_hit const *hit);
-t_wall_side_face	compute_wall_side_face(t_mlx *mlx, t_player const *player, \
-						t_ray const *ray, t_hit const *hit);
+t_dda				init_dda_info(t_player const *player, int win_x);
+t_hit				search_hitting_wall(t_map const *map, t_dda *dda);
+t_wall				compute_wall(\
+						t_mlx *mlx, t_player const *player, t_hit const *hit);
+t_wall_side_face	compute_wall_side_face(\
+						t_mlx *mlx, t_player const *player, t_hit const *hit);
 t_wall_top_face		compute_wall_top_face(t_player const *player, \
-					t_ray const *ray, t_wall_side_face *side);
+						t_hit const *hit, t_wall_side_face const *side);
 void				compute_wall_point(t_player const *player, \
 				t_dvec3 to_point, double *point_depth, int *point_screen_height);
 void				clear_depth_buffer(void);

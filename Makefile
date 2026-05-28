@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/27 22:45:57 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/28 20:17:15 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -175,8 +175,8 @@ SRCS	+=	drawer.c \
 			sky_drawer.c \
 			calc_horizontal_screen_height.c \
 			wall_drawer.c \
-			init_ray.c \
-			dda_algorithm.c \
+			init_dda_info.c \
+			search_hitting_wall.c \
 			compute_wall.c \
 			compute_wall_side_face.c \
 			compute_wall_top_face.c \
