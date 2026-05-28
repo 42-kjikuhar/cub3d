@@ -6,31 +6,31 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:37:35 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 01:25:11 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/28 23:48:05 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "./parse_map_private.h"
 
-bool	parse_map_data(t_map *map)
+bool	parse_map_data(void)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	while (y < map->y_size)
+	while (y < map_size(Y_AXIS))
 	{
 		x = 0;
-		while (x < map->x_size)
+		while (x < map_size(X_AXIS))
 		{
-			if (!parse_map_cell(map, x, y))
+			if (!parse_map_cell(x, y))
 				return (false);
 			++x;
 		}
 		++y;
 	}
-	if (map->player_dir == '\0')
+	if (!has_map_player())
 	{
 		print_error(ERROR_MAP_NO_PLAYER);
 		return (false);

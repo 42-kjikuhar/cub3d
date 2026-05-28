@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/28 17:42:31 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/28 23:47:47 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include "error.h"
 # include "vector/ivec2.h"
 # include "vector/dvec3.h"
+# include "map.h"
 # include "ft_mlx.h"
 # include "player.h"
 # include "drawer.h"
@@ -45,14 +46,6 @@
 # define W_TITLE "cub3D"
 # define COLOR_BIT_SIZE 32
 # define TEXTURE_SIZE 64
-
-# define MAP_FLOOR '0'
-# define MAP_WALL '1'
-# define MAP_BLANK ' '
-# define PLAYER_NORTH 'N'
-# define PLAYER_SOUTH 'S'
-# define PLAYER_WEST 'W'
-# define PLAYER_EAST 'E'
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
@@ -71,29 +64,27 @@ struct s_settings
 	int		ceiling_color;
 };
 
-struct s_map
-{
-	char		**data;
-	int			x_size;
-	int			y_size;
-	t_ivec2		player_pos;
-	char		player_dir;
-};
+// struct s_map
+// {
+// 	char		**data;
+// 	int			x_size;
+// 	int			y_size;
+// 	t_ivec2		player_pos;
+// 	char		player_dir;
+// };
 
 struct s_cub3d
 {
 	t_settings	settings;
-	t_map		map;
 	t_player	player;
 	t_mlx		mlx;
 };
 
 /* cleanup */
 void	cleanup_settings(t_settings *settings);
-void	cleanup_map(t_map *map);
 
 /* parse_file */
-bool	parse_file(char const *filename, t_settings *settings, t_map *map);
+bool	parse_file(char const *filename, t_settings *settings);
 
 /* validate_argument*/
 bool	vaildate_argument(int argc, char const *argv[]);

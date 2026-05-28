@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 22:53:27 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/28 21:11:57 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/28 23:47:13 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void				sky_drawer(t_cub3d *cub3d);
 void				wall_drawer(t_cub3d *cub3d);
 double				calc_horizontal_screen_height(t_player const *player);
 t_dda				init_dda_info(t_player const *player, int win_x);
-t_hit				search_hitting_wall(t_map const *map, t_dda *dda);
+t_hit				search_hitting_wall(t_dda *dda);
 t_wall				compute_wall(\
 						t_mlx *mlx, t_player const *player, t_hit const *hit);
 t_wall_side_face	compute_wall_side_face(\

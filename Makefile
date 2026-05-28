@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/28 20:17:15 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/28 23:52:13 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,22 +83,23 @@ override CPPFLAGS	+= $(foreach dir, $(INCLUDE_DIRS), -I$(dir))
 
 SRC_DIRS	:= src
 SRC_DIRS	+= $(addprefix src/, \
-							cleanup \
-							error \
-							validate_argument \
-							parse_file parse_file/utils \
-							$(addprefix parse_file/, \
-								parse_settings parse_settings/utils \
-								parse_map \
-							) \
-							$(addprefix vector/, \
-								ivec2 \
-								dvec3 \
-							) \
-							ft_mlx ft_mlx/utils \
-							player player/utils \
-							drawer drawer/utils \
-						)
+					cleanup \
+					error \
+					validate_argument \
+					parse_file parse_file/utils \
+					$(addprefix parse_file/, \
+						parse_settings parse_settings/utils \
+						parse_map \
+					) \
+					$(addprefix vector/, \
+						ivec2 \
+						dvec3 \
+					) \
+					ft_mlx ft_mlx/utils \
+					player player/utils \
+					drawer drawer/utils \
+					map \
+				)
 
 $(foreach dir, $(SRC_DIRS), $(eval vpath %.c $(dir)))
 
@@ -108,8 +109,7 @@ $(foreach dir, $(SRC_DIRS), $(eval vpath %.c $(dir)))
 
 SRCS	:= 	main.c
 # cleanup
-SRCS	+=	cleanup_settings.c \
-			cleanup_map.c
+SRCS	+=	cleanup_settings.c
 # error
 SRCS	+=	print_error.c
 # validate_argument
@@ -182,6 +182,10 @@ SRCS	+=	drawer.c \
 			compute_wall_top_face.c \
 			compute_wall_point.c \
 			depth_buffer.c
+# map
+SRCS	+=	map.c \
+			map_size.c \
+			map_player.c
 
 # -------------------------- #
 #        Object Files        #

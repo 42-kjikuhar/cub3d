@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:35:08 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/17 12:25:11 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/28 22:24:49 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "./parse_file_private.h"
 
-bool	parse_file(char const *filename, t_settings *settings, t_map *map)
+bool	parse_file(char const *filename, t_settings *settings)
 {
 	int		fd;
 
@@ -28,7 +28,7 @@ bool	parse_file(char const *filename, t_settings *settings, t_map *map)
 		close(fd);
 		return (false);
 	}
-	if (!parse_map(fd, map))
+	if (!parse_map(fd))
 	{
 		cleanup_settings(settings);
 		close(fd);

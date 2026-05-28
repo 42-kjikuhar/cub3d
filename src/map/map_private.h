@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanup_map.c                                      :+:      :+:    :+:   */
+/*   map_private.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/19 21:51:27 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/21 00:18:32 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/28 22:01:10 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/28 23:50:47 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef MAP_PRIVATE_H
+# define MAP_PRIVATE_H
 
-void	cleanup_map(t_map *map)
+#include "types.h"
+
+struct	s_map_player
 {
-	int		y;
+	t_ivec2	pos;
+	char	dir;
+	bool	is_set;
+};
 
-	if (map->data == NULL)
-		return ;
-	y = 0;
-	while (y < map->y_size)
-	{
-		free(map->data[y++]);
-	}
-	free(map->data);
-}
+void	set_map_size(int x_size, int y_size);
+
+#endif

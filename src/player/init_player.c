@@ -6,21 +6,21 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 20:21:33 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 10:38:34 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/28 23:49:26 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "./player_private.h"
 
-void	init_player(t_player *player, t_map const *map)
+void	init_player(t_player *player)
 {
-	player->pos = dvec3(map->player_pos.x + 0.5, map->player_pos.y + 0.5, 1.5);
-	if (map->player_dir == PLAYER_NORTH)
+	player->pos = dvec3(map_player_pos().x + 0.5, map_player_pos().y + 0.5, 1.5);
+	if (map_player_dir() == PLAYER_NORTH)
 		player->dir = dvec3(0.0, 1.0, 0.0);
-	else if (map->player_dir == PLAYER_SOUTH)
+	else if (map_player_dir() == PLAYER_SOUTH)
 		player->dir = dvec3(0.0, -1.0, 0.0);
-	else if (map->player_dir == PLAYER_WEST)
+	else if (map_player_dir() == PLAYER_WEST)
 		player->dir = dvec3(-1.0, 0.0, 0.0);
 	else
 		player->dir = dvec3(1.0, 0.0, 0.0);

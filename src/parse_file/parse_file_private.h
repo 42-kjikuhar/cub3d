@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:44:06 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/19 22:11:57 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/28 23:47:03 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "cub3d.h"
 
 bool	parse_settings(int fd, t_settings *settings);
-bool	parse_map(int fd, t_map *map);
+bool	parse_map(int fd);
 
 /* utils */
 bool	read_next_line(int fd, char **next_line);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_private.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/17 12:33:12 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/19 22:04:10 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/28 23:46:29 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "cub3d.h"
 
-bool	read_map(int fd, t_map *map);
-bool	parse_map_data(t_map *map);
-bool	parse_map_cell(t_map *map, int x, int y);
+bool	read_map(int fd);
+bool	parse_map_data(void);
+bool	parse_map_cell(int x, int y);
 
 #endif

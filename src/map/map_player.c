@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   map_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/21 22:56:09 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/28 23:47:24 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/28 23:19:43 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/28 23:32:19 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#include "cub3d.h"
+#include "./map_private.h"
 
-// struct
-typedef struct s_dvec3		t_dvec3;
-typedef struct s_ivec2		t_ivec2;
-typedef struct s_settings	t_settings;
-typedef struct s_player		t_player;
-typedef struct s_img		t_img;
-typedef struct s_assets		t_assets;
-typedef struct s_mlx		t_mlx;
-typedef struct s_cub3d		t_cub3d;
+static struct s_map_player	g_map_player;
 
-// enum
-enum 						e_axis;
+void	set_map_player(t_ivec2 pos, char dir)
+{
+	g_map_player.pos = pos;
+	g_map_player.dir = dir;
+	g_map_player.is_set = true;
+}
 
-#endif
+t_ivec2	map_player_pos(void)
+{
+	return (g_map_player.pos);
+}
+
+char	map_player_dir(void)
+{
+	return (g_map_player.dir);
+}
+
+bool	has_map_player(void)
+{
+	return (g_map_player.is_set);
+}
