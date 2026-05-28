@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 16:49:56 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 23:17:39 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/28 17:00:49 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,168 @@ void	ceiling_drawer(t_mlx *mlx, t_settings const *settings)
 	}
 }
 
+typedef struct s_ray
+{
+	t_dvec3		vector;
+	t_dvec3		origin;
+	double		length;
+}				t_ray;
+
+enum e_hit_side
+{
+	NORTH_SIDE,
+	SOUTH_SIDE,
+	WEST_SIDE,
+	EAST_SIDE
+};
+
+t_ray	create_ray(t_player *player, int window_x)
+{
+	t_ray			ray;
+	double const	t = normalize_window_x(window_x);
+
+	ray.origin = player->pos;
+	ray.vector = dvec3_add(player->dir, dvec3_scale(t, player->plane));
+	ray.length = dvec3_length(dvec3(ray.vector.x, ray.vector.y, 0));
+}
+
+typedef struct s_dda
+{
+	double		dist_x;
+	double		dist_y;
+	double		delta_x;
+	double		delta_y;
+	t_ivec2		cell;
+	t_ivec2		cell_step;
+}				t_dda;
+
+t_dda	init_dda(t_ray *ray)
+{
+	t_dda	dda;
+
+	dda.delta_x = fabs(ray->length / ray->vector.x);
+	dda.delta_y = fabs(ray->length / ray->vector.y);
+	if (ray->vector.x > 0)
+		dda.dist_x = dda.delta_x * (ceil(ray->origin.x) - ray->origin.x);
+	else
+		dda.dist_x = dda.delta_x * (ray->origin.x - floor(ray->origin.x));
+	if (ray->vector.y > 0)
+		dda.dist_y = dda.delta_y * (ceil(ray->origin.y) - ray->origin.y);
+	else
+		dda.dist_y = dda.delta_y * (ray->origin.y - floor(ray->origin.y));
+	dda.cell = ivec2((int)(ray->origin.x), (int)(ray->origin.y));
+	if (ray->vector.x > 0)
+		dda.cell_step.x = 1;
+	else
+		dda.cell_step.x = -1;
+	if (ray->vector.y > 0)
+		dda.cell_step.y = 1;
+	else
+		dda.cell_step.y = -1;
+	return (dda);
+}
+
+typedef struct s_hit
+{
+	t_dvec3			pos;
+	double			distance;
+	enum e_hit_side	side;
+}				t_hit;
+
+t_hit	calculate_hit(t_ray *ray, t_dda *dda)
+{
+	t_hit	hit;
+
+	if (dda->dist_x < dda->dist_y)
+	{
+			hit.pos = dvec3_add(ray->origin, \
+				dvec3_scale(dda->dist_x / ray->length, ray->vector));
+		hit.distance = dda->dist_x / ray->length;
+		if (ray->vector.x > 0)
+			hit.side = WEST_SIDE;
+		else
+			hit.side = EAST_SIDE;
+	}
+	else
+	{
+		hit.pos = dvec3_add(ray->origin, \
+			dvec3_scale(dda->dist_y / ray->length, ray->vector));
+		hit.distance = dda->dist_y / ray->length;
+		if (ray->vector.y > 0)
+			hit.side = NORTH_SIDE;
+		else
+			hit.side = SOUTH_SIDE;
+	}
+}
+
+t_hit	hit_wall(t_map *map, t_ray *ray)
+{
+	t_dda	dda;
+
+	dda = init_dda(ray);
+	while (true)
+	{
+		if (dda.dist_x < dda.dist_y)
+			dda.cell.x = dda.cell_step.x;
+		else
+			dda.cell.y = dda.cell_step.y;
+		if (map->data[dda.cell.y][dda.cell.x] == MAP_WALL)
+			return (calculate_hit(ray, &dda));
+		if (dda.dist_x < dda.dist_y)
+			dda.dist_x += dda.delta_x;
+		else
+			dda.dist_y += dda.delta_y;
+	}
+}
+
+typedef struct s_wall
+{
+	t_img		*texture;
+	t_ivec2		texture_pixel;
+	int			size;
+	int			top;
+	int			bottom;
+	// int			start;
+	// int			end;
+}				t_wall;
+
+t_wall	calculate_wall(t_mlx *mlx, t_hit *hit)
+{
+	t_wall	wall;
+
+
+	return (wall);
+}
+
+
+void	draw_wall(t_mlx *mlx, t_settings const *settings, int y)
+{
+	int
+}
+
+void	wall_drawer(t_mlx *mlx, t_map *map, t_player *player)
+{
+	int			window_x;
+	t_ray		ray;
+	t_hit		hit;
+	t_wall		wall;
+
+	window_x = 0;
+	while (window_x < W_WIDTH)
+	{
+		ray = create_ray(player, window_x);
+		hit = hit_wall(map, &ray);
+		wall = calculate_wall(mlx, &hit);
+		draw_wall(mlx, &wall, window_x);
+		++window_x;
+	}
+}
+
 void	drawer(t_cub3d *cub3d)
 {
 	floor_drawer(&(cub3d->mlx), &(cub3d->settings));
 	ceiling_drawer(&(cub3d->mlx), &(cub3d->settings));
+	wall_drawer(&(cub3d->mlx), &(cub3d->settings));
 	mlx_put_image_to_window(cub3d->mlx.mlx_ptr, cub3d->mlx.win_ptr, \
 		cub3d->mlx.win_img.img_ptr, 0, 0);
 }
