@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_private.h                                      :+:      :+:    :+:   */
+/*   calc_camera_up.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/28 22:01:10 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 00:04:52 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/26 20:21:51 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/29 02:49:37 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_PRIVATE_H
-# define MAP_PRIVATE_H
+#include "cub3d.h"
 
-# include "types.h"
-# include "vector/ivec2.h"
-
-struct	s_map_player
+// left hand coordinate system
+t_dvec3	calc_player_up(t_dvec3 right, t_dvec3 dir)
 {
-	t_ivec2	pos;
-	char	dir;
-	bool	is_set;
-};
-
-void	set_map_size(int x_size, int y_size);
-
-#endif
+	return (dvec3_normalize(dvec3_cross(right, dir)));
+}

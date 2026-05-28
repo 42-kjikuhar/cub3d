@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 17:57:47 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/28 21:10:26 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 02:41:10 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,16 @@
 
 static void	compute_initial_dist( t_dda *dda);
 
-t_dda	init_dda_info(t_player const *player, int win_x)
+t_dda	init_dda_info(int win_x)
 {
-	t_dda	dda;
-	double	t;
+	t_camera const	*cam = camera();
+	t_dda			dda;
+	double			t;
 
-	dda.origin = dvec3(player->pos.x, player->pos.y, 0.0);
+	dda.origin = dvec3(cam->pos.x, cam->pos.y, 0.0);
 	t = (((double)win_x / W_WIDTH) - 0.5) * 2.0;
-	dda.ray = dvec3_add(player->dir, \
-				dvec3_scale(t * player->screen_half_width, player->right));
+	dda.ray = dvec3_add(cam->dir, \
+				dvec3_scale(t * screen()->half_width, cam->right));
 	dda.ray.z = 0.0;
 	dda.ray = dvec3_normalize(dda.ray);
 	dda.delta_dist_x = fabs(1.0 / dda.ray.x);
@@ -38,8 +39,8 @@ t_dda	init_dda_info(t_player const *player, int win_x)
 		dda.cell_step.y = 1;
 	else
 		dda.cell_step.y = -1;
-	dda.delta_height_x = player->dir.z / dda.ray.x;
-	dda.delta_height_y = player->dir.z / dda.ray.y;
+	dda.delta_height_x = cam->dir.z / dda.ray.x;
+	dda.delta_height_y = cam->dir.z / dda.ray.y;
 	return (dda);
 }
 

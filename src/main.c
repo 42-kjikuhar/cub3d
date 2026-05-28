@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/28 22:24:32 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 02:59:55 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	main(int argc, char const *argv[])
 	if (!parse_file(argv[1], &(cub3d.settings)))
 		return (EXIT_FAILURE);
 	init_player(&(cub3d.player));
+	set_screen(FOV);
+	set_camera(cub3d.player.pos, cub3d.player.dir);
 	if (!ft_mlx_init(&(cub3d.mlx), &(cub3d.settings)))
 	{
 		cleanup_settings(&(cub3d.settings));

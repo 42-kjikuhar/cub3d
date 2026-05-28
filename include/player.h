@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 20:22:19 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/28 23:47:36 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 02:48:49 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ struct s_player
 	t_dvec3		dir;
 	t_dvec3		right;
 	t_dvec3		up;
-	double		aspect_ratio;
-	double		screen_half_width;
-	double		screen_half_height;
 	uint16_t	action_flag;
 };
 

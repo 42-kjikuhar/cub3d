@@ -6,14 +6,14 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 22:01:14 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/28 23:38:36 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 00:05:56 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 
-#include "types.h"
+# include "types.h"
 
 # define MAP_FLOOR '0'
 # define MAP_WALL '1'

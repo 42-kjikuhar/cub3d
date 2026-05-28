@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_private.h                                      :+:      :+:    :+:   */
+/*   view_private.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/28 22:01:10 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 00:04:52 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/29 00:17:04 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/29 02:57:08 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_PRIVATE_H
-# define MAP_PRIVATE_H
+#ifndef VIEW_PRIVATE_H
+# define VIEW_PRIVATE_H
 
-# include "types.h"
-# include "vector/ivec2.h"
-
-struct	s_map_player
-{
-	t_ivec2	pos;
-	char	dir;
-	bool	is_set;
-};
-
-void	set_map_size(int x_size, int y_size);
+t_dvec3	calc_camera_right(t_dvec3 dir);
+t_dvec3	calc_camera_up(t_dvec3 right, t_dvec3 dir);
+void	set_screen_horizontal_pixel(void);
 
 #endif

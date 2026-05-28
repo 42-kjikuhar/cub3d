@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:38:03 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/28 23:50:07 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 00:05:46 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ bool	read_map(int fd)
 
 	line_list = NULL;
 	if (!read_map_as_list(fd, &line_list) \
-	|| !compute_map_size(line_list, &x_size, &y_size) \
-	|| !allocate_map(x_size, y_size))
+		|| !compute_map_size(line_list, &x_size, &y_size) \
+		|| !allocate_map(x_size, y_size))
 	{
 		ft_lstclear(&line_list, free);
 		return (false);
@@ -80,7 +80,7 @@ static bool	compute_map_size(t_list *line_list, int *x_size, int *y_size)
 			print_error(ERROR_MAP_TOO_LARGE);
 			return (false);
 		}
-		if (cur_x_size > (size_t)*x_size)
+		if (cur_x_size > (size_t)(*x_size))
 			*x_size = (int)cur_x_size;
 		line_list = line_list->next;
 	}

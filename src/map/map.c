@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 21:34:47 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/28 22:54:27 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 00:04:07 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ bool	allocate_map(int x_size, int y_size)
 
 void	cleanup_map(void)
 {
-	int y;
+	int	y;
 
 	if (g_map == NULL)
 		return ;

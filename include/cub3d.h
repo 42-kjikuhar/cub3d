@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/28 23:47:47 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 00:44:51 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # include "map.h"
 # include "ft_mlx.h"
 # include "player.h"
+# include "view.h"
 # include "drawer.h"
 
 # ifndef DEBUG
@@ -40,7 +41,6 @@
 
 // # define W_WIDTH 1920
 // # define W_HEIGHT 1080
-# define FOV 66
 # define W_WIDTH 1000
 # define W_HEIGHT 600
 # define W_TITLE "cub3D"

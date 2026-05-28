@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 00:21:15 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/28 23:15:58 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 00:58:46 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	move_player_forward(t_player *player)
 
 	move = dvec3_scale(MOVE_SPEED, dvec3(player->dir.x, player->dir.y, 0));
 	move_player(player, move);
+	change_camera_pos(player->pos);
 }
 
 void	move_player_left(t_player *player)
@@ -31,6 +32,7 @@ void	move_player_left(t_player *player)
 	dir = dvec3_rotate_z(dvec3(player->dir.x, player->dir.y, 0), -90.0);
 	move = dvec3_scale(MOVE_SPEED, dir);
 	move_player(player, move);
+	change_camera_pos(player->pos);
 }
 
 void	move_player_back(t_player *player)
@@ -41,6 +43,7 @@ void	move_player_back(t_player *player)
 	dir = dvec3_rotate_z(dvec3(player->dir.x, player->dir.y, 0), 180.0);
 	move = dvec3_scale(MOVE_SPEED, dir);
 	move_player(player, move);
+	change_camera_pos(player->pos);
 }
 
 void	move_player_right(t_player *player)
@@ -51,6 +54,7 @@ void	move_player_right(t_player *player)
 	dir = dvec3_rotate_z(dvec3(player->dir.x, player->dir.y, 0), 90.0);
 	move = dvec3_scale(MOVE_SPEED, dir);
 	move_player(player, move);
+	change_camera_pos(player->pos);
 }
 
 void	move_player(t_player *player, t_dvec3 move)

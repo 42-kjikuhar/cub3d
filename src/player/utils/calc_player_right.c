@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_horizontal_screen_height.c                    :+:      :+:    :+:   */
+/*   calc_camera_right.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/25 11:52:52 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 20:46:23 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/26 20:21:43 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/29 02:49:44 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-double	calc_horizontal_screen_height(t_player const *player)
+// left hand coordinate system
+t_dvec3	calc_player_right(t_dvec3 dir)
 {
-	double	cos_p;
+	static t_dvec3 const	vup = (t_dvec3){0.0, 0.0, 1.0};
 
-	cos_p = sqrt(player->dir.x * player->dir.x + player->dir.y * player->dir.y);
-	if (player->dir.z >= player->screen_half_height * cos_p)
-		return (W_HEIGHT + 0.5);
-	else if (player->dir.z <= -player->screen_half_height * cos_p)
-		return (-0.5);
-	return ((W_HEIGHT / 2) \
-		+ (W_HEIGHT / 2) * player->dir.z / (cos_p * player->screen_half_height));
+	return (dvec3_normalize(dvec3_cross(dir, vup)));
 }

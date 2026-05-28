@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 22:52:46 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/28 23:50:32 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 02:38:34 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ void	wall_drawer(t_cub3d *cub3d)
 	win_x = 0;
 	while (win_x < W_WIDTH)
 	{
-		dda = init_dda_info(&(cub3d->player), win_x);
+		dda = init_dda_info(win_x);
 		while (true)
 		{
 			hit = search_hitting_wall(&dda);
 			if (hit.hit_side == NO_HIT)
 				break ;
-			wall = compute_wall(&(cub3d->mlx), &(cub3d->player), &hit);
+			wall = compute_wall(&(cub3d->mlx), &hit);
 			draw_wall_side_face(&(cub3d->mlx), win_x, &(wall.side));
 			draw_wall_top_face(&(cub3d->mlx), win_x, &(wall.top));
 		}
