@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 08:35:54 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 09:07:15 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/28 00:37:54 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static void	handle_move_player_actions(t_map const *map, t_player *player);
 static void	handle_rotate_player_actions(t_player *player);
 
-void handle_player_actions(t_map const *map, t_player *player)
+void	handle_player_actions(t_map const *map, t_player *player)
 {
 	handle_move_player_actions(map, player);
 	handle_rotate_player_actions(player);

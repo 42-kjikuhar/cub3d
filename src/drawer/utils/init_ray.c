@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 21:14:02 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 10:57:03 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/28 00:37:37 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_ray	init_ray(t_player const *player, int win_x)
 {
 	t_ray			ray;
 	double const	t = (((double)win_x / W_WIDTH) - 0.5) * 2.0;
+
 	ray.origin = player->pos;
 	ray.vector = dvec3_add(player->dir, \
 					dvec3_scale(t * player->screen_half_width, player->right));

@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 13:21:45 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 21:27:16 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/28 00:08:16 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ static void	check_wall_hit(t_map const *map, t_ray *ray, t_hit *hit)
 		{
 			hit->perp_wall_dist = ray->wall_dist_x / ray->length;
 			if (ray->vector.x > 0)
-				hit->hit_side |= WEST_SIDE;
+				hit->hit_side = WEST_SIDE;
 			else
-				hit->hit_side |= EAST_SIDE;
+				hit->hit_side = EAST_SIDE;
 			if (ray->vector.x > 0)
 				hit->pos_x = ray->cell.x;
 			else
@@ -62,9 +62,9 @@ static void	check_wall_hit(t_map const *map, t_ray *ray, t_hit *hit)
 		{
 			hit->perp_wall_dist = ray->wall_dist_y / ray->length;
 			if (ray->vector.y > 0)
-				hit->hit_side |= SOUTH_SIDE;
+				hit->hit_side = SOUTH_SIDE;
 			else
-				hit->hit_side |= NORTH_SIDE;
+				hit->hit_side = NORTH_SIDE;
 			hit->pos_x = ray->origin.x \
 							+ ray->wall_dist_y / ray->length * ray->vector.x;
 			if (ray->vector.y > 0)

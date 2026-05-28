@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 22:53:27 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 21:33:17 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/28 00:07:55 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,11 @@ typedef struct s_ray
 
 enum e_hit_side
 {
-	NO_HIT = 0,
-	NORTH_SIDE = (1 << 0),
-	SOUTH_SIDE = (1 << 1),
-	WEST_SIDE = (1 << 2),
-	EAST_SIDE = (1 << 3),
-	TOP_SIDE = (1 << 4),
-	BOTTOM_SIDE = (1 << 5),
+	NO_HIT,
+	NORTH_SIDE,
+	SOUTH_SIDE,
+	WEST_SIDE,
+	EAST_SIDE,
 };
 
 typedef struct s_hit

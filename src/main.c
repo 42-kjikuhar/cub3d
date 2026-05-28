@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/27 00:12:33 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/27 22:54:29 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	main(int argc, char const *argv[])
 		cleanup_map(&(cub3d.map));
 		return (EXIT_FAILURE);
 	}
-	initial_drawer(&cub3d);
 	ft_mlx_hooks(&cub3d);
 	mlx_loop(cub3d.mlx.mlx_ptr);
 	ft_mlx_destroy(&(cub3d.mlx));

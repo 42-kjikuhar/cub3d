@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 19:45:52 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 21:42:47 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/27 22:05:39 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_wall_top_face	compute_wall_top_face(t_player const *player, \
 	t_dvec3			back_point;
 	t_dvec3			to_point;
 
-	top.color = ((200 << 16) | (100 << 8) | (100));
+	top.color = ((50 << 16) | (50 << 8) | (50));
 	top.front_depth = side->top_depth;
 	top.front = side->top;
 	if (ray->wall_dist_x < ray->wall_dist_y)

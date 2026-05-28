@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 22:59:32 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 20:32:01 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/27 23:11:23 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ void	floor_drawer(t_cub3d *cub3d)
 	horizontal_height = (int)floor(calc_horizontal_screen_height(&(cub3d->player)));
 	color \
 		= mlx_get_color_value(cub3d->mlx.mlx_ptr, cub3d->settings.floor_color);
-	win_x = 0;
-	while (win_x < W_WIDTH)
+	win_y = horizontal_height;
+	while (win_y < W_HEIGHT)
 	{
-		win_y = W_HEIGHT - 1;
-		while (win_y >= horizontal_height)
+		win_x = 0;
+		while (win_x < W_WIDTH)
 		{
 			*get_pixel_addr(&(cub3d->mlx.win_img), win_x, win_y) = color;
-			--win_y;
+			++win_x;
 		}
-		++win_x;
+		++win_y;
 	}
 }

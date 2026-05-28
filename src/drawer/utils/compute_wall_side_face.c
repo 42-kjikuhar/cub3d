@@ -6,10 +6,9 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 19:45:54 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 20:53:46 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/28 00:37:13 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "cub3d.h"
 #include "../drawer_private.h"
@@ -45,11 +44,11 @@ t_wall_side_face	compute_wall_side_face(t_mlx *mlx, t_player const *player, \
 
 static t_img	*select_texture(t_mlx *mlx, t_hit const *hit)
 {
-	if (hit->hit_side & NORTH_SIDE)
+	if (hit->hit_side == NORTH_SIDE)
 		return (&(mlx->assets.north_wall));
-	else if (hit->hit_side & SOUTH_SIDE)
+	else if (hit->hit_side == SOUTH_SIDE)
 		return (&(mlx->assets.south_wall));
-	else if (hit->hit_side & WEST_SIDE)
+	else if (hit->hit_side == WEST_SIDE)
 		return (&(mlx->assets.west_wall));
 	else
 		return (&(mlx->assets.east_wall));
@@ -57,11 +56,11 @@ static t_img	*select_texture(t_mlx *mlx, t_hit const *hit)
 
 static double	calc_texture_u(t_hit const *hit)
 {
-	if (hit->hit_side & NORTH_SIDE)
+	if (hit->hit_side == NORTH_SIDE)
 		return (1.0 - (hit->pos_x - floor(hit->pos_x)));
-	else if (hit->hit_side & SOUTH_SIDE)
+	else if (hit->hit_side == SOUTH_SIDE)
 		return (hit->pos_x - floor(hit->pos_x));
-	else if (hit->hit_side & WEST_SIDE)
+	else if (hit->hit_side == WEST_SIDE)
 		return (hit->pos_y - floor(hit->pos_y));
 	else
 		return (1.0 - (hit->pos_y - floor(hit->pos_y)));
