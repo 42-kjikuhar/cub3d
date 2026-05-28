@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/27 22:43:20 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/05/28 14:52:52 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,5 @@ bool	parse_file(char const *filename, t_settings *settings, t_map *map);
 
 /* validate_argument*/
 bool	vaildate_argument(int argc, char const *argv[]);
-
-bool	strhoge(int fd);
 
 #endif
