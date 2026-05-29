@@ -6,29 +6,16 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 16:29:03 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/22 16:29:38 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 17:21:16 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "./ft_mlx_private.h"
 
-void	ft_mlx_destroy(t_mlx *mlx)
+void	ft_mlx_destroy(void)
 {
-	if (mlx->assets.north_wall.img_ptr != NULL)
-		mlx_destroy_image(mlx->mlx_ptr, mlx->assets.north_wall.img_ptr);
-	if (mlx->assets.south_wall.img_ptr != NULL)
-		mlx_destroy_image(mlx->mlx_ptr, mlx->assets.south_wall.img_ptr);
-	if (mlx->assets.west_wall.img_ptr != NULL)
-		mlx_destroy_image(mlx->mlx_ptr, mlx->assets.west_wall.img_ptr);
-	if (mlx->assets.east_wall.img_ptr != NULL)
-		mlx_destroy_image(mlx->mlx_ptr, mlx->assets.east_wall.img_ptr);
-	if (mlx->win_img.img_ptr != NULL)
-		mlx_destroy_image(mlx->mlx_ptr, mlx->win_img.img_ptr);
-	if (mlx->win_ptr != NULL)
-		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
-	if (mlx->mlx_ptr != NULL)
-	{
-		mlx_destroy_display(mlx->mlx_ptr);
-		free(mlx->mlx_ptr);
-	}
+	cleanup_images();
+	cleanup_window();
+	cleanup_mlx_connection();
 }

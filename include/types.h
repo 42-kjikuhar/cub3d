@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 22:56:09 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/29 12:15:49 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 17:06:57 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ typedef struct s_map_player	t_map_player;
 typedef struct s_player		t_player;
 typedef struct s_camera		t_camera;
 typedef struct s_screen		t_screen;
-typedef struct s_img		t_img;
-typedef struct s_assets		t_assets;
-typedef struct s_mlx		t_mlx;
+typedef struct s_image		t_image;
 typedef struct s_cub3d		t_cub3d;
 
 // enum
 enum						e_axis;
+enum						e_image_id;
 
 #endif

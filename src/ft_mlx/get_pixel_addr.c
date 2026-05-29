@@ -6,14 +6,14 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:55:08 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/27 01:30:58 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 17:02:20 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-unsigned int	*get_pixel_addr(t_img *img, int const x, int const y)
+unsigned int	*get_pixel_addr(t_image *image, int x, int y)
 {
-	return ((unsigned int *)(img->pixel \
-				+ y * img->line_size + x * img->bits_per_pixel / 8));
+	return ((unsigned int *)(image->pixel \
+				+ y * image->line_size + x * image->bits_per_pixel / 8));
 }

@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/29 13:37:51 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/29 17:18:08 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -149,17 +149,16 @@ SRCS	+=	dvec3.c \
 			dvec3_rotate_y.c \
 			dvec3_rotate_z.c
 # ft_mlx
-SRCS	+=	ft_mlx_destroy.c \
+SRCS	+=	mlx_ptr.c \
+			win_ptr.c \
+			images.c \
+			ft_mlx_destroy.c \
 			ft_mlx_hooks.c \
 			ft_mlx_init.c \
 			get_pixel_addr.c \
-			create_assets.c \
-			create_window_image.c \
 			expose_hook.c \
 			key_press_hook.c \
 			loop_hook.c \
-			create_connection.c \
-			create_window.c \
 			init_image_info.c \
 			key_release_hook.c
 # player

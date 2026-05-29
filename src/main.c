@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/29 12:19:35 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 17:18:49 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ int	main(int argc, char const *argv[])
 		return (EXIT_FAILURE);
 	init_player(map_player());
 	init_view(FOV, player()->pos, player()->dir);
-	if (!ft_mlx_init(&(cub3d.mlx), &(cub3d.settings)))
+	if (!ft_mlx_init(&(cub3d.settings)))
 	{
 		cleanup_settings(&(cub3d.settings));
 		cleanup_map();
 		return (EXIT_FAILURE);
 	}
 	ft_mlx_hooks(&cub3d);
-	mlx_loop(cub3d.mlx.mlx_ptr);
-	ft_mlx_destroy(&(cub3d.mlx));
+	mlx_loop(mlx_ptr());
+	ft_mlx_destroy();
 	cleanup_settings(&(cub3d.settings));
 	cleanup_map();
 	return (EXIT_SUCCESS);

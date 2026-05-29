@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/29 11:39:24 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 17:11:13 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ struct s_settings
 struct s_cub3d
 {
 	t_settings	settings;
-	t_mlx		mlx;
 };
 
 /* cleanup */

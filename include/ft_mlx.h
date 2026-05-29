@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 22:50:14 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/29 10:59:27 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 17:26:50 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,18 @@
 # define COLOR_BIT_SIZE 32
 # define TEXTURE_SIZE 64
 
-struct s_img
+enum e_image_id
 {
-	void	*img_ptr;
+	WINDOW_IMG,
+	NORTH_WALL_IMG,
+	SOUTH_WALL_IMG,
+	WEST_WALL_IMG,
+	EAST_WALL_IMG,
+	IMG_COUNT,
+};
+struct s_image
+{
+	void	*ptr;
 	int		width;
 	int		height;
 	char	*pixel;
@@ -29,32 +38,12 @@ struct s_img
 	int		line_size;
 	int		endian;
 };
-
-struct s_assets
-{
-	t_img	north_wall;
-	t_img	south_wall;
-	t_img	west_wall;
-	t_img	east_wall;
-};
-
-struct s_mlx
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	t_img		win_img;
-	t_assets	assets;
-};
-
-bool			ft_mlx_init(t_mlx *mlx, t_settings *settings);
+void			*mlx_ptr(void);
+void			*win_ptr(void);
+t_image			*image(enum e_image_id id);
+bool			ft_mlx_init(t_settings *settings);
 void			ft_mlx_hooks(t_cub3d *cub3d);
-void			ft_mlx_destroy(t_mlx *mlx);
-unsigned int	*get_pixel_addr(t_img *img, int const x, int const y);
-
-/* utils */
-int				expose_hook(void *param);
-int				key_press_hook(int keycode, void *param);
-int				key_release_hook(int keycode, void *param);
-int				loop_hook(void *param);
+void			ft_mlx_destroy(void);
+unsigned int	*get_pixel_addr(t_image *image, int const x, int const y);
 
 #endif

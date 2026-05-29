@@ -1,24 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_window.c                                    :+:      :+:    :+:   */
+/*   mlx_ptr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/22 16:11:09 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/22 16:11:24 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/29 14:58:49 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/29 15:59:20 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	create_window(t_mlx *mlx)
+static void	*g_mlx_ptr;
+
+void	*mlx_ptr(void)
 {
-	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, W_WIDTH, W_HEIGHT, W_TITLE);
-	if (mlx->win_ptr == NULL)
+	return (g_mlx_ptr);
+}
+
+bool	create_mlx_connection(void)
+{
+	g_mlx_ptr = mlx_init();
+	if (g_mlx_ptr == NULL)
 	{
-		print_error(ERROR_MLX_WINDOW);
+		print_error(ERROR_MLX_CONNECTION);
 		return (false);
 	}
 	return (true);
+}
+
+void	cleanup_mlx_connection(void)
+{
+	if (g_mlx_ptr != NULL)
+	{
+		mlx_destroy_display(g_mlx_ptr);
+		free(g_mlx_ptr);
+		g_mlx_ptr = NULL;
+	}
 }

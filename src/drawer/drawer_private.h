@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 22:53:27 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 02:45:57 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 17:27:50 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_hit
 
 typedef struct s_wall_side_face
 {
-	t_img	*texture;
+	t_image	*texture;
 	t_ivec2	texture_pixel;
 	int		top;
 	int		bottom;
@@ -84,16 +84,16 @@ typedef struct s_wall
 
 void				floor_drawer(t_cub3d *cub3d);
 void				sky_drawer(t_cub3d *cub3d);
-void				wall_drawer(t_cub3d *cub3d);
+void				wall_drawer(void);
 double				calc_horizontal_screen_height(t_player const *player);
 t_dda				init_dda_info(int win_x);
 t_hit				search_hitting_wall(t_dda *dda);
-t_wall				compute_wall(t_mlx *mlx, t_hit const *hit);
-t_wall_side_face	compute_wall_side_face(t_mlx *mlx, t_hit const *hit);
+t_wall				compute_wall(t_hit const *hit);
+t_wall_side_face	compute_wall_side_face(t_hit const *hit);
 t_wall_top_face		compute_wall_top_face(\
 						t_hit const *hit, t_wall_side_face const *side);
 void				compute_wall_point(\
-				t_dvec3 to_point, double *point_depth, int *point_screen_height);
+			t_dvec3 to_point, double *point_depth, int *point_screen_height);
 void				clear_depth_buffer(void);
 bool				try_depth_buffer(double depth, int x, int y);
 

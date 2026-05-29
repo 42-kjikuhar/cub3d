@@ -6,23 +6,41 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 23:10:23 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/22 17:32:20 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 17:21:28 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "ft_mlx_private.h"
+#include "./ft_mlx_private.h"
 
-bool	ft_mlx_init(t_mlx *mlx, t_settings *settings)
+static bool	create_assets(t_settings *settings);
+
+bool	ft_mlx_init(t_settings *settings)
 {
-	if (!create_connection(mlx) \
-	|| !create_window_image(mlx) \
-	|| !create_assets(mlx, settings) \
-	|| !create_window(mlx))
+	if (!create_mlx_connection() \
+	|| !create_image(WINDOW_IMG, W_WIDTH, W_HEIGHT) \
+	|| !create_assets(settings) \
+	|| !create_window())
 	{
-		ft_mlx_destroy(mlx);
+		ft_mlx_destroy();
 		return (false);
 	}
-	mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
+	mlx_clear_window(mlx_ptr(), win_ptr());
+	return (true);
+}
+
+static bool	create_assets(t_settings *settings)
+{
+	if (!create_image_from_xpm(settings->north_texture, \
+				NORTH_WALL_IMG, TEXTURE_SIZE, TEXTURE_SIZE) \
+		|| !create_image_from_xpm(settings->south_texture, \
+				SOUTH_WALL_IMG, TEXTURE_SIZE, TEXTURE_SIZE) \
+		|| !create_image_from_xpm(settings->west_texture, \
+				WEST_WALL_IMG, TEXTURE_SIZE, TEXTURE_SIZE) \
+		|| !create_image_from_xpm(settings->east_texture, \
+				EAST_WALL_IMG, TEXTURE_SIZE, TEXTURE_SIZE))
+	{
+		return (false);
+	}
 	return (true);
 }
