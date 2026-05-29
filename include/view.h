@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 00:09:38 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 12:06:20 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 14:04:53 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ void			change_camera_pos(t_dvec3 pos);
 void			change_camera_dir(t_dvec3 dir);
 t_screen const	*screen(void);
 void			set_screen(double horizontal_fov);
+void			compute_screen_horizontal_pixel(t_camera const *cam);
 
 #endif

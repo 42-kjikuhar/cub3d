@@ -6,15 +6,17 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 22:01:14 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 13:00:52 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 13:43:52 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 
-# include "types.h"
 # include <stdbool.h>
+
+# include "types.h"
+# include "vector/ivec2.h"
 
 # define MAP_FLOOR '0'
 # define MAP_WALL '1'

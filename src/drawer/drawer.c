@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 00:06:44 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/27 22:54:06 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 14:05:04 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 void	drawer(t_cub3d *cub3d)
 {
 	clear_depth_buffer();
+	compute_screen_horizontal_pixel(camera());
 	floor_drawer(cub3d);
 	sky_drawer(cub3d);
 	wall_drawer(cub3d);

@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 00:42:52 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 13:41:44 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 14:04:44 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	set_screen(double horizontal_fov)
 	g_screen.half_height = g_screen.half_width / g_screen.aspect_ratio;
 }
 
-void	set_screen_horizontal_pixel(t_camera const *cam)
+void	compute_screen_horizontal_pixel(t_camera const *cam)
 {
 	double	height;
 	double	sin_pitch;
@@ -36,11 +36,11 @@ void	set_screen_horizontal_pixel(t_camera const *cam)
 	sin_pitch = cam->dir.z;
 	cos_pitch = sqrt(cam->dir.x * cam->dir.x + cam->dir.y * cam->dir.y);
 	tan_pitch = sin_pitch / cos_pitch;
-	height = (W_HEIGHT / 2) \
-		+ (W_HEIGHT / 2) * (tan_pitch / g_screen.half_height);
+	height = (W_HEIGHT / 2.0) \
+		+ (W_HEIGHT / 2.0) * (tan_pitch / g_screen.half_height);
 	if (height > W_HEIGHT - 1)
 		g_screen.horizontal_pixel = W_HEIGHT - 0.5;
-	else if (height < 0)
+	else if (height < 0.0)
 		g_screen.horizontal_pixel = -0.5;
 	else
 		g_screen.horizontal_pixel = height;
