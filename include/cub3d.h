@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/29 17:11:13 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 17:30:13 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,7 @@
 #  define DEBUG 0
 # endif
 
-// # define W_WIDTH 1920
-// # define W_HEIGHT 1080
-# define W_WIDTH 1000
-# define W_HEIGHT 600
-# define W_TITLE "cub3D"
+
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846

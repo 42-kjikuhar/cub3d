@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 22:50:14 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/29 17:26:50 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 17:30:22 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 # include <stdbool.h>
 # include "types.h"
+
+// # define W_WIDTH 1920
+// # define W_HEIGHT 1080
+# define W_WIDTH 1000
+# define W_HEIGHT 600
+# define W_TITLE "cub3D"
 
 # define COLOR_BIT_SIZE 32
 # define TEXTURE_SIZE 64

@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 17:32:52 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 17:20:32 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 17:32:10 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 bool	create_mlx_connection(void);
 void	cleanup_mlx_connection(void);
-bool	create_window(void);
+bool	create_window(int width, int height, char *title);
 void	cleanup_window(void);
 bool	create_image(enum e_image_id id, int width, int height);
 bool	create_image_from_xpm(\
