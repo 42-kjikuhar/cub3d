@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 08:35:54 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 13:36:31 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 13:41:00 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	do_player_actions(void)
 
 static void	move_player_actions(void)
 {
-	uint16_t const action = player()->action_flag;
+	uint16_t const	action = player()->action_flag;
 
 	if ((action & MOVE_FORWARD) && !(action & MOVE_BACK))
 	{
@@ -46,7 +46,7 @@ static void	move_player_actions(void)
 
 static void	rotate_player_actions(void)
 {
-	uint16_t const action = player()->action_flag;
+	uint16_t const	action = player()->action_flag;
 
 	if ((action & ROTATE_UP) && !(action & ROTATE_DOWN))
 	{

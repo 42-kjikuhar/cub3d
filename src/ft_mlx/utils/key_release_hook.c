@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 16:50:19 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 13:01:17 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 13:41:21 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	key_release_hook(int keycode, void *param)
 {
-
 	(void)param;
 	if (keycode == XK_w)
 		unset_player_action(MOVE_FORWARD);

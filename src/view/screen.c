@@ -6,13 +6,13 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 00:42:52 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 11:52:05 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 13:41:44 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static t_screen g_screen;
+static t_screen	g_screen;
 
 t_screen const	*screen(void)
 {
@@ -28,10 +28,10 @@ void	set_screen(double horizontal_fov)
 
 void	set_screen_horizontal_pixel(t_camera const *cam)
 {
-	double			height;
-	double			sin_pitch;
-	double			cos_pitch;
-	double			tan_pitch;
+	double	height;
+	double	sin_pitch;
+	double	cos_pitch;
+	double	tan_pitch;
 
 	sin_pitch = cam->dir.z;
 	cos_pitch = sqrt(cam->dir.x * cam->dir.x + cam->dir.y * cam->dir.y);
