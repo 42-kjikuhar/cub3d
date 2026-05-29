@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 00:09:38 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 02:57:26 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 12:06:20 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ struct s_screen
 	double	horizontal_pixel;
 };
 
+void			init_view(double horizontal_fov, t_dvec3 pos, t_dvec3 dir);
 t_camera const	*camera(void);
 void			set_camera(t_dvec3 pos, t_dvec3 dir);
 void			set_camera_lookat(t_dvec3 look_from, t_dvec3 look_at);

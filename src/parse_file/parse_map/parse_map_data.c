@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:37:35 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/28 23:48:05 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 12:17:45 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	parse_map_data(void)
 		}
 		++y;
 	}
-	if (!has_map_player())
+	if (!(map_player()->is_set))
 	{
 		print_error(ERROR_MAP_NO_PLAYER);
 		return (false);

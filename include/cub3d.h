@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/29 00:44:51 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 11:39:24 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <string.h>
 # include <errno.h>
+# include <stdbool.h>
 # include <limits.h>
 # include <math.h>
 # include <X11/keysym.h>
@@ -44,8 +45,6 @@
 # define W_WIDTH 1000
 # define W_HEIGHT 600
 # define W_TITLE "cub3D"
-# define COLOR_BIT_SIZE 32
-# define TEXTURE_SIZE 64
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
@@ -63,20 +62,9 @@ struct s_settings
 	int		floor_color;
 	int		ceiling_color;
 };
-
-// struct s_map
-// {
-// 	char		**data;
-// 	int			x_size;
-// 	int			y_size;
-// 	t_ivec2		player_pos;
-// 	char		player_dir;
-// };
-
 struct s_cub3d
 {
 	t_settings	settings;
-	t_player	player;
 	t_mlx		mlx;
 };
 

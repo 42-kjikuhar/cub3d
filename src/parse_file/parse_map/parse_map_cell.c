@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 23:35:02 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/28 23:45:49 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 12:17:16 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ bool	parse_map_cell(int x, int y)
 		return (false);
 	if (is_player_char(x, y))
 	{
-		if (has_map_player())
+		if (map_player()->is_set)
 		{
 			print_error(ERROR_MAP_MULTI_PLAYER);
 			return (false);
 		}
-		set_map_player(ivec2(x, y), map(x, y));
+		set_map_player(map(x, y), ivec2(x, y));
 		set_map(MAP_FLOOR, x, y);
 	}
 	if (map(x, y) == MAP_FLOOR \

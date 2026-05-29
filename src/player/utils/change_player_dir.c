@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   view_private.h                                     :+:      :+:    :+:   */
+/*   player_dir.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/29 00:17:04 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 11:55:51 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/29 13:15:21 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/29 13:25:44 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VIEW_PRIVATE_H
-# define VIEW_PRIVATE_H
+#include "cub3d.h"
+#include "../player_private.h"
 
-t_dvec3	calc_camera_right(t_dvec3 dir);
-t_dvec3	calc_camera_up(t_dvec3 right, t_dvec3 dir);
-void	set_screen_horizontal_pixel(t_camera const *cam);
+void	change_player_dir(t_dvec3 dir)
+{
+	t_player *p;
 
-#endif
+	p = mutable_player();
+	p->dir = dir;
+	p->right = calc_player_right(p->dir);
+	p->up = calc_player_up(p->right, p->dir);
+}

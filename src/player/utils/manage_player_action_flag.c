@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   view_private.h                                     :+:      :+:    :+:   */
+/*   manage_player_action_flag.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/29 00:17:04 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 11:55:51 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/29 13:13:03 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/29 13:38:03 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VIEW_PRIVATE_H
-# define VIEW_PRIVATE_H
+#include "cub3d.h"
+#include "../player_private.h"
 
-t_dvec3	calc_camera_right(t_dvec3 dir);
-t_dvec3	calc_camera_up(t_dvec3 right, t_dvec3 dir);
-void	set_screen_horizontal_pixel(t_camera const *cam);
+void	set_player_action(enum e_action_flag action)
+{
+	mutable_player()->action_flag |= action;
+}
 
-#endif
+void	unset_player_action(enum e_action_flag action)
+{
+	mutable_player()->action_flag &= ~action;
+}

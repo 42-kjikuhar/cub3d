@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 00:42:52 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 02:37:28 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 11:52:05 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ void	set_screen(double horizontal_fov)
 	g_screen.half_height = g_screen.half_width / g_screen.aspect_ratio;
 }
 
-void	set_screen_horizontal_pixel(void)
+void	set_screen_horizontal_pixel(t_camera const *cam)
 {
 	double			height;
-	t_camera const	*cam = camera();
 	double			sin_pitch;
 	double			cos_pitch;
 	double			tan_pitch;

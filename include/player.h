@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 20:22:19 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 02:48:49 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 13:36:56 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdint.h>
 
 # include "types.h"
+# include "vector/dvec3.h"
 
 // "PLAYER_OFFSET must be less than 0.5."
 # define PLAYER_OFFSET 0.05
@@ -43,7 +44,12 @@ struct s_player
 	uint16_t	action_flag;
 };
 
-void	init_player(t_player *player);
-void	handle_player_actions(t_player *player);
+void			init_player(t_map_player const *map_player);
+t_player const	*player(void);
+void			change_player_pos(t_dvec3 pos);
+void			change_player_dir(t_dvec3 dir);
+void			set_player_action(enum e_action_flag action);
+void			unset_player_action(enum e_action_flag action);
+void			do_player_actions(void);
 
 #endif

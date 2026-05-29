@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 00:03:00 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 02:56:51 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 11:57:49 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	set_camera(t_dvec3 pos, t_dvec3 dir)
 	g_camera.dir = dir;
 	g_camera.right = calc_camera_right(g_camera.dir);
 	g_camera.up = calc_camera_up(g_camera.right, g_camera.dir);
-	set_screen_horizontal_pixel();
+	set_screen_horizontal_pixel(&g_camera);
 }
 
 void	set_camera_lookat(t_dvec3 look_from, t_dvec3 look_at)
@@ -35,7 +35,7 @@ void	set_camera_lookat(t_dvec3 look_from, t_dvec3 look_at)
 	g_camera.dir = dvec3_sub(look_at, look_from);;
 	g_camera.right = calc_camera_right(g_camera.dir);
 	g_camera.up = calc_camera_up(g_camera.right, g_camera.dir);
-	set_screen_horizontal_pixel();
+	set_screen_horizontal_pixel(&g_camera);
 }
 
 void	change_camera_pos(t_dvec3 pos)
@@ -48,5 +48,5 @@ void	change_camera_dir(t_dvec3 dir)
 	g_camera.dir = dir;
 	g_camera.right = calc_camera_right(g_camera.dir);
 	g_camera.up = calc_camera_up(g_camera.right, g_camera.dir);
-	set_screen_horizontal_pixel();
+	set_screen_horizontal_pixel(&g_camera);
 }

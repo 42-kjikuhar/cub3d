@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/29 02:54:49 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/29 13:37:51 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -164,14 +164,19 @@ SRCS	+=	ft_mlx_destroy.c \
 			key_release_hook.c
 # player
 SRCS	+=	init_player.c \
-			handle_player_actions.c \
+			player.c \
+			change_player_dir.c \
+			change_player_pos.c \
+			manage_player_action_flag.c \
+			do_player_actions.c \
 			move_player.c \
 			is_colliding_with_wall.c \
 			rotate_player.c \
 			calc_player_right.c \
 			calc_player_up.c \
 # view
-SRCS	+=	camera.c \
+SRCS	+=	init_view.c \
+			camera.c \
 			calc_camera_right.c \
 			calc_camera_up.c \
 			screen.c

@@ -6,12 +6,11 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 21:34:47 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 00:04:07 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 13:02:12 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "./map_private.h"
 
 static char	**g_map;
 

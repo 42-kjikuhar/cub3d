@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:38:03 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/29 00:05:46 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 12:41:03 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,17 @@
 #include "../parse_file_private.h"
 
 static bool	read_map_as_list(int fd, t_list **line_list);
-static bool	compute_map_size(t_list *line_list, int *x_size, int *y_size);
+static bool	compute_map_size(t_list *line_list);
 static void	set_map_from_list(t_list *line_list);
 
 bool	read_map(int fd)
 {
 	t_list	*line_list;
-	int		x_size;
-	int		y_size;
 
 	line_list = NULL;
 	if (!read_map_as_list(fd, &line_list) \
-		|| !compute_map_size(line_list, &x_size, &y_size) \
-		|| !allocate_map(x_size, y_size))
+		|| !compute_map_size(line_list) \
+		|| !allocate_map(map_size(X_AXIS), map_size(Y_AXIS)))
 	{
 		ft_lstclear(&line_list, free);
 		return (false);
@@ -64,32 +62,32 @@ static bool	read_map_as_list(int fd, t_list **line_list)
 }
 
 /* 無駄な終端スペースを省ける余地がある。 */
-static bool	compute_map_size(t_list *line_list, int *x_size, int *y_size)
+static bool	compute_map_size(t_list *line_list)
 {
-	size_t	cur_x_size;
-	size_t	cur_y_size;
+	size_t	size[2];
+	size_t	line_size;
 
-	*x_size = 0;
-	cur_y_size = 0;
+	size[X_AXIS] = 0;
+	size[Y_AXIS] = 0;
 	while (line_list != NULL)
 	{
-		cur_x_size = ft_strlen(line_list->content);
-		++cur_y_size;
-		if (cur_x_size > INT_MAX || cur_y_size > INT_MAX)
+		++size[Y_AXIS];
+		line_size = ft_strlen(line_list->content);
+		if (line_size > size[X_AXIS])
+			size[X_AXIS] = line_size;
+		if (size[X_AXIS] > INT_MAX || size[Y_AXIS] > INT_MAX)
 		{
 			print_error(ERROR_MAP_TOO_LARGE);
 			return (false);
 		}
-		if (cur_x_size > (size_t)(*x_size))
-			*x_size = (int)cur_x_size;
 		line_list = line_list->next;
 	}
-	*y_size = (int)cur_y_size;
-	if (*y_size == 0)
+	if (size[Y_AXIS] == 0)
 	{
 		print_error(ERROR_MAP_EMPTY);
 		return (false);
 	}
+	set_map_size((int)(size[X_AXIS]), (int)(size[Y_AXIS]));
 	return (true);
 }
 

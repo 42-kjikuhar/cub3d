@@ -6,25 +6,23 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 20:21:33 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 02:53:33 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 13:30:48 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "./player_private.h"
 
-void	init_player(t_player *player)
+void	init_player(t_map_player const *map_player)
 {
-	player->pos \
-		= dvec3(map_player_pos().x + 0.5, map_player_pos().y + 0.5, 1.5);
-	if (map_player_dir() == PLAYER_NORTH)
-		player->dir = dvec3(0.0, 1.0, 0.0);
-	else if (map_player_dir() == PLAYER_SOUTH)
-		player->dir = dvec3(0.0, -1.0, 0.0);
-	else if (map_player_dir() == PLAYER_WEST)
-		player->dir = dvec3(-1.0, 0.0, 0.0);
+	change_player_pos(\
+		dvec3(map_player->pos.x + 0.5, map_player->pos.y + 0.5, 1.5));
+	if (map_player->dir == PLAYER_NORTH)
+		change_player_dir(dvec3(0.0, 1.0, 0.0));
+	else if (map_player->dir == PLAYER_SOUTH)
+		change_player_dir(dvec3(0.0, -1.0, 0.0));
+	else if (map_player->dir == PLAYER_WEST)
+		change_player_dir(dvec3(-1.0, 0.0, 0.0));
 	else
-		player->dir = dvec3(1.0, 0.0, 0.0);
-	player->right = calc_player_right(player->dir);
-	player->up = calc_player_up(player->right, player->dir);
+		change_player_dir(dvec3(1.0, 0.0, 0.0));
 }

@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_private.h                                      :+:      :+:    :+:   */
+/*   init_view.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/28 22:01:10 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 00:04:52 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/29 12:02:21 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/29 12:19:13 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_PRIVATE_H
-# define MAP_PRIVATE_H
+#include "cub3d.h"
 
-# include "types.h"
-# include "vector/ivec2.h"
-
-struct	s_map_player
+void	init_view(double horizontal_fov, t_dvec3 pos, t_dvec3 dir)
 {
-	t_ivec2	pos;
-	char	dir;
-	bool	is_set;
-};
-
-void	set_map_size(int x_size, int y_size);
-
-#endif
+	set_screen(horizontal_fov);
+	set_camera(pos, dir);
+}

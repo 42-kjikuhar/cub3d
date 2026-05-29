@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 22:50:14 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/24 12:27:18 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 10:59:27 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <stdbool.h>
 # include "types.h"
+
+# define COLOR_BIT_SIZE 32
+# define TEXTURE_SIZE 64
 
 struct s_img
 {
