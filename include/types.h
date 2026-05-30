@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 22:56:09 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/29 17:06:57 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 17:42:06 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ typedef struct s_cub3d		t_cub3d;
 // enum
 enum						e_axis;
 enum						e_image_id;
-
+enum						e_color_id;
 #endif

@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 22:52:46 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 17:24:29 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:15:51 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	draw_wall_side_face(int win_x, t_wall_side_face *side)
 			side->texture_pixel.y -= 1;
 		if (try_depth_buffer(side->top_depth, win_x, win_y))
 		{
-			*get_pixel_addr(image(WINDOW_IMG), win_x, win_y) \
+			*get_pixel_addr(get_image(IMG_WINDOW), win_x, win_y) \
 				= *get_pixel_addr(side->texture, side->texture_pixel.x, side->texture_pixel.y);
 		}
 		texture_v += texture_step;
@@ -71,13 +71,13 @@ static void	draw_wall_top_face(int win_x, t_wall_top_face *top)
 	int	color;
 	int	win_y;
 
-	color = mlx_get_color_value(mlx_ptr(), top->color);
+	color = mlx_get_color_value(get_mlx_ptr(), top->color);
 	win_y = top->draw_start;
 	while (win_y <= top->draw_end)
 	{
 		if (try_depth_buffer(top->back_depth, win_x, win_y))
 		{
-			*get_pixel_addr(image(WINDOW_IMG), win_x, win_y) = color;
+			*get_pixel_addr(get_image(IMG_WINDOW), win_x, win_y) = color;
 		}
 		++win_y;
 	}

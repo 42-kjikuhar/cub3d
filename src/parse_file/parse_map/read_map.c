@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:38:03 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/29 12:41:03 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:26:31 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	read_map(int fd)
 	line_list = NULL;
 	if (!read_map_as_list(fd, &line_list) \
 		|| !compute_map_size(line_list) \
-		|| !allocate_map(map_size(X_AXIS), map_size(Y_AXIS)))
+		|| !allocate_map(get_map_size(X_AXIS), get_map_size(Y_AXIS)))
 	{
 		ft_lstclear(&line_list, free);
 		return (false);
@@ -98,19 +98,19 @@ static void	set_map_from_list(t_list *line_list)
 	int		x;
 	int		y;
 
-	y = map_size(Y_AXIS) - 1;
+	y = get_map_size(Y_AXIS) - 1;
 	while (y >= 0)
 	{
 		content = ft_lst_pop_front(&line_list);
 		x = 0;
 		while (content[x] != '\0')
 		{
-			set_map(content[x], x, y);
+			set_map_data(x, y, content[x]);
 			++x;
 		}
-		while (x < map_size(X_AXIS))
+		while (x < get_map_size(X_AXIS))
 		{
-			set_map(' ', x, y);
+			set_map_data(x, y, ' ');
 			++x;
 		}
 		free(content);

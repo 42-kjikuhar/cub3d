@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 00:03:00 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 13:51:31 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:17:54 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static t_camera	g_camera;
 
-t_camera const	*camera(void)
+t_camera const	*get_camera(void)
 {
 	return (&g_camera);
 }

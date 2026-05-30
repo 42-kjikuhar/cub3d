@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 23:19:43 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 12:16:48 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:20:12 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_map_player	g_map_player;
 
-t_map_player const	*map_player(void)
+t_map_player const	*get_map_player(void)
 {
 	return (&g_map_player);
 }

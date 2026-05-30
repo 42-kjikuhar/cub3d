@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 00:42:52 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 14:04:44 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:18:51 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_screen	g_screen;
 
-t_screen const	*screen(void)
+t_screen const	*get_screen(void)
 {
 	return (&g_screen);
 }

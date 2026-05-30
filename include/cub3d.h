@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/29 17:30:13 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 18:15:35 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@
 # include "error.h"
 # include "vector/ivec2.h"
 # include "vector/dvec3.h"
+# include "setting.h"
+# include "color.h"
 # include "map.h"
-# include "ft_mlx.h"
-# include "player.h"
 # include "view.h"
+# include "player.h"
+# include "ft_mlx.h"
 # include "drawer.h"
 
 # ifndef DEBUG
 #  define DEBUG 0
 # endif
-
-
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
@@ -58,6 +58,7 @@ struct s_settings
 	int		floor_color;
 	int		ceiling_color;
 };
+
 struct s_cub3d
 {
 	t_settings	settings;

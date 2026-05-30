@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 16:49:56 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 17:22:23 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:14:17 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ int	loop_hook(void *param)
 	do_player_actions();
 	drawer(cub3d);
 	if (DEBUG)
-		mlx_loop_end(mlx_ptr());
+		mlx_loop_end(get_mlx_ptr());
 	return (0);
 }

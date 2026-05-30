@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 21:34:47 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 13:02:12 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:25:52 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	map(int x, int y)
 	return (g_map[y][x]);
 }
 
-void	set_map(char data, int x, int y)
+void	set_map_data(int x, int y, char data)
 {
 	g_map[y][x] = data;
 }
@@ -59,7 +59,7 @@ void	cleanup_map(void)
 
 	if (g_map == NULL)
 		return ;
-	y = map_size(Y_AXIS);
+	y = get_map_size(Y_AXIS);
 	while (y-- > 0)
 		free(g_map[y]);
 	free(g_map);

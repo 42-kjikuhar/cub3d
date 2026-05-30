@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 16:50:32 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 17:26:37 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:14:17 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	key_press_hook(int keycode, void *param)
 {
 	(void)param;
 	if (keycode == XK_Escape)
-		mlx_loop_end(mlx_ptr());
+		mlx_loop_end(get_mlx_ptr());
 	else if (keycode == XK_w)
 		set_player_action(MOVE_FORWARD);
 	else if (keycode == XK_a)

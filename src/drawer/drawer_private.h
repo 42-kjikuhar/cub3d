@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 22:53:27 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 17:27:50 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/29 18:23:36 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,9 @@ typedef struct s_wall
 	t_wall_top_face		top;
 }	t_wall;
 
-void				floor_drawer(t_cub3d *cub3d);
-void				sky_drawer(t_cub3d *cub3d);
+void				floor_drawer(void);
+void				sky_drawer(void);
 void				wall_drawer(void);
-double				calc_horizontal_screen_height(t_player const *player);
 t_dda				init_dda_info(int win_x);
 t_hit				search_hitting_wall(t_dda *dda);
 t_wall				compute_wall(t_hit const *hit);

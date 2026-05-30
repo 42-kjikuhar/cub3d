@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 23:35:02 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/29 12:17:16 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:20:22 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ bool	parse_map_cell(int x, int y)
 		return (false);
 	if (is_player_char(x, y))
 	{
-		if (map_player()->is_set)
+		if (get_map_player()->is_set)
 		{
 			print_error(ERROR_MAP_MULTI_PLAYER);
 			return (false);
 		}
-		set_map_player(map(x, y), ivec2(x, y));
-		set_map(MAP_FLOOR, x, y);
+		set_map_player(get_map_data(x, y), ivec2(x, y));
+		set_map_data(x, y, MAP_FLOOR);
 	}
-	if (map(x, y) == MAP_FLOOR \
+	if (get_map_data(x, y) == MAP_FLOOR \
 		&& !is_surrounded_floor_cell(x, y))
 	{
 		return (false);
@@ -43,7 +43,7 @@ static bool	is_map_char(int x, int y)
 {
 	char	cell;
 
-	cell = map(x, y);
+	cell = get_map_data(x, y);
 	return (cell == MAP_FLOOR \
 			|| cell == MAP_WALL \
 			|| cell == MAP_BLANK \
@@ -57,7 +57,7 @@ static bool	is_player_char(int x, int y)
 {
 	char	cell;
 
-	cell = map(x, y);
+	cell = get_map_data(x, y);
 	return (cell == PLAYER_NORTH \
 			|| cell == PLAYER_SOUTH \
 			|| cell == PLAYER_WEST \
@@ -81,5 +81,5 @@ static bool	is_blank_cell(int x, int y)
 {
 	if (is_map_outside(x, y))
 		return (true);
-	return (map(x, y) == MAP_BLANK);
+	return (get_map_data(x, y) == MAP_BLANK);
 }

@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 17:57:47 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 02:41:10 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:18:39 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ static void	compute_initial_dist( t_dda *dda);
 
 t_dda	init_dda_info(int win_x)
 {
-	t_camera const	*cam = camera();
+	t_camera const	*cam = get_camera();
 	t_dda			dda;
 	double			t;
 
 	dda.origin = dvec3(cam->pos.x, cam->pos.y, 0.0);
 	t = (((double)win_x / W_WIDTH) - 0.5) * 2.0;
 	dda.ray = dvec3_add(cam->dir, \
-				dvec3_scale(t * screen()->half_width, cam->right));
+				dvec3_scale(t * get_screen()->half_width, cam->right));
 	dda.ray.z = 0.0;
 	dda.ray = dvec3_normalize(dda.ray);
 	dda.delta_dist_x = fabs(1.0 / dda.ray.x);

@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   change_player_pos.c                                :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/29 13:15:26 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/30 13:23:59 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/29 17:48:04 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/29 18:11:56 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "../player_private.h"
+#ifndef COLOR_H
+# define COLOR_H
 
-void	change_player_pos(t_dvec3 pos)
+enum e_color_id
 {
-	get_mutable_player()->pos = pos;
+	COLOR_FLOOR,
+	COLOR_CEILING,
+	COLOR_COUNT,
 }
+
+#endif

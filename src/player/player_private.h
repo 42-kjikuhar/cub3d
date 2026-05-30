@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 20:30:11 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 13:14:50 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:21:57 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "types.h"
 
-t_player	*mutable_player(void);
+t_player	*get_mutable_player(void);
 void		change_player_pos(t_dvec3 pos);
 void		change_player_dir(t_dvec3 dir);
 void		move_player_forward(void);

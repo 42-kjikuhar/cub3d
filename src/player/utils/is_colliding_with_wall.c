@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 00:28:15 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/28 23:13:30 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:13:04 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,23 @@ bool	is_colliding_with_wall(t_dvec3 pos)
 	t_dvec3	check_pos;
 
 	if (is_map_outside((int)pos.x, (int)pos.y)
-		|| map((int)pos.x, (int)pos.y) == MAP_WALL)
+		|| get_map_data((int)pos.x, (int)pos.y) == MAP_WALL)
 	{
 		return (true);
 	}
 	check_pos = calc_cells_to_check(pos);
 	if (is_map_outside((int)floor(check_pos.x), (int)pos.y) \
-		|| map((int)(check_pos.x), (int)pos.y) == MAP_WALL)
+		|| get_map_data((int)(check_pos.x), (int)pos.y) == MAP_WALL)
 	{
 		return (true);
 	}
 	if (is_map_outside((int)pos.x, (int)floor(check_pos.y)) \
-		|| map((int)pos.x, (int)(check_pos.y)) == MAP_WALL)
+		|| get_map_data((int)pos.x, (int)(check_pos.y)) == MAP_WALL)
 	{
 		return (true);
 	}
 	if (is_map_outside((int)floor(check_pos.x), (int)floor(check_pos.y))
-		|| map((int)(check_pos.x), (int)(check_pos.y)) == MAP_WALL)
+		|| get_map_data((int)(check_pos.x), (int)(check_pos.y)) == MAP_WALL)
 	{
 		return (true);
 	}

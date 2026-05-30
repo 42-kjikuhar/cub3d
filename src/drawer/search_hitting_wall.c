@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 13:21:45 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/28 23:16:38 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:11:31 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_hit	search_hitting_wall(t_dda *dda)
 			dda->cell.y += dda->cell_step.y;
 		if (is_map_outside(dda->cell.x, dda->cell.y))
 			return (hit);
-		if (map(dda->cell.x, dda->cell.y) == MAP_WALL)
+		if (get_map_data(dda->cell.x, dda->cell.y) == MAP_WALL)
 		{
 			hit.hit_side = calc_hit_side(dda);
 			hit.front_pos = calc_hit_pos(dda, WALL_HEIGHT);

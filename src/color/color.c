@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sky_drawer.c                                       :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/24 22:59:34 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/30 13:18:27 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/29 17:38:56 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/30 12:49:32 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "./drawer_private.h"
 
-void	sky_drawer(void)
+static int	g_colors[COLOR_COUNT];
+
+int	color(enum e_color_id id)
 {
-	int	horizon;
-	int	color;
-	int	win_x;
-	int	win_y;
-
-	horizon = (int)ceil(get_screen()->horizontal_pixel);
-	color \
-		= mlx_get_color_value(get_mlx_ptr(), cub3d->settings.ceiling_color);
-	win_y = 0;
-	while (win_y < horizon)
-	{
-		win_x = 0;
-		while (win_x < W_WIDTH)
-		{
-			*get_pixel_addr(get_image(IMG_WINDOW), win_x, win_y) = color;
-			++win_x;
-		}
-		++win_y;
-	}
+	return (g_colors[id]);
 }
+
+void	set_color(enum e_color_id id, int rgb)
+{
+	g_colors[id] = rgb;
+}
+

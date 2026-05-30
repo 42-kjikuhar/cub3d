@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 22:50:14 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/29 17:30:22 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:15:07 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@
 
 enum e_image_id
 {
-	WINDOW_IMG,
-	NORTH_WALL_IMG,
-	SOUTH_WALL_IMG,
-	WEST_WALL_IMG,
-	EAST_WALL_IMG,
+	IMG_WINDOW,
+	IMG_NORTH_WALL,
+	IMG_SOUTH_WALL,
+	IMG_WEST_WALL,
+	IMG_EAST_WALL,
 	IMG_COUNT,
 };
+
 struct s_image
 {
 	void	*ptr;
@@ -44,11 +45,12 @@ struct s_image
 	int		line_size;
 	int		endian;
 };
-void			*mlx_ptr(void);
-void			*win_ptr(void);
-t_image			*image(enum e_image_id id);
+
+void			*get_mlx_ptr(void);
+void			*get_win_ptr(void);
+t_image			*get_image(enum e_image_id id);
 bool			ft_mlx_init(t_settings *settings);
-void			ft_mlx_hooks(t_cub3d *cub3d);
+void			ft_mlx_hooks(void);
 void			ft_mlx_destroy(void);
 unsigned int	*get_pixel_addr(t_image *image, int const x, int const y);
 

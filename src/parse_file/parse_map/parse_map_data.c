@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:37:35 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/29 12:17:45 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:26:01 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ bool	parse_map_data(void)
 	int	y;
 
 	y = 0;
-	while (y < map_size(Y_AXIS))
+	while (y < get_map_size(Y_AXIS))
 	{
 		x = 0;
-		while (x < map_size(X_AXIS))
+		while (x < get_map_size(X_AXIS))
 		{
 			if (!parse_map_cell(x, y))
 				return (false);
@@ -30,7 +30,7 @@ bool	parse_map_data(void)
 		}
 		++y;
 	}
-	if (!(map_player()->is_set))
+	if (!(get_map_player()->is_set))
 	{
 		print_error(ERROR_MAP_NO_PLAYER);
 		return (false);

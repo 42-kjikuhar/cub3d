@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 14:58:49 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 15:59:20 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:14:17 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	*g_mlx_ptr;
 
-void	*mlx_ptr(void)
+void	*get_mlx_ptr(void)
 {
 	return (g_mlx_ptr);
 }

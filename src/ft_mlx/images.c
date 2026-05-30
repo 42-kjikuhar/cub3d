@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 16:03:43 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 17:27:32 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:16:16 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static t_image	g_images[IMG_COUNT];
 
-t_image	*image(enum e_image_id id)
+t_image	*get_image(enum e_image_id id)
 {
 	return (&(g_images[id]));
 }
@@ -26,7 +26,7 @@ bool	create_image(enum e_image_id id, int width, int height)
 
 	image = &(g_images[id]);
 	init_image_info(image, width, height);
-	image->ptr = mlx_new_image(mlx_ptr(), image->width, image->height);
+	image->ptr = mlx_new_image(get_mlx_ptr(), image->width, image->height);
 	if (image->ptr == NULL)
 	{
 		print_error(ERROR_MLX_IMAGE);
@@ -38,7 +38,7 @@ bool	create_image(enum e_image_id id, int width, int height)
 	if (image->pixel == NULL)
 	{
 		print_error(ERROR_MLX_IMAGE_DATA);
-		mlx_destroy_image(mlx_ptr(), image->ptr);
+		mlx_destroy_image(get_mlx_ptr(), image->ptr);
 		ft_bzero(image, sizeof(t_image));
 		return (false);
 	}
@@ -53,7 +53,7 @@ bool	create_image_from_xpm(\
 	image = &(g_images[id]);
 	init_image_info(image, width, height);
 	image->ptr = mlx_xpm_file_to_image(\
-					mlx_ptr(), xpm, &(image->width), &(image->height));
+					get_mlx_ptr(), xpm, &(image->width), &(image->height));
 	if (image->ptr == NULL)
 	{
 		print_error(ERROR_MLX_TEXTURE_LOAD);
@@ -65,7 +65,7 @@ bool	create_image_from_xpm(\
 	if (image->pixel == NULL)
 	{
 		print_error(ERROR_MLX_IMAGE_DATA);
-		mlx_destroy_image(mlx_ptr(), image->ptr);
+		mlx_destroy_image(get_mlx_ptr(), image->ptr);
 		ft_bzero(image, sizeof(t_image));
 		return (false);
 	}
@@ -81,7 +81,7 @@ void	cleanup_images(void)
 	{
 		if (g_images[id].ptr != NULL)
 		{
-			mlx_destroy_image(mlx_ptr(), g_images[id].ptr);
+			mlx_destroy_image(get_mlx_ptr(), g_images[id].ptr);
 			ft_bzero(&(g_images[id]), sizeof(t_image));
 		}
 		++id;

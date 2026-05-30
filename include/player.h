@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 20:22:19 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 13:36:56 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:19:40 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ struct s_player
 };
 
 void			init_player(t_map_player const *map_player);
-t_player const	*player(void);
+t_player const	*get_player(void);
 void			change_player_pos(t_dvec3 pos);
 void			change_player_dir(t_dvec3 dir);
 void			set_player_action(enum e_action_flag action);

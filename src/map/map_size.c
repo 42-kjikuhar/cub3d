@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 21:57:53 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/28 22:55:49 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:25:35 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	g_map_size[2];
 
-int	map_size(enum e_axis axis)
+int	get_map_size(enum e_axis axis)
 {
 	return (g_map_size[axis]);
 }

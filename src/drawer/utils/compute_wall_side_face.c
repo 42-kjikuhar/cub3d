@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 19:45:54 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 17:25:29 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:17:28 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ t_wall_side_face	compute_wall_side_face(t_hit const *hit)
 	side.texture_pixel.x = (int)(side.texture->width * texture_u);
 	if (texture_u == 1.0)
 		side.texture_pixel.x -= 1;
-	to_point = dvec3_sub(hit->front_pos, camera()->pos);
+	to_point = dvec3_sub(hit->front_pos, get_camera()->pos);
 	compute_wall_point(to_point, &(side.top_depth), &(side.top));
-	to_point = dvec3_sub(dvec3(hit->front_pos.x, hit->front_pos.y, 0.0), camera()->pos);
+	to_point = dvec3_sub(dvec3(hit->front_pos.x, hit->front_pos.y, 0.0), get_camera()->pos);
 	compute_wall_point(to_point, &(side.bottom_depth), &(side.bottom));
 	side.size = side.bottom - side.top + 1;
 	side.draw_start = side.top;
@@ -44,13 +44,13 @@ t_wall_side_face	compute_wall_side_face(t_hit const *hit)
 static t_image	*select_texture(t_hit const *hit)
 {
 	if (hit->hit_side == NORTH_SIDE)
-		return (image(NORTH_WALL_IMG));
+		return (get_image(IMG_NORTH_WALL));
 	else if (hit->hit_side == SOUTH_SIDE)
-		return (image(SOUTH_WALL_IMG));
+		return (get_image(IMG_SOUTH_WALL));
 	else if (hit->hit_side == WEST_SIDE)
-		return (image(WEST_WALL_IMG));
+		return (get_image(IMG_WEST_WALL));
 	else
-		return (image(EAST_WALL_IMG));
+		return (get_image(IMG_EAST_WALL));
 }
 
 static double	calc_texture_u(t_hit const *hit)

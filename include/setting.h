@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   change_player_pos.c                                :+:      :+:    :+:   */
+/*   setting.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/29 13:15:26 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/30 13:23:59 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/29 17:36:02 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/29 17:46:20 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "../player_private.h"
+#ifndef SETTING_H
+# define SETTING_H
 
-void	change_player_pos(t_dvec3 pos)
-{
-	get_mutable_player()->pos = pos;
-}
+
+
+#endif

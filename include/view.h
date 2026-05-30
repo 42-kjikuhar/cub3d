@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 00:09:38 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 14:04:53 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:18:08 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ struct s_screen
 };
 
 void			init_view(double horizontal_fov, t_dvec3 pos, t_dvec3 dir);
-t_camera const	*camera(void);
+t_camera const	*get_camera(void);
 void			set_camera(t_dvec3 pos, t_dvec3 dir);
 void			set_camera_lookat(t_dvec3 look_from, t_dvec3 look_at);
 void			change_camera_pos(t_dvec3 pos);
 void			change_camera_dir(t_dvec3 dir);
-t_screen const	*screen(void);
+t_screen const	*get_screen(void);
 void			set_screen(double horizontal_fov);
 void			compute_screen_horizontal_pixel(t_camera const *cam);
 
