@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 22:53:27 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/31 22:05:24 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 01:36:16 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct s_dda
 {
 	t_dvec3	origin;
 	t_dvec3	ray;
-	double	screen_dist;
 	double	delta_dist_x;
 	double	delta_dist_y;
 	double	dist_x;
