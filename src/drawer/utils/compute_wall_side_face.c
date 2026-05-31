@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 19:45:54 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/30 13:17:28 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 01:18:06 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ t_wall_side_face	compute_wall_side_face(t_hit const *hit)
 		side.texture_pixel.x -= 1;
 	to_point = dvec3_sub(hit->front_pos, get_camera()->pos);
 	compute_wall_point(to_point, &(side.top_depth), &(side.top));
-	to_point = dvec3_sub(dvec3(hit->front_pos.x, hit->front_pos.y, 0.0), get_camera()->pos);
+	to_point = dvec3_sub(\
+			dvec3(hit->front_pos.x, hit->front_pos.y, 0.0), get_camera()->pos);
 	compute_wall_point(to_point, &(side.bottom_depth), &(side.bottom));
 	side.size = side.bottom - side.top + 1;
 	side.draw_start = side.top;

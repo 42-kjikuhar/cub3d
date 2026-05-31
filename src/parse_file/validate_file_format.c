@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/31 09:24:42 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/31 23:52:28 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 01:18:31 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static bool	get_setting_id(char *line, enum e_setting_id *setting_id)
 	else if (ft_strcmp("EA", line) == 0 || ft_strncmp("EA ", line, 3) == 0)
 		*setting_id = SETTING_EAST;
 	else if (ft_strcmp("F", line) == 0 || ft_strncmp("F ", line, 2) == 0)
-		*setting_id =  SETTING_FLOOR;
+		*setting_id = SETTING_FLOOR;
 	else if (ft_strcmp("C", line) == 0 || ft_strncmp("C ", line, 2) == 0)
 		*setting_id = SETTING_CEILING;
 	else
