@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sky_drawer.c                                       :+:      :+:    :+:   */
+/*   read_file_as_line_list.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/24 22:59:34 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/30 13:18:27 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/31 09:26:53 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/05/31 09:27:21 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "./drawer_private.h"
+#include "./parse_file_private.h"
 
-void	sky_drawer(void)
+bool	read_file_as_line_list(int fd, t_list **line_list)
 {
-	int	horizon;
-	int	color;
-	int	win_x;
-	int	win_y;
+	char	*line;
 
-	horizon = (int)ceil(get_screen()->horizontal_pixel);
-	color \
-		= mlx_get_color_value(get_mlx_ptr(), cub3d->settings.ceiling_color);
-	win_y = 0;
-	while (win_y < horizon)
+	*line_list = NULL;
+	while (true)
 	{
-		win_x = 0;
-		while (win_x < W_WIDTH)
+		if (!read_next_line(fd, &line))
 		{
-			*get_pixel_addr(get_image(IMG_WINDOW), win_x, win_y) = color;
-			++win_x;
+			ft_lstclear(line_list, free);
+			return (false);
 		}
-		++win_y;
+		if (line == NULL)
+			return (true);
+		else if (!ft_lst_push_back(line_list, line))
+		{
+			print_error(strerror(errno));
+			free(line);
+			ft_lstclear(line_list, free);
+			return (false);
+		}
 	}
 }

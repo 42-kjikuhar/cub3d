@@ -1,64 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/16 18:38:03 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/30 13:26:31 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/05/16 18:36:09 by kjikuhar          #+#    #+#             */
+/*   Updated: 2026/05/31 23:45:35 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "./parse_map_private.h"
-#include "../parse_file_private.h"
+#include "./parse_file_private.h"
 
-static bool	read_map_as_list(int fd, t_list **line_list);
 static bool	compute_map_size(t_list *line_list);
-static void	set_map_from_list(t_list *line_list);
+static void	set_map_from_list(t_list **line_list);
 
-bool	read_map(int fd)
+bool	parse_map(t_list **line_list)
 {
-	t_list	*line_list;
-
-	line_list = NULL;
-	if (!read_map_as_list(fd, &line_list) \
-		|| !compute_map_size(line_list) \
+	while ((*line_list) != NULL && is_blank_line((*line_list)->content))
+		free(ft_lst_pop_front(line_list));
+	if (!compute_map_size(*line_list) \
 		|| !allocate_map(get_map_size(X_AXIS), get_map_size(Y_AXIS)))
 	{
-		ft_lstclear(&line_list, free);
 		return (false);
 	}
 	set_map_from_list(line_list);
+	if (!parse_map_data())
+		return (false);
 	return (true);
-}
-
-static bool	read_map_as_list(int fd, t_list **line_list)
-{
-	char	*line;
-
-	while (true)
-	{
-		if (!read_next_line(fd, &line))
-			return (false);
-		if (line == NULL)
-			return (true);
-		if (*line_list == NULL && is_blank_line(line))
-			free(line);
-		else if (*line_list != NULL && is_blank_line(line))
-		{
-			free(line);
-			print_error(ERROR_MAP_EMPTY_LINE);
-			return (false);
-		}
-		else if (!ft_lst_push_back(line_list, line))
-		{
-			free(line);
-			print_error(strerror(errno));
-			return (false);
-		}
-	}
 }
 
 /* 無駄な終端スペースを省ける余地がある。 */
@@ -82,17 +52,12 @@ static bool	compute_map_size(t_list *line_list)
 		}
 		line_list = line_list->next;
 	}
-	if (size[Y_AXIS] == 0)
-	{
-		print_error(ERROR_MAP_EMPTY);
-		return (false);
-	}
 	set_map_size((int)(size[X_AXIS]), (int)(size[Y_AXIS]));
 	return (true);
 }
 
 // left hand coordinate system
-static void	set_map_from_list(t_list *line_list)
+static void	set_map_from_list(t_list **line_list)
 {
 	char	*content;
 	int		x;
@@ -101,7 +66,7 @@ static void	set_map_from_list(t_list *line_list)
 	y = get_map_size(Y_AXIS) - 1;
 	while (y >= 0)
 	{
-		content = ft_lst_pop_front(&line_list);
+		content = ft_lst_pop_front(line_list);
 		x = 0;
 		while (content[x] != '\0')
 		{

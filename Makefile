@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/29 17:18:08 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/05/31 23:42:27 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,14 +83,9 @@ override CPPFLAGS	+= $(foreach dir, $(INCLUDE_DIRS), -I$(dir))
 
 SRC_DIRS	:= src
 SRC_DIRS	+= $(addprefix src/, \
-					cleanup \
 					error \
 					validate_argument \
 					parse_file parse_file/utils \
-					$(addprefix parse_file/, \
-						parse_settings parse_settings/utils \
-						parse_map \
-					) \
 					$(addprefix vector/, \
 						ivec2 \
 						dvec3 \
@@ -99,6 +94,7 @@ SRC_DIRS	+= $(addprefix src/, \
 					player player/utils \
 					view view/utils \
 					drawer drawer/utils \
+					color \
 					map \
 				)
 
@@ -109,29 +105,21 @@ $(foreach dir, $(SRC_DIRS), $(eval vpath %.c $(dir)))
 # -------------------------- #
 
 SRCS	:= 	main.c
-# cleanup
-SRCS	+=	cleanup_settings.c
 # error
 SRCS	+=	print_error.c
 # validate_argument
 SRCS	+=	validate_argument.c
 # parse_file
 SRCS	+=	parse_file.c \
+			read_file_as_line_list.c \
+			validate_file_format.c \
+			parse_settings.c \
+			parse_color.c \
+			parse_map.c \
+			parse_map_data.c \
 			read_next_line.c \
 			is_blank_line.c \
-			replace_char.c
-# parse_file/parse_settings
-SRCS	+=	parse_settings.c \
-			parse_settings_line.c \
-			is_incomplete_settings.c \
-			set_texture.c \
-			set_color.c \
 			free_splitted.c
-# parse_file/parse_map
-SRCS	+=	parse_map.c \
-			read_map.c \
-			parse_map_data.c \
-			parse_map_cell.c
 # vector/ivec2
 SRCS	+=	ivec2.c \
 			ivec2_add.c \
@@ -154,7 +142,6 @@ SRCS	+=	mlx_ptr.c \
 			images.c \
 			ft_mlx_destroy.c \
 			ft_mlx_hooks.c \
-			ft_mlx_init.c \
 			get_pixel_addr.c \
 			expose_hook.c \
 			key_press_hook.c \
@@ -182,7 +169,7 @@ SRCS	+=	init_view.c \
 # drawer
 SRCS	+=	drawer.c \
 			floor_drawer.c \
-			sky_drawer.c \
+			ceiling_drawer.c \
 			wall_drawer.c \
 			init_dda_info.c \
 			search_hitting_wall.c \
@@ -191,6 +178,8 @@ SRCS	+=	drawer.c \
 			compute_wall_top_face.c \
 			compute_wall_point.c \
 			depth_buffer.c
+# color
+SRCS	+=	color.c
 # map
 SRCS	+=	map.c \
 			map_size.c \

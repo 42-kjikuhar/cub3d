@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 22:50:14 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/30 13:15:07 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/31 22:08:19 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,14 @@ struct s_image
 	int		endian;
 };
 
+bool			create_mlx_connection(void);
+bool			create_window(int width, int height, char *title);
+bool			create_image(enum e_image_id id, int width, int height);
+bool			create_image_from_xpm(\
+					char *xpm, enum e_image_id id, int width, int height);
 void			*get_mlx_ptr(void);
 void			*get_win_ptr(void);
 t_image			*get_image(enum e_image_id id);
-bool			ft_mlx_init(t_settings *settings);
 void			ft_mlx_hooks(void);
 void			ft_mlx_destroy(void);
 unsigned int	*get_pixel_addr(t_image *image, int const x, int const y);

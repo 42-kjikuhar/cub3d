@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 21:34:47 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/30 13:25:52 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/31 23:46:58 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	**g_map;
 
-char	map(int x, int y)
+char	get_map_data(int x, int y)
 {
 	return (g_map[y][x]);
 }

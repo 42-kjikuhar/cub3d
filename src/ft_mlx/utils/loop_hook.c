@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 16:49:56 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/30 13:14:17 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/30 13:39:08 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 int	loop_hook(void *param)
 {
-	t_cub3d	*cub3d;
-
-	cub3d = (t_cub3d *)param;
+	(void)param;
 	do_player_actions();
-	drawer(cub3d);
+	drawer();
 	if (DEBUG)
 		mlx_loop_end(get_mlx_ptr());
 	return (0);

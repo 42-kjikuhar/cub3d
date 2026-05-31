@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 22:53:27 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 18:23:36 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/31 22:05:24 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ typedef struct s_wall
 }	t_wall;
 
 void				floor_drawer(void);
-void				sky_drawer(void);
+void				ceiling_drawer(void);
 void				wall_drawer(void);
 t_dda				init_dda_info(int win_x);
 t_hit				search_hitting_wall(t_dda *dda);

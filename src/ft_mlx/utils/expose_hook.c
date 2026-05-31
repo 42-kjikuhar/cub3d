@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 17:32:12 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/29 13:40:26 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/05/31 23:46:04 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int	expose_hook(void *param)
 {
-	t_cub3d	*cub3d;
-
-	cub3d = (t_cub3d *)param;
-	drawer(cub3d);
+	(void)param;
+	drawer();
 	return (0);
 }
