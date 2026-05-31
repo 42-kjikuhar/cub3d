@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 13:29:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/31 23:44:52 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 00:36:44 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static bool	assign_setting(char const *identifier, char *value)
 			return (false);
 		if (ft_strcmp("F", identifier) == 0)
 			set_color(COLOR_FLOOR, color);
-		else
+		else if (ft_strcmp("C", identifier) == 0)
 			set_color(COLOR_CEILING, color);
 		return (true);
 	}
