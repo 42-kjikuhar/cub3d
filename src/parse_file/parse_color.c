@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 16:11:18 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/31 22:28:00 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 00:51:26 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ bool	parse_color(char const *value, int *color)
 	{
 		if (!parse_color_channel(&value, &color_channel))
 			return (false);
-		*color |= (color_channel << i * 8);
+		*color = (*color << 8) | color_channel;
 		if (((i == RED || i == GREEN) && *value != ',') \
 			|| (i == BLUE && *value != '\0'))
 		{
