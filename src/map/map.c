@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 21:34:47 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/31 23:46:58 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 00:11:59 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ bool	allocate_map(int x_size, int y_size)
 		}
 		++y;
 	}
-	set_map_size(x_size, y_size);
 	return (true);
 }
 
@@ -64,4 +63,5 @@ void	cleanup_map(void)
 		free(g_map[y]);
 	free(g_map);
 	g_map = NULL;
+	set_map_size(0, 0);
 }
