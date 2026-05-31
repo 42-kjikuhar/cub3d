@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/31 23:42:27 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/06/01 00:35:00 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,6 @@ override CPPFLAGS	+= $(foreach dir, $(INCLUDE_DIRS), -I$(dir))
 SRC_DIRS	:= src
 SRC_DIRS	+= $(addprefix src/, \
 					error \
-					validate_argument \
 					parse_file parse_file/utils \
 					$(addprefix vector/, \
 						ivec2 \
@@ -107,8 +106,6 @@ $(foreach dir, $(SRC_DIRS), $(eval vpath %.c $(dir)))
 SRCS	:= 	main.c
 # error
 SRCS	+=	print_error.c
-# validate_argument
-SRCS	+=	validate_argument.c
 # parse_file
 SRCS	+=	parse_file.c \
 			read_file_as_line_list.c \

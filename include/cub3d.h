@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/30 14:25:54 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 00:34:44 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include "error.h"
 # include "vector/ivec2.h"
 # include "vector/dvec3.h"
+# include "parse_file.h"
 # include "color.h"
 # include "map.h"
 # include "view.h"
@@ -46,14 +47,5 @@
 # endif
 # define DEG_TO_RAD 0.01745329251994329547 // (M_PI / 180.0)
 # define RAD_TO_DEG 57.29577951308232286465 // (180.0 / M_PI)
-
-/* cleanup */
-// void	cleanup_settings(t_settings *settings);
-
-/* parse_file */
-bool	parse_file(char const *filename);
-
-/* validate_argument*/
-bool	vaildate_argument(int argc, char const *argv[]);
 
 #endif

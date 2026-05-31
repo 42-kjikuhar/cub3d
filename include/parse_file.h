@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawer.h                                           :+:      :+:    :+:   */
+/*   parse_file.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/25 11:12:38 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/01 00:34:23 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/06/01 00:33:11 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/06/01 00:34:06 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAWER_H
-# define DRAWER_H
+#ifndef PARSE_FILE_H
+# define PARSE_FILE_H
 
-void	drawer(void);
+# include "stdbool.h"
+
+bool	parse_file(char const *filename);
 
 #endif

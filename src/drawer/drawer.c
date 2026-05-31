@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 00:06:44 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/31 22:05:24 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 00:29:46 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,4 @@ void	drawer(void)
 	ceiling_drawer();
 	wall_drawer();
 	mlx_put_image_to_window(get_mlx_ptr(), get_win_ptr(), get_image(IMG_WINDOW)->ptr, 0, 0);
-	clear_depth_buffer();
 }
