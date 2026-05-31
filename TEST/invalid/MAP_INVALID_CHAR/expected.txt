@@ -1,2 +1,2 @@
 Error
-Invalid map: unknown character detected.
+Invalid map: invalid character detected.
