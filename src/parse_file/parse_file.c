@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:35:08 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/06/01 00:13:27 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 00:17:08 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ bool	parse_file(char const *filename)
 		close(fd);
 		return (false);
 	}
+	close(fd);
 	if (!validate_file_format(line_list) \
 		|| !parse_settings(&line_list) \
 		|| !parse_map(&line_list))
