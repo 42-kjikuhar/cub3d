@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/24 21:27:03 by stanaka2          #+#    #+#              #
-#    Updated: 2026/06/01 22:49:55 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/06/01 23:39:29 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,7 @@ endif
 
 EXTRA_FLAGS :=	MAKEFLAGS='$(MAKEFLAGS)' \
 				CFLAGS='$(CFLAGS)' \
-				CPPFLAGS='$(CPPFLAGS)' \
-				DEPFLAGS='$(DEPFLAGS)' \
-				ARFLAGS='$(ARFLAGS)'
+				CPPFLAGS='$(CPPFLAGS)'
 
 # -------------------------- #
 #      Makefile Setting      #
@@ -40,7 +38,7 @@ EXTRA_FLAGS :=	MAKEFLAGS='$(MAKEFLAGS)' \
 
 OS := $(shell uname -s)
 
-override MAKEFLAGS += --no-print-directory
+override MAKEFLAGS += -j --no-print-directory
 
 override .DEFAULT_GOAL := all
 
@@ -61,7 +59,7 @@ help:
 	@printf "$(GREEN)clean$(DEF_COLOR)      Remove object files, dependency files\n"
 	@printf "$(GREEN)fclean$(DEF_COLOR)     Remove all generated files\n"
 	@printf "$(GREEN)re$(DEF_COLOR)         Rebuild from scratch\n"
-	@printf "$(YELLOW)san$(DEF_COLOR)        Build with Sanitizer=Address,Undefine\n"
+	@printf "$(YELLOW)san$(DEF_COLOR)        Build with -g -fsanitize=address,undefined\n"
 	@printf "$(YELLOW)debug$(DEF_COLOR)      Build with -g debug symbols\n"
 	@printf "$(YELLOW)norm$(DEF_COLOR)       Run norminette\n"
 

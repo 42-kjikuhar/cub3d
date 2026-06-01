@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/06/01 00:35:00 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/06/01 23:43:00 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,28 @@
 .PHONY: all bonus clean fclean re install uninstall norm san debug test help
 
 # -------------------------- #
+#         Extra Flags        #
+# -------------------------- #
+
+ifeq ($(filter san,$(MAKECMDGOALS)),san)
+override CFLAGS += -g -fsanitize=address,undefined
+endif
+
+ifeq ($(filter debug,$(MAKECMDGOALS)),debug)
+override CFLAGS += -g
+endif
+
+EXTRA_FLAGS :=	MAKEFLAGS='$(MAKEFLAGS)' \
+				CFLAGS='$(CFLAGS)' \
+				CPPFLAGS='$(CPPFLAGS)'
+
+# -------------------------- #
 #      Makefile Setting      #
 # -------------------------- #
 
 OS	:= $(shell uname -s)
 
-override MAKEFLAGS		+= --no-print-directory
+override MAKEFLAGS		+= -j --no-print-directory
 
 override .DEFAULT_GOAL	:= all
 
@@ -41,17 +57,10 @@ help:
 	@printf "$(GREEN)re$(DEF_COLOR)         Rebuild from scratch\n"
 	@printf "$(BLUE)install$(DEF_COLOR)    Install minilibx\n"
 	@printf "$(BLUE)uninstall$(DEF_COLOR)  Remove minilibx\n"
-	@printf "$(YELLOW)san$(DEF_COLOR)        Build with Sanitizer=Address,Undefine\n"
-	@printf "$(YELLOW)debug$(DEF_COLOR)      Build with debug symbols\n"
+	@printf "$(YELLOW)san$(DEF_COLOR)        Build with -g -fsanitize=address,undefined\n"
+	@printf "$(YELLOW)debug$(DEF_COLOR)      Build with -g debug symbols\n"
 	@printf "$(YELLOW)norm$(DEF_COLOR)       Run norminette\n"
 	@printf "$(GRAY)help$(DEF_COLOR)       Show make rules\n"
-
-# -------------------------- #
-#         Extra Flags        #
-# -------------------------- #
-
-EXTRA_CFLAGS	:= $(CFLAGS)
-EXTRA_CPPFLAGS	:= $(CPPFLAGS)
 
 # -------------------------- #
 #           Target           #
@@ -95,6 +104,7 @@ SRC_DIRS	+= $(addprefix src/, \
 					drawer drawer/utils \
 					color \
 					map \
+					game \
 				)
 
 $(foreach dir, $(SRC_DIRS), $(eval vpath %.c $(dir)))
@@ -181,6 +191,9 @@ SRCS	+=	color.c
 SRCS	+=	map.c \
 			map_size.c \
 			map_player.c
+# game
+SRCS	+=	play_game.c \
+			load_default_game_info.c
 
 # -------------------------- #
 #        Object Files        #
@@ -218,7 +231,7 @@ LIBFT		:= $(LIBFT_DIR)/libft.a
 
 $(LIBFT):
 	@printf "[$(NAME)] $(YELLOW)Build:$(DEF_COLOR) $@\n"
-	@$(MAKE) -C $(LIBFT_DIR) CFLAGS='$(EXTRA_CFLAGS)' CPPFLAGS='$(EXTRA_CPPFLAGS)'
+	@$(MAKE) -C $(LIBFT_DIR) $(EXTRA_CFLAGS)
 
 override CPPFLAGS	+= -I$(LIBFT_DIR)/include
 override LDFLAGS	+= -L$(LIBFT_DIR)
@@ -299,23 +312,26 @@ fclean:
 # Full rebuild: clean everything and rebuild
 re:
 	@$(MAKE) fclean
-	@$(MAKE) all CFLAGS='$(EXTRA_CFLAGS)' CPPFLAGS='$(EXTRA_CPPFLAGS)'
+	@$(MAKE) all $(EXTRA_CFLAGS)
 
 # -------------------------- #
 #        Debug Rules         #
 # -------------------------- #
 
 san:
-	@$(MAKE) re CPPFLAGS='$(EXTRA_CPPFLAGS) -g -fsanitize=address,undefined'
+	@$(MAKE) re $(EXTRA_CFLAGS)
 
 debug:
-	@$(MAKE) re CPPFLAGS='$(EXTRA_CPPFLAGS) -g'
+	@$(MAKE) re $(EXTRA_CFLAGS)
 
 test:
 	@bash TEST/test.sh
 
 norm:
 	@norminette -o src include $(LIBFT_DIR) | grep Error || true
+
+iwyu:
+
 
 # -------------------------- #
 #    ANSI Escape Sequence    #

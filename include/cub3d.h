@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/06/01 00:34:44 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 23:43:27 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@
 # include <errno.h>
 # include <stdbool.h>
 # include <limits.h>
+# include <stdlib.h>
 # include <math.h>
-# include <X11/keysym.h>
-# include <X11/X.h>
 
 # include "mlx.h"
 # include "libft.h"
@@ -33,6 +32,7 @@
 # include "parse_file.h"
 # include "color.h"
 # include "map.h"
+# include "game.h"
 # include "view.h"
 # include "player.h"
 # include "ft_mlx.h"

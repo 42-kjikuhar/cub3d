@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 22:50:14 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/31 22:08:19 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 23:32:28 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_MLX_H
 
 # include <stdbool.h>
+
 # include "types.h"
 
 // # define W_WIDTH 1920
@@ -32,6 +33,8 @@ enum e_image_id
 	IMG_SOUTH_WALL,
 	IMG_WEST_WALL,
 	IMG_EAST_WALL,
+	IMG_FLOOR,
+	IMG_CEILING,
 	IMG_COUNT,
 };
 

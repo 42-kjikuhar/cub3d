@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ceiling_drawer.c                                   :+:      :+:    :+:   */
+/*   load_default_game_info.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/31 22:05:29 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/01 04:27:43 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/06/01 04:30:29 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/06/01 04:30:47 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "./drawer_private.h"
 
-void	ceiling_drawer(void)
+bool	load_default_game_info(void)
 {
-	int	horizon;
-	int	color;
-	int	win_x;
-	int	win_y;
-
-	horizon = (int)ceil(get_screen()->horizontal_pixel);
-	color \
-		= mlx_get_color_value(get_mlx_ptr(), get_color(COLOR_CEILING));
-	win_y = 0;
-	while (win_y < horizon)
+	if (!create_image_from_xpm("./assets/greystone.xpm", IMG_FLOOR, \
+												TEXTURE_SIZE, TEXTURE_SIZE) \
+		|| !create_image_from_xpm("./assets/mossy.xpm", IMG_CEILING, \
+												TEXTURE_SIZE, TEXTURE_SIZE))
 	{
-		win_x = 0;
-		while (win_x < W_WIDTH)
-		{
-			*get_pixel_addr(get_image(IMG_WINDOW), win_x, win_y) = color;
-			++win_x;
-		}
-		++win_y;
+		return (false);
 	}
+	return (true);
 }
-
 
