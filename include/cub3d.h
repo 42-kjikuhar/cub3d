@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/06/01 23:43:27 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/02 00:19:44 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,6 @@
 # include "player.h"
 # include "ft_mlx.h"
 # include "drawer.h"
-
-# ifndef DEBUG
-#  define DEBUG 0
-# endif
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
