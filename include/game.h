@@ -6,14 +6,14 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 23:37:14 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/01 23:41:51 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/02 00:22:09 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
 
-#include <stdbool.h>
+# include <stdbool.h>
 
 bool	play_game(void);
 

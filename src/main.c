@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:25:52 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/06/01 04:32:46 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/02 01:09:15 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char const *argv[])
 	{
 		ft_dprintf(STDERR_FILENO, "Error\n");
 		ft_dprintf(STDERR_FILENO, "Usage: %s *.cub\n", argv[0]);
-		return (false);
+		return (EXIT_FAILURE);
 	}
 	if (!create_mlx_connection())
 		return (EXIT_FAILURE);
