@@ -6,11 +6,11 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:16:04 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/01 11:14:35 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 22:53:15 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf/ft_printf.h"
+#include <wchar.h>
 
 static void	pf_encode_utf8_0x0_0xffff(unsigned char *utf8, wchar_t wc);
 static void	pf_encode_utf8_0x10000_0x7fffffff(unsigned char *utf8, wchar_t wc);

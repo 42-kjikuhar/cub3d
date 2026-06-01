@@ -6,11 +6,16 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 17:48:18 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/01 11:24:39 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 22:21:34 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_string.h"
 #include "ft_printf/ft_printf.h"
+#include "ft_printf/conversions/pf_character.h"
+#include "ft_printf/conversions/pf_integer.h"
+#include "ft_printf/conversions/pf_float.h"
+#include "ft_printf/conversions/pf_special.h"
 
 static void	print_character_conversion(\
 				va_list *ap, t_ctx *ctx, t_conv *conv);

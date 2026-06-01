@@ -6,11 +6,12 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/19 22:55:43 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/01 11:04:25 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 21:37:48 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
+#include "ft_printf/pf_print_utils.h"
 
 void	pf_print_char(t_ctx *ctx, char c)
 {

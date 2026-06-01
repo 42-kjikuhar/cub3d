@@ -6,11 +6,11 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 14:12:18 by stanaka2          #+#    #+#             */
-/*   Updated: 2025/07/25 14:09:41 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:35:08 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_lst.h"
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {

@@ -6,28 +6,20 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 21:58:34 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/04/19 16:51:20 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 22:56:57 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stddef.h>
-
 // libft
-# include "libft/ft_ctype.h"
-# include "libft/ft_lst.h"
-# include "libft/ft_math.h"
-# include "libft/ft_stdio.h"
-# include "libft/ft_stdlib.h"
-# include "libft/ft_string.h"
-
-// ft_printf
-int		ft_printf(const char *format, ...);
-int		ft_dprintf(int fd, const char *format, ...);
-int		ft_sprintf(char *str, const char *format, ...);
-int		ft_snprintf(char *str, size_t size, const char *format, ...);
+# include "ft_ctype.h"
+# include "ft_lst.h"
+# include "ft_math.h"
+# include "ft_stdio.h"
+# include "ft_stdlib.h"
+# include "ft_string.h"
 
 // get_next_line
 char	*get_next_line(int fd);

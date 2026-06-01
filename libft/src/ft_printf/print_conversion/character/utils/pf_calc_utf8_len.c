@@ -6,11 +6,12 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 18:40:24 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/04/29 18:47:00 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 22:52:42 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf/ft_printf.h"
+#include <stddef.h>
+#include <wchar.h>
 
 size_t	pf_calc_utf8_len(wchar_t wc)
 {

@@ -6,11 +6,13 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/17 12:30:20 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/17 12:32:14 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:51:13 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+
+#include "ft_string.h"
 
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
 {

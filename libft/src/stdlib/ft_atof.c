@@ -6,11 +6,14 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 02:41:50 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 20:32:55 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:48:29 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdint.h>
+
+#include "ft_ctype.h"
+#include "ft_stdlib.h"
 
 static uint64_t	calc_significand(const char *str);
 static int		calc_scaling_exponent(const char *str, uint64_t significand);

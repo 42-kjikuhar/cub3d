@@ -6,11 +6,15 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 17:42:12 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/01 18:56:07 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 22:26:55 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdint.h>
+
+#include "ft_string.h"
 #include "ft_printf/ft_printf.h"
+#include "ft_printf/pf_print_utils.h"
 
 static void		print_conv_u(t_ctx *ctx, t_conv *conv, uintmax_t num);
 static size_t	get_digits_uintmax(uintmax_t num);

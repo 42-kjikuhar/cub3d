@@ -6,11 +6,9 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:57:40 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/04/20 02:11:46 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:39:48 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 double	ft_fabs(double x)
 {

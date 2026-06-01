@@ -6,11 +6,13 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 17:45:43 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 03:28:48 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 21:48:41 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
+#include "ft_printf/pf_print_utils.h"
+#include "./character_internal.h"
 
 void	pf_conv_lc(va_list *ap, t_ctx *ctx, t_conv *conv)
 {

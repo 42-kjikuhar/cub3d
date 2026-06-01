@@ -6,11 +6,11 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 10:36:11 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 03:29:55 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:53:05 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_string.h"
 
 void	ft_bzero(void *s, size_t n)
 {

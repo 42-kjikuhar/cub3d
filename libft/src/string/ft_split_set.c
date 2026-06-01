@@ -6,13 +6,15 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:34:48 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/04/23 01:55:14 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:59:58 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
+#include <stdbool.h>
+#include <stdlib.h>
 
-#include "libft.h"
+#include "ft_string.h"
 
 static size_t	count_words(const char *s, bool *set);
 static char		**copy_words(\

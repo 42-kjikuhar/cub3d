@@ -6,11 +6,15 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 17:46:32 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/01 19:19:30 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 22:22:42 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+
 #include "ft_printf/ft_printf.h"
+#include "ft_printf/pf_print_utils.h"
+#include "./character_internal.h"
 
 static void		print_conv_ls(\
 					t_ctx *ctx, t_conv *conv, const wchar_t *ws);

@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/19 15:32:43 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/04/20 02:20:28 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:52:39 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_STRING_H
 
 # include <stddef.h>
-# include <stdlib.h>
 
 void	ft_bzero(void *s, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);

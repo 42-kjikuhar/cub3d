@@ -6,11 +6,12 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 23:08:06 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/01 11:18:00 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 22:55:20 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf/ft_printf.h"
+#include <wchar.h>
+#include <stdbool.h>
 
 static bool	is_invalid_range_codepoint(const wchar_t wc);
 static bool	is_surrogate_codepoint(const wchar_t wc);

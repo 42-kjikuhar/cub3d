@@ -6,11 +6,11 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 22:28:24 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 03:30:54 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:57:57 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_string.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {

@@ -6,11 +6,13 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:34:48 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 03:29:59 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:54:54 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+
+#include "ft_string.h"
 
 static size_t	count_words(char const *s, char c);
 static char		**copy_words(char const *s, char c, char **dst, size_t count);

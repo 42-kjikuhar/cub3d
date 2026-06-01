@@ -6,11 +6,11 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 19:59:02 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 20:35:54 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:44:59 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_stdio.h"
 
 ssize_t	ft_putnbr_fd_bytes(int n, int fd)
 {

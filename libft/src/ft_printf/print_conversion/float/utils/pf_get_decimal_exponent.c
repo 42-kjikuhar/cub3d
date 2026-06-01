@@ -6,11 +6,11 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 17:16:03 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/04/26 18:04:40 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 22:54:23 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf/ft_printf.h"
+#include "../float_internal.h"
 
 int	pf_get_decimal_exponent(t_pf_float *fp)
 {

@@ -6,11 +6,12 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 14:40:06 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/01 18:55:09 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 21:41:11 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
+#include "ft_printf/pf_print_utils.h"
 
 void	pf_conv_percent(t_ctx *ctx, t_conv *conv)
 {

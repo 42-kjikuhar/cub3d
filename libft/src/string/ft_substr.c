@@ -6,11 +6,13 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/18 03:32:26 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 03:32:44 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:59:19 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+
+#include "ft_string.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

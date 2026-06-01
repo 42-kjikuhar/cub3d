@@ -6,11 +6,11 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 00:42:13 by stanaka2          #+#    #+#             */
-/*   Updated: 2025/12/04 00:47:52 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:41:25 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdint.h>
 
 uint32_t	ft_xorshift(uint32_t *seed)
 {

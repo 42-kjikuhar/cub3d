@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
+#include "ft_printf/pf_print_utils.h"
 
 static void	print_num(t_ctx *ctx, int num);
 

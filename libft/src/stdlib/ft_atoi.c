@@ -6,13 +6,15 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 21:40:26 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 20:33:16 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:49:30 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
+#include <stdbool.h>
 
-#include "libft.h"
+#include "ft_ctype.h"
+#include "ft_stdlib.h"
 
 static bool	is_long_overflow(long num, int sign, int n);
 

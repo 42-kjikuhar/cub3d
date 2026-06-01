@@ -6,11 +6,12 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 17:45:47 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/04/26 22:47:47 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 22:01:17 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
+#include "./float_internal.h"
 
 static void	move_up(t_pf_float *fp, int digit);
 

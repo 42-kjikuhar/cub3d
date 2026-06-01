@@ -6,11 +6,13 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 17:14:51 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 03:30:57 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:59:44 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdbool.h>
+
+#include "ft_string.h"
 
 char	*ft_strrchr(const char *s, int c)
 {

@@ -6,13 +6,15 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 09:04:58 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/04/20 02:29:48 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:58:55 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
+#include <stdbool.h>
+#include <stdlib.h>
 
-#include "libft.h"
+#include "ft_string.h"
 
 char	*ft_strtrim(char const *s1, char const *set)
 {

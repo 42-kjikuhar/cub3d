@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/24 21:27:03 by stanaka2          #+#    #+#              #
-#    Updated: 2026/05/21 12:39:09 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/06/01 22:49:55 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,24 @@
 # -------------------------- #
 
 .PHONY: all clean fclean re san debug norm help
+
+# -------------------------- #
+#         Extra Flags        #
+# -------------------------- #
+
+ifeq ($(filter san,$(MAKECMDGOALS)),san)
+override CFLAGS += -g -fsanitize=address,undefined
+endif
+
+ifeq ($(filter debug,$(MAKECMDGOALS)),debug)
+override CFLAGS += -g
+endif
+
+EXTRA_FLAGS :=	MAKEFLAGS='$(MAKEFLAGS)' \
+				CFLAGS='$(CFLAGS)' \
+				CPPFLAGS='$(CPPFLAGS)' \
+				DEPFLAGS='$(DEPFLAGS)' \
+				ARFLAGS='$(ARFLAGS)'
 
 # -------------------------- #
 #      Makefile Setting      #
@@ -44,15 +62,8 @@ help:
 	@printf "$(GREEN)fclean$(DEF_COLOR)     Remove all generated files\n"
 	@printf "$(GREEN)re$(DEF_COLOR)         Rebuild from scratch\n"
 	@printf "$(YELLOW)san$(DEF_COLOR)        Build with Sanitizer=Address,Undefine\n"
-	@printf "$(YELLOW)debug$(DEF_COLOR)      Build with debug symbols\n"
+	@printf "$(YELLOW)debug$(DEF_COLOR)      Build with -g debug symbols\n"
 	@printf "$(YELLOW)norm$(DEF_COLOR)       Run norminette\n"
-
-# -------------------------- #
-#         Extra Flags        #
-# -------------------------- #
-
-EXTRA_CFLAGS	:= $(CFLAGS)
-EXTRA_CPPFLAGS	:= $(CPPFLAGS)
 
 # -------------------------- #
 #           Target           #
@@ -262,17 +273,17 @@ fclean:
 
 re:
 	@$(MAKE) fclean
-	@$(MAKE) all
+	@$(MAKE) all $(EXTRA_FLAGS)
 
 # -------------------------- #
 #         Debug Rules        #
 # -------------------------- #
 
 san:
-	@$(MAKE) re CPPFLAGS='$(EXTRA_CPPFLAGS) -g -fsanitize=address,undefined'
+	@$(MAKE) re $(EXTRA_FLAGS)
 
 debug:
-	@$(MAKE) re CPPFLAGS='$(EXTRA_CPPFLAGS) -g'
+	@$(MAKE) re $(EXTRA_FLAGS)
 
 norm:
 	@norminette -o src include $(LIBFT_DIR) | grep Error || true

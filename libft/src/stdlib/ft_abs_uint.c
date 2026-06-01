@@ -6,11 +6,9 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 09:04:01 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 20:36:18 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:47:17 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 unsigned int	ft_abs_uint(int n)
 {

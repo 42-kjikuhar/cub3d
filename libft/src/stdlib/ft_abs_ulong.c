@@ -6,11 +6,9 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 09:01:23 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 20:36:24 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:47:21 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 unsigned long	ft_abs_ulong(long n)
 {

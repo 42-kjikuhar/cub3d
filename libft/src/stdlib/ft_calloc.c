@@ -6,11 +6,13 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 00:29:32 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/04/23 01:55:44 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:50:09 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+
+#include "ft_string.h"
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {

@@ -6,11 +6,12 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 00:47:51 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 19:00:11 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 21:03:43 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line/get_next_line.h"
+#include "ft_stdlib.h"
+#include "./get_next_line.h"
 
 static bool	read_file(int fd, t_buf *buf, t_line *line);
 static bool	append_to_line(t_line *line, char c);

@@ -6,11 +6,13 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 19:50:05 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 03:30:35 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:57:10 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+
+#include "ft_string.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {

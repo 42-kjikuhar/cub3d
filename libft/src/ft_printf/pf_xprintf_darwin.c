@@ -6,11 +6,15 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 19:17:11 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 03:28:39 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 22:19:44 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_string.h"
 #include "ft_printf/ft_printf.h"
+#include "ft_printf/pf_read_conversion.h"
+#include "ft_printf/pf_print_conversion.h"
+#include "ft_printf/pf_print_utils.h"
 
 static void	print_plaintext(const char **format, t_ctx *ctx);
 static void	print_error_format(const char **format, t_ctx *ctx, t_conv *conv);

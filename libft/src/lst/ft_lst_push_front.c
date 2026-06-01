@@ -6,11 +6,13 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 01:17:22 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/01/07 01:17:34 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:38:35 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stddef.h>
+
+#include "ft_lst.h"
 
 bool	ft_lst_push_front(t_list **lst, void *content)
 {

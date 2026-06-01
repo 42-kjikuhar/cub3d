@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 01:27:20 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/01 18:38:26 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 21:22:37 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,5 @@
 
 bool	pf_read_conversion(\
 			va_list *ap, const char **format, t_ctx *ctx, t_conv *conv);
-bool	pf_check_int_overflow(const char *format);
-int		pf_precision_atoi(const char *format);
 
 #endif

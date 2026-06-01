@@ -6,11 +6,14 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 16:31:44 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 03:29:04 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 22:13:39 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_string.h"
 #include "ft_printf/ft_printf.h"
+#include "ft_printf/pf_print_utils.h"
+#include "./float_internal.h"
 
 static int		get_printable_precision_hex(t_pf_float *fp);
 static size_t	get_length_float_hex(t_conv *conv, t_pf_float *fp);

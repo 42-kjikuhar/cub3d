@@ -6,11 +6,17 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:46:06 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 03:29:43 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 21:02:51 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+/*
+#include <unicode/utypes.h> is workaround for #include <float.h>
+due to norminette=3.3.55 bug.
+*/
+#include <unicode/utypes.h>
+
+#include "ft_math.h"
 
 // Babylonian method
 double	ft_sqrt(double x)

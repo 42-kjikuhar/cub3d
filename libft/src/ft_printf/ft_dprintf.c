@@ -6,11 +6,13 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 19:48:09 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 20:45:27 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 22:11:20 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_string.h"
 #include "ft_printf/ft_printf.h"
+#include "ft_printf/pf_defines.h"
 
 int	ft_dprintf(int fd, const char *format, ...)
 {

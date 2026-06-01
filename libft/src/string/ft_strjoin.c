@@ -6,11 +6,13 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 19:19:13 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 03:30:16 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:56:16 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+
+#include "ft_string.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

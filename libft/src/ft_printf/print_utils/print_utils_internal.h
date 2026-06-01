@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stdlib.h                                        :+:      :+:    :+:   */
+/*   print_utils_internal.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/19 15:32:39 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/17 12:33:18 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/06/01 21:33:06 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/06/01 21:46:06 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STDLIB_H
-# define FT_STDLIB_H
+#ifndef PRINT_UTILS_INTERNAL_H
+# define PRINT_UTILS_INTERNAL_H
 
 # include <stddef.h>
-# include <stdlib.h>
 
-unsigned int	ft_abs_uint(int n);
-unsigned long	ft_abs_ulong(long n);
-int				ft_atoi(const char *nptr);
-double			ft_atof(const char *str);
-void			*ft_calloc(size_t nmemb, size_t size);
-char			*ft_itoa(int n);
-void			*ft_realloc(void *ptr, size_t old_size, size_t new_size);
-void			*ft_reallocf(void *ptr, size_t old_size, size_t new_size);
+# include "ft_printf/pf_types.h"
+
+void	pf_print_repeated_char(t_ctx *ctx, char c, size_t count);
 
 #endif

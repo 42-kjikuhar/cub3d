@@ -6,11 +6,12 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 02:15:01 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 20:49:32 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 22:00:39 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
+#include "./float_internal.h"
 
 static void	convert_to_hex_int(t_pf_float *fp);
 static void	convert_to_hex_frac(t_pf_float *fp);

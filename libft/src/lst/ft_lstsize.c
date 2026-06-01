@@ -6,11 +6,11 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 14:11:43 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/18 03:29:40 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/01 20:35:32 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_lst.h"
 
 int	ft_lstsize(t_list *lst)
 {
