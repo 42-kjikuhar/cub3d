@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/06/02 00:19:44 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/03 22:35:50 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,5 @@
 # include "player.h"
 # include "ft_mlx.h"
 # include "drawer.h"
-
-# ifndef M_PI
-#  define M_PI 3.14159265358979323846
-# endif
-# define DEG_TO_RAD 0.01745329251994329547 // (M_PI / 180.0)
-# define RAD_TO_DEG 57.29577951308232286465 // (180.0 / M_PI)
 
 #endif

@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/24 21:27:03 by stanaka2          #+#    #+#              #
-#    Updated: 2026/06/01 23:39:29 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/06/03 21:43:17 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,7 @@ override ARFLAGS := rcs
 #          Include           #
 # -------------------------- #
 
-INCLUDE_DIRS := include
+INCLUDE_DIRS := include ft_printf/include
 
 override CPPFLAGS += $(foreach dir, $(INCLUDE_DIRS), -I$(dir))
 
@@ -92,18 +92,17 @@ override CPPFLAGS += $(foreach dir, $(INCLUDE_DIRS), -I$(dir))
 #     Source Directories     #
 # -------------------------- #
 
-SRC_DIRS := $(addprefix src/, ctype stdio stdlib string lst math)
-SRC_DIRS += $(addprefix src/, get_next_line)
-SRC_DIRS += $(addprefix src/, ft_printf \
-				$(addprefix ft_printf/, \
-					print_utils print_utils/utils\
-					read_conversion read_conversion/utils \
-					print_conversion \
-					print_conversion/character print_conversion/character/utils\
-					print_conversion/float print_conversion/float/utils \
-					print_conversion/integer \
-					print_conversion/special \
-				)\
+SRC_DIRS := ctype stdio stdlib string lst math
+SRC_DIRS += get_next_line
+SRC_DIRS +=	ft_printf \
+			$(addprefix ft_printf/, \
+				print_utils print_utils/utils\
+				read_conversion read_conversion/utils \
+				print_conversion \
+				print_conversion/character print_conversion/character/utils\
+				print_conversion/floating_point print_conversion/floating_point/utils \
+				print_conversion/integer \
+				print_conversion/special \
 			)
 
 # vpath %.c <dir>
@@ -195,7 +194,7 @@ else
 SRCS += pf_conv_p.c pf_conv_percent.c
 endif
 
-# ft_printf/print_conversion/float
+# ft_printf/print_conversion/floating_point
 SRCS += pf_conv_e.c pf_convert_to_decimal.c pf_convert_to_hex.c \
 		pf_conv_f.c pf_conv_g.c \
 		pf_decode_binary64.c pf_decode_binary80.c \
