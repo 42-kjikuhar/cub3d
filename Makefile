@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/06/04 17:53:51 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/06/04 18:26:26 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -231,7 +231,7 @@ LIBFT		:= $(LIBFT_DIR)/libft.a
 
 $(LIBFT):
 	@printf "[cub3D] $(YELLOW)Build:$(DEF_COLOR) $@\n"
-	@$(MAKE) -C $(LIBFT_DIR) $(EXTRA_CFLAGS)
+	@$(MAKE) -C $(LIBFT_DIR) $(EXTRA_FLAGS)
 
 override CPPFLAGS	+= -I$(LIBFT_DIR)/include
 override LDFLAGS	+= -L$(LIBFT_DIR)
@@ -312,17 +312,17 @@ fclean:
 # Full rebuild: clean everything and rebuild
 re:
 	@$(MAKE) fclean
-	@$(MAKE) all $(EXTRA_CFLAGS)
+	@$(MAKE) all $(EXTRA_FLAGS)
 
 # -------------------------- #
 #        Debug Rules         #
 # -------------------------- #
 
 san:
-	@$(MAKE) re $(EXTRA_CFLAGS)
+	@$(MAKE) re $(EXTRA_FLAGS)
 
 debug:
-	@$(MAKE) re $(EXTRA_CFLAGS)
+	@$(MAKE) re $(EXTRA_FLAGS)
 
 test:
 	@bash TEST/test.sh
