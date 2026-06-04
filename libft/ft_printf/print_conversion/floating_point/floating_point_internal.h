@@ -6,12 +6,12 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 21:52:54 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/03 21:32:38 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/04 00:38:37 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FLOAT_POINT_INTERNAL_H
-# define FLOAT_POINT_INTERNAL_H
+#ifndef FLOATING_POINT_INTERNAL_H
+# define FLOATING_POINT_INTERNAL_H
 
 // # include <float.h>
 /*

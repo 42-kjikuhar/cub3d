@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 16:54:23 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/03 21:33:25 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/04 01:32:06 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static	size_t	get_length_g_exp_notation(
 	if (conv->precision != 1 || conv->hash_flag == '#')
 		len += ft_strlen(".");
 	exponent_digits = 0;
-	while (decimal_exp)
+	while (decimal_exp != 0)
 	{
 		exponent_digits++;
 		decimal_exp /= 10;

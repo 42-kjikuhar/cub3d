@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/19 22:54:12 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/03 21:33:25 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/04 01:20:33 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 void	pf_print_hexa_preffix(t_ctx *ctx, t_conv *conv)
 {
-	if (ft_strchr("xpa", conv->identifier))
+	if (ft_strchr("xpa", conv->identifier) != NULL)
 		pf_print_strn(ctx, "0x", 2);
-	else if (ft_strchr("XA", conv->identifier))
+	else if (ft_strchr("XA", conv->identifier) != NULL)
 		pf_print_strn(ctx, "0X", 2);
 }

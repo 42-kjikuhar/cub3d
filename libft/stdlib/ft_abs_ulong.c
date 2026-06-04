@@ -6,16 +6,13 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 09:01:23 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/01 20:47:21 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/04 11:18:00 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 unsigned long	ft_abs_ulong(long n)
 {
-	unsigned long	un;
-
-	un = n;
 	if (n < 0)
-		un = -n;
-	return (un);
+		return (((unsigned long)(-(n + 1)) + 1));
+	return ((unsigned long)n);
 }

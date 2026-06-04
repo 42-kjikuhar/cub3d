@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_round.c                                         :+:      :+:    :+:   */
+/*   ft_abs_uintmax.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/30 18:43:47 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/04 14:30:19 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/06/04 11:04:02 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/06/04 11:17:47 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-double	ft_round(double x)
+#include <stdint.h>
+
+uintmax_t	ft_abs_uintmax(intmax_t n)
 {
-	if (x >= 0)
-		return ((double)(long long)(x + 0.5));
-	else
-		return ((double)(long long)(x - 0.5));
+	if (n < 0)
+		return (((uintmax_t)(-(n + 1)) + 1));
+	return ((uintmax_t)n);
 }

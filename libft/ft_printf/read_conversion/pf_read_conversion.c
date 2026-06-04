@@ -6,9 +6,11 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 17:27:23 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/03 21:03:51 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/04 01:16:40 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdbool.h>
 
 #include "ft_ctype.h"
 #include "ft_stdlib.h"
@@ -38,7 +40,7 @@ bool	pf_read_conversion(
 		return (false);
 	}
 	read_length(format, conv);
-	if (!ft_strchr(CONV, **format))
+	if (ft_strchr(CONV, **format) == NULL)
 		return (false);
 	conv->identifier = **format;
 	(*format)++;
@@ -47,7 +49,7 @@ bool	pf_read_conversion(
 
 static void	read_flags(const char **format, t_conv *conv)
 {
-	while (ft_strchr(FLAGS, **format))
+	while (ft_strchr(FLAGS, **format) != NULL)
 	{
 		if (**format == '#')
 			conv->hash_flag = '#';

@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 16:25:15 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/03 21:33:25 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/04 01:33:32 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	pf_print_nan(t_ctx *ctx, t_conv *conv, t_pf_float *fp)
 
 	(void)fp;
 	special_case = "nan";
-	if (ft_strchr("FEGA", conv->identifier))
+	if (ft_strchr("FEGA", conv->identifier) != NULL)
 		special_case = "NAN";
 	len = ft_strlen(special_case);
 	if (conv->width_flags != '-')

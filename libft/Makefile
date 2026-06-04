@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/24 21:27:03 by stanaka2          #+#    #+#              #
-#    Updated: 2026/06/03 23:46:15 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/06/04 12:34:15 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,7 @@ endif
 
 EXTRA_FLAGS :=	MAKEFLAGS='$(MAKEFLAGS)' \
 				CFLAGS='$(CFLAGS)' \
-				CPPFLAGS='$(CPPFLAGS)' \
-				ARFLAGS='$(ARFLAGS)'
+				CPPFLAGS='$(CPPFLAGS)'
 
 # -------------------------- #
 #      Makefile Setting      #
@@ -79,7 +78,7 @@ CC := cc
 override CFLAGS += -Wall -Wextra -Werror
 override CFLAGS += -Wconversion -Wno-sign-conversion -Wshadow
 
-override ARFLAGS += -rcs
+override ARFLAGS := -rcs
 
 # -------------------------- #
 #          Include           #
@@ -99,11 +98,13 @@ SRC_DIRS +=	ft_printf \
 			$(addprefix ft_printf/, \
 				print_utils print_utils/utils\
 				read_conversion read_conversion/utils \
-				print_conversion \
-				print_conversion/character print_conversion/character/utils\
-				print_conversion/floating_point print_conversion/floating_point/utils \
-				print_conversion/integer \
-				print_conversion/special \
+				print_conversion print_conversion/utils \
+				$(addprefix print_conversion/, \
+					character character/utils\
+					floating_point floating_point/utils \
+					integer \
+					special \
+				)\
 			)
 
 # vpath %.c <dir>
@@ -115,16 +116,16 @@ $(foreach dir,$(SRC_DIRS), $(eval vpath %.c $(dir)))
 
 # ctype
 SRCS := ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isblank.c \
-	   ft_iscntrl.c ft_isdigit.c ft_isgraph.c ft_islower.c \
-	   ft_isprint.c ft_ispunct.c ft_isspace.c ft_isupper.c \
-	   ft_isxdigit.c ft_tolower.c ft_toupper.c
+		ft_iscntrl.c ft_isdigit.c ft_isgraph.c ft_islower.c \
+		ft_isprint.c ft_ispunct.c ft_isspace.c ft_isupper.c \
+		ft_isxdigit.c ft_tolower.c ft_toupper.c
 
 # stdio
 SRCS += ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c \
 		ft_putchar_fd_bytes.c ft_putendl_fd_bytes.c ft_putnbr_fd_bytes.c ft_putstr_fd_bytes.c
 
 # stdlib
-SRCS += ft_abs_uint.c ft_abs_ulong.c ft_atof.c ft_atoi.c ft_calloc.c ft_itoa.c ft_realloc.c ft_reallocf.c
+SRCS += ft_abs_uint.c ft_abs_ulong.c ft_abs_uintmax.c ft_atof.c ft_atoi.c ft_calloc.c ft_itoa.c ft_realloc.c ft_reallocf.c
 
 # string
 SRCS += ft_bzero.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c \
@@ -159,7 +160,7 @@ SRCS += pf_xprintf.c
 endif
 
 # ft_printf/print_utils
-SRCS += pf_print_char.c  pf_print_hexa_preffix.c  pf_print_padding.c \
+SRCS += pf_print_char.c  pf_print_hexa_preffix.c  pf_print_nbr_base.c  pf_print_padding.c \
 		pf_print_sign.c  pf_print_space_width.c  pf_print_strn.c pf_print_zero_width.c \
 		pf_print_repeated_char.c
 
@@ -172,7 +173,7 @@ endif
 SRCS += pf_check_int_overflow.c pf_precision_atoi.c
 
 # ft_printf/print_conversion
-SRCS += pf_print_conversion.c
+SRCS += pf_print_conversion.c pf_get_digits_base.c
 
 # ft_printf/print_conversion/character
 ifeq ($(OS), Darwin)
@@ -201,19 +202,12 @@ SRCS += pf_conv_e.c pf_convert_to_decimal.c pf_convert_to_hex.c \
 		pf_decode_binary64.c pf_decode_binary80.c \
 		pf_print_conv_e.c pf_print_conv_f.c \
 		pf_print_conv_g_exp_notation.c pf_print_conv_g_fixed_point_notation.c \
-		pf_round_to_nearest_even.c
+		pf_round_to_nearest_even.c \
+		pf_calc_array.c pf_get_decimal_exponent.c pf_print_exponent.c pf_t_float_utils.c
 ifeq ($(OS), Darwin)
-SRCS += pf_conv_a_darwin.c pf_print_conv_a_darwin.c
+SRCS += pf_conv_a_darwin.c pf_print_conv_a_darwin.c pf_print_inf_darwin.c pf_print_nan_darwin.c
 else
-SRCS += pf_conv_a.c pf_print_conv_a.c
-endif
-
-# ft_printf/print_conversion/float/utils
-SRCS += pf_calc_array.c pf_get_decimal_exponent.c pf_print_exponent.c pf_t_float_utils.c
-ifeq ($(OS), Darwin)
-SRCS += pf_print_inf_darwin.c pf_print_nan_darwin.c
-else
-SRCS += pf_print_inf.c pf_print_nan.c
+SRCS += pf_conv_a.c pf_print_conv_a.c pf_print_inf.c pf_print_nan.c
 endif
 
 # -------------------------- #
@@ -284,7 +278,7 @@ debug:
 	@$(MAKE) re $(EXTRA_FLAGS)
 
 norm:
-	@norminette -o src include $(LIBFT_DIR) | grep Error || true
+	@norminette | grep Error || true
 
 # -------------------------- #
 #    ANSI Escape Sequence    #

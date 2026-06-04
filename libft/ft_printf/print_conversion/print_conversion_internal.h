@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_round.c                                         :+:      :+:    :+:   */
+/*   print_conversion_internal.h                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/30 18:43:47 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/04 14:30:19 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/06/04 12:24:52 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/06/04 12:43:06 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-double	ft_round(double x)
-{
-	if (x >= 0)
-		return ((double)(long long)(x + 0.5));
-	else
-		return ((double)(long long)(x - 0.5));
-}
+#ifndef PRINT_CONVERSION_INTERNAL_H
+# define PRINT_CONVERSION_INTERNAL_H
+
+# include <stdint.h>
+# include <stddef.h>
+
+size_t	pf_get_digits_base(uintmax_t num, size_t base_size);
+
+#endif

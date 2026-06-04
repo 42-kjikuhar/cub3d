@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 17:42:06 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/03 21:33:25 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/04 12:41:21 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 #include "ft_printf/ft_printf.h"
 #include "ft_printf/print_utils.h"
+#include "../print_conversion_internal.h"
 
-static void		print_conv_o(t_ctx *ctx, t_conv *conv, uintmax_t num);
-static size_t	get_digits_uintmax_octal(uintmax_t num);
-static void		print_octal(t_ctx *ctx, uintmax_t num);
+static void	print_conv_o(t_ctx *ctx, t_conv *conv, uintmax_t num);
 
 void	pf_conv_o(va_list *ap, t_ctx *ctx, t_conv *conv)
 {
@@ -49,7 +48,7 @@ static void	print_conv_o(t_ctx *ctx, t_conv *conv, uintmax_t num)
 	size_t		len;
 	size_t		padding;
 
-	len = get_digits_uintmax_octal(num);
+	len = pf_get_digits_base(num, 8);
 	if (num == 0 && conv->precision == 0)
 		len = 0;
 	padding = 0;
@@ -68,29 +67,7 @@ static void	print_conv_o(t_ctx *ctx, t_conv *conv, uintmax_t num)
 		pf_print_zero_width(ctx, conv, len + padding);
 	pf_print_padding(ctx, padding);
 	if (!(num == 0 && conv->precision == 0))
-		print_octal(ctx, num);
+		pf_print_nbr_base(ctx, num, "01234567", 8);
 	if (conv->width_flags == '-')
 		pf_print_space_width(ctx, conv, len + padding);
-}
-
-static size_t	get_digits_uintmax_octal(uintmax_t num)
-{
-	size_t	digits;
-
-	if (num == 0)
-		return (1);
-	digits = 0;
-	while (num)
-	{
-		num /= 8;
-		digits++;
-	}
-	return (digits);
-}
-
-static void	print_octal(t_ctx *ctx, uintmax_t num)
-{
-	if (num >= 8)
-		print_octal(ctx, num / 8);
-	pf_print_char(ctx, "01234567"[num % 8]);
 }

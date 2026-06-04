@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_round.c                                         :+:      :+:    :+:   */
+/*   pf_get_digits_base.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/30 18:43:47 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/04 14:30:19 by stanaka2         ###   ########.fr       */
+/*   Created: 2026/06/04 12:22:13 by stanaka2          #+#    #+#             */
+/*   Updated: 2026/06/04 12:24:03 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-double	ft_round(double x)
+#include <stdint.h>
+#include <stddef.h>
+
+size_t	pf_get_digits_base(uintmax_t num, size_t base_size)
 {
-	if (x >= 0)
-		return ((double)(long long)(x + 0.5));
-	else
-		return ((double)(long long)(x - 0.5));
+	size_t	digits;
+
+	if (num == 0)
+		return (1);
+	digits = 0;
+	while (num)
+	{
+		num /= base_size;
+		digits++;
+	}
+	return (digits);
 }

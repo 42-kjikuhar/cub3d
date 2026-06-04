@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 23:52:20 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/03 21:33:25 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/04 01:31:28 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static size_t	get_length_exp_notation(
 		len += ft_strlen(".");
 	len += conv->precision;
 	exponent_digits = 0;
-	while (decimal_exp)
+	while (decimal_exp != 0)
 	{
 		exponent_digits++;
 		decimal_exp /= 10;

@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 16:25:20 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/03 21:33:25 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/04 01:33:07 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	pf_print_inf(t_ctx *ctx, t_conv *conv, t_pf_float *fp)
 	size_t	len;
 
 	special_case = "inf";
-	if (ft_strchr("FEGA", conv->identifier))
+	if (ft_strchr("FEGA", conv->identifier) != NULL)
 		special_case = "INF";
 	len = ft_strlen(special_case);
 	if (fp->sign || conv->sign_flags != '\0')

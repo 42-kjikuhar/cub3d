@@ -6,11 +6,12 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 00:29:32 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/01 20:50:09 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/04 14:30:32 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdint.h>
 
 #include "ft_string.h"
 

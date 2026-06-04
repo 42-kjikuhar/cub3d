@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 17:48:18 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/03 21:40:25 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/04 02:18:44 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ static void	print_float_conversion(va_list *ap, t_ctx *ctx, t_conv *conv);
 
 void	pf_print_conversion(va_list *ap, t_ctx *ctx, t_conv *conv)
 {
-	if (ft_strchr("cs", conv->identifier))
+	if (ft_strchr("cs", conv->identifier) != NULL)
 		print_character_conversion(ap, ctx, conv);
-	else if (ft_strchr("diuoxX", conv->identifier))
+	else if (ft_strchr("diuoxX", conv->identifier) != NULL)
 		print_integer_conversion(ap, ctx, conv);
-	else if (ft_strchr("fFeEgGaA", conv->identifier))
+	else if (ft_strchr("fFeEgGaA", conv->identifier) != NULL)
 		print_float_conversion(ap, ctx, conv);
 	else if (conv->identifier == 'p')
 		pf_conv_p(ap, ctx, conv);
@@ -67,7 +67,7 @@ static void	print_integer_conversion(
 		pf_conv_u(ap, ctx, conv);
 	else if (conv->identifier == 'o')
 		pf_conv_o(ap, ctx, conv);
-	else if (ft_strchr("xX", conv->identifier))
+	else if (conv->identifier == 'x' || conv->identifier == 'X')
 		pf_conv_x(ap, ctx, conv);
 }
 

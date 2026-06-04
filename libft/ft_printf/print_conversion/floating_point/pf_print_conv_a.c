@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 16:40:55 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/03 21:33:25 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/04 01:30:29 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static size_t	get_length_float_hex(t_conv *conv, t_pf_float *fp)
 	len += conv->precision;
 	exp = fp->exponent;
 	exponent_digits = 0;
-	while (exp)
+	while (exp != 0)
 	{
 		exponent_digits++;
 		exp /= 10;

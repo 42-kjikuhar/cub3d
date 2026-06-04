@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 19:17:11 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/03 21:33:25 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/04 01:39:14 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	pf_xprintf(t_ctx *ctx, va_list *ap, const char *format)
 {
 	t_conv	conv;
 
-	while (!(ctx->has_error) && *format)
+	while (!ctx->has_error && *format != '\0')
 	{
 		if (*format != '%')
 			print_plaintext(&format, ctx);
@@ -47,7 +47,7 @@ static void	print_plaintext(const char **format, t_ctx *ctx)
 	size_t	i;
 
 	i = 0;
-	while ((*format)[i] && (*format)[i] != '%')
+	while ((*format)[i] != '\0' && (*format)[i] != '%')
 		i++;
 	pf_print_strn(ctx, (char *)*format, i);
 	*format += i;

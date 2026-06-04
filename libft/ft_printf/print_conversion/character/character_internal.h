@@ -6,13 +6,14 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 21:44:12 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/03 21:32:38 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/04 01:25:26 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_INTERNAL_H
 # define CHARACTER_INTERNAL_H
 
+# include <stdbool.h>
 # include <stddef.h>
 # include <wchar.h>
 

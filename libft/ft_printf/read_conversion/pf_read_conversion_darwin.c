@@ -6,9 +6,11 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 13:42:37 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/03 21:03:46 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/04 01:18:29 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdbool.h>
 
 #include "ft_ctype.h"
 #include "ft_stdlib.h"
@@ -26,8 +28,11 @@ bool	pf_read_conversion(
 	va_list *ap, const char **format, t_ctx *ctx, t_conv *conv)
 {
 	(*format)++;
-	while (ft_strchr(FLAGS, **format) || ft_isdigit(**format)
-		|| **format == '*' || **format == '.' || ft_strchr(LENGTH, **format))
+	while (ft_strchr(FLAGS, **format) != NULL \
+		|| ft_isdigit(**format) \
+		|| **format == '*' \
+		|| **format == '.' \
+		|| ft_strchr(LENGTH, **format) != NULL)
 	{
 		read_flags(format, conv);
 		if (!read_width(ap, format, ctx, conv))
@@ -42,7 +47,7 @@ bool	pf_read_conversion(
 		}
 		read_length(format, conv);
 	}
-	if (!ft_strchr(CONV, **format))
+	if (ft_strchr(CONV, **format) == NULL)
 		return (false);
 	conv->identifier = **format;
 	(*format)++;
@@ -51,7 +56,7 @@ bool	pf_read_conversion(
 
 static void	read_flags(const char **format, t_conv *conv)
 {
-	while (ft_strchr(FLAGS, **format))
+	while (ft_strchr(FLAGS, **format) != NULL)
 	{
 		if (**format == '#')
 			conv->hash_flag = '#';

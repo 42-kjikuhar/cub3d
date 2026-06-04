@@ -6,16 +6,13 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 09:04:01 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/01 20:47:17 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/04 11:18:10 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 unsigned int	ft_abs_uint(int n)
 {
-	unsigned int	un;
-
-	un = n;
 	if (n < 0)
-		un = -n;
-	return (un);
+		return (((unsigned int)(-(n + 1)) + 1));
+	return ((unsigned int)n);
 }
