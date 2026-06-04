@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/06/01 23:43:00 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/06/04 17:53:51 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -230,7 +230,7 @@ LIBFT_DIR	:= libft
 LIBFT		:= $(LIBFT_DIR)/libft.a
 
 $(LIBFT):
-	@printf "[$(NAME)] $(YELLOW)Build:$(DEF_COLOR) $@\n"
+	@printf "[cub3D] $(YELLOW)Build:$(DEF_COLOR) $@\n"
 	@$(MAKE) -C $(LIBFT_DIR) $(EXTRA_CFLAGS)
 
 override CPPFLAGS	+= -I$(LIBFT_DIR)/include
@@ -296,7 +296,7 @@ $(OBJ_DIR)/%.o: %.c | $(LIBMLX_DIR) $(OBJ_DIR) $(DEP_DIR)
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
 	@-$(MAKE) -s -C $(LIBMLX_DIR) clean > /dev/null 2>&1
-	@$(RM) $(OBJS) $(DEPS)
+	@$(RM) $(OBJ_DIR)/* $(DEP_DIR)/*
 	@printf "[$(NAME)] $(BLUE)Deleted Complete$(DEF_COLOR): *.o *.d\n"
 
 # Remove everything
@@ -304,7 +304,7 @@ fclean:
 	@$(MAKE) -C $(LIBFT_DIR) fclean
 	@-$(MAKE) -s -C $(LIBMLX_DIR) clean > /dev/null 2>&1
 	@printf "[$(NAME)] $(BLUE)Delete Complete$(DEF_COLOR): $(LIBMLX) $(LIBMLX_DIR)/obj\n"
-	@$(RM) $(OBJS) $(DEPS)
+	@$(RM) $(OBJ_DIR)/* $(DEP_DIR)/*
 	@printf "[$(NAME)] $(BLUE)Delete Complete$(DEF_COLOR): *.o *.d\n"
 	@$(RM) -r $(NAME) $(OBJ_DIR) $(DEP_DIR)
 	@printf "[$(NAME)] $(BLUE)Delete Complete$(DEF_COLOR): $(NAME) $(OBJ_DIR) $(DEP_DIR)\n"
@@ -329,9 +329,6 @@ test:
 
 norm:
 	@norminette -o src include $(LIBFT_DIR) | grep Error || true
-
-iwyu:
-
 
 # -------------------------- #
 #    ANSI Escape Sequence    #
