@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/31 22:05:29 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/02 00:21:29 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/04 18:07:24 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ceiling_drawer(void)
 	int	win_y;
 
 	horizon = (int)ceil(get_screen()->horizontal_pixel);
+	if (horizon > W_HEIGHT)
+		horizon = W_HEIGHT;
 	color \
 		= mlx_get_color_value(get_mlx_ptr(), get_color(COLOR_CEILING));
 	win_y = 0;
