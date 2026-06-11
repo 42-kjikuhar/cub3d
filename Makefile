@@ -6,7 +6,7 @@
 #    By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/06/04 18:26:26 by stanaka2         ###   ########.fr        #
+#    Updated: 2026/06/12 07:30:42 by stanaka2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,10 +51,11 @@ override .DEFAULT_GOAL	:= all
 
 help:
 	@printf "$(CYAN)Usage:$(DEF_COLOR)\n"
-	@printf "$(GREEN)all$(DEF_COLOR)        Build $(NAME)\n"
+	@printf "$(GREEN)all$(DEF_COLOR)        Build $(NAME)[mandatory part]\n"
+	@printf "$(GREEN)bonus$(DEF_COLOR)      Build $(NAME)[bonus part]\n"
 	@printf "$(GREEN)clean$(DEF_COLOR)      Remove object files, dependency files\n"
-	@printf "$(GREEN)fclean$(DEF_COLOR)     Remove all generated files\n"
-	@printf "$(GREEN)re$(DEF_COLOR)         Rebuild from scratch\n"
+	@printf "$(GREEN)fclean$(DEF_COLOR)     Remove all generated files and directories\n"
+	@printf "$(GREEN)re$(DEF_COLOR)         Rebuild with fclean and all\n"
 	@printf "$(BLUE)install$(DEF_COLOR)    Install minilibx\n"
 	@printf "$(BLUE)uninstall$(DEF_COLOR)  Remove minilibx\n"
 	@printf "$(YELLOW)san$(DEF_COLOR)        Build with -g -fsanitize=address,undefined\n"
@@ -153,7 +154,6 @@ SRCS	+=	mlx_ptr.c \
 			expose_hook.c \
 			key_press_hook.c \
 			loop_hook.c \
-			init_image_info.c \
 			key_release_hook.c
 # player
 SRCS	+=	init_player.c \

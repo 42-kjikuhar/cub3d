@@ -6,7 +6,7 @@
 /*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 16:03:43 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/30 13:16:16 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/12 07:31:52 by stanaka2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ bool	create_image(enum e_image_id id, int width, int height)
 	t_image	*image;
 
 	image = &(g_images[id]);
-	init_image_info(image, width, height);
+	image->width = width;
+	image->height = height;
 	image->ptr = mlx_new_image(get_mlx_ptr(), image->width, image->height);
 	if (image->ptr == NULL)
 	{
@@ -51,7 +52,8 @@ bool	create_image_from_xpm(\
 	t_image	*image;
 
 	image = &(g_images[id]);
-	init_image_info(image, width, height);
+	image->width = width;
+	image->height = height;
 	image->ptr = mlx_xpm_file_to_image(\
 					get_mlx_ptr(), xpm, &(image->width), &(image->height));
 	if (image->ptr == NULL)
