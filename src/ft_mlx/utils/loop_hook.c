@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 16:49:56 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/05/28 17:00:49 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/06/21 17:14:23 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,11 +180,36 @@ typedef struct s_wall
 	// int			end;
 }				t_wall;
 
+t_img	*decide_hit_texture(t_mlx* mlx, enum e_hit_side	side)
+{
+	if (side = NORTH_SIDE)
+		return (&(mlx->assets.north_wall));
+	else if (side = SOUTH_SIDE)
+		return (&(mlx->assets.south_wall));
+	else if (side = EAST_SIDE)
+		return (&(mlx->assets.east_wall));
+	else if (side = WEST_SIDE)
+		return (&(mlx->assets.west_wall));
+}
+
+t_ivec2	calculate_texture_pixel(t_hit *hit)
+{
+	if (hit->side = NORTH_SIDE)
+		return (ivec2((ceiling(hit->pos.x) - hit->pos.x) * TEXTURE_SIZE, 0));
+	else if (hit->side = SOUTH_SIDE)
+		return (ivec2((hit->pos.x - floor(hit->pos.x) * TEXTURE_SIZE), 0));
+	else if (hit->side = EAST_SIDE)
+		return (ivec2(hit->pos.y - floor(hit->pos.y) * TEXTURE_SIZE, 0));
+	else if (hit->side = WEST_SIDE)
+		return (ivec2((ceiling(hit->pos.y) - hit->pos.y) * TEXTURE_SIZE, 0));
+}
+
 t_wall	calculate_wall(t_mlx *mlx, t_hit *hit)
 {
 	t_wall	wall;
 
-
+	wall.texture = decide_hit_texture(mlx, hit->side);
+	wall.texture_pixel = calculate_texture_pixel(hit);
 	return (wall);
 }
 
@@ -216,7 +241,7 @@ void	drawer(t_cub3d *cub3d)
 {
 	floor_drawer(&(cub3d->mlx), &(cub3d->settings));
 	ceiling_drawer(&(cub3d->mlx), &(cub3d->settings));
-	wall_drawer(&(cub3d->mlx), &(cub3d->settings));
+	wall_drawer(&(cub3d->mlx), &(cub3d->settings), &(cub3d->player));
 	mlx_put_image_to_window(cub3d->mlx.mlx_ptr, cub3d->mlx.win_ptr, \
 		cub3d->mlx.win_img.img_ptr, 0, 0);
 }
