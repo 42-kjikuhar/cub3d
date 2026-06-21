@@ -183,48 +183,65 @@ typedef struct s_wall
 	int			size;
 	int			top;
 	int			bottom;
-	// int			start;
-	// int			end;
+	int			start;
+	int			end;
 }				t_wall;
 
 t_img	*decide_hit_texture(t_mlx* mlx, enum e_hit_side	side)
 {
-	if (side = NORTH_SIDE)
+	if (side == NORTH_SIDE)
 		return (&(mlx->assets.north_wall));
-	else if (side = SOUTH_SIDE)
+	else if (side == SOUTH_SIDE)
 		return (&(mlx->assets.south_wall));
-	else if (side = EAST_SIDE)
+	else if (side == EAST_SIDE)
 		return (&(mlx->assets.east_wall));
-	else if (side = WEST_SIDE)
+	else if (side == WEST_SIDE)
 		return (&(mlx->assets.west_wall));
+	return (NULL);
 }
 
 t_ivec2	calculate_texture_pixel(t_hit *hit)
 {
-	if (hit->side = NORTH_SIDE)
-		return (ivec2((ceiling(hit->pos.x) - hit->pos.x) * TEXTURE_SIZE, 0));
-	else if (hit->side = SOUTH_SIDE)
-		return (ivec2((hit->pos.x - floor(hit->pos.x) * TEXTURE_SIZE), 0));
-	else if (hit->side = EAST_SIDE)
-		return (ivec2(hit->pos.y - floor(hit->pos.y) * TEXTURE_SIZE, 0));
-	else if (hit->side = WEST_SIDE)
-		return (ivec2((ceiling(hit->pos.y) - hit->pos.y) * TEXTURE_SIZE, 0));
+	if (hit->side == NORTH_SIDE)
+		return (ivec2((int)(ceil(hit->pos.x) - hit->pos.x) * TEXTURE_SIZE, 0));
+	else if (hit->side == SOUTH_SIDE)
+		return (ivec2((int)(hit->pos.x - floor(hit->pos.x) * TEXTURE_SIZE), 0));
+	else if (hit->side == EAST_SIDE)
+		return (ivec2((int)(hit->pos.y - floor(hit->pos.y)) * TEXTURE_SIZE, 0));
+	else if (hit->side == WEST_SIDE)
+		return (ivec2((int)(ceil(hit->pos.y) - hit->pos.y) * TEXTURE_SIZE, 0));
+	return (ivec2(0, 0));
 }
 
-t_wall	calculate_wall(t_mlx *mlx, t_hit *hit)
+static int	calculate_size(t_hit *hit, t_player *player)
+{
+	double	ratio;
+	int	wall_screen_size;
+
+	ratio = (1 / player->screen_size.y) * (1 / hit->distance);
+	wall_screen_size = (int)round(ratio * W_HEIGHT);
+	return (wall_screen_size);
+}
+
+t_wall	calculate_wall(t_mlx *mlx, t_hit *hit, t_player *player)
 {
 	t_wall	wall;
 
 	wall.texture = decide_hit_texture(mlx, hit->side);
 	wall.texture_pixel = calculate_texture_pixel(hit);
+	wall.size = calculate_size(hit, player);
+	wall.top = W_HEIGHT / 2 - wall.size / 2;
+	wall.bottom = W_HEIGHT / 2 + wall.size / 2;
+	wall.start = (int)fmax((double)wall.top, 0);
+	wall.end = (int)fmin(wall.bottom, W_HEIGHT - 1);
 	return (wall);
 }
 
 
-void	draw_wall(t_mlx *mlx, t_settings const *settings, int y)
-{
-	int
-}
+// void	draw_wall(t_mlx *mlx, t_settings const *settings, int y)
+// {
+// 	(void)mlx;
+// }
 
 void	wall_drawer(t_mlx *mlx, t_map *map, t_player *player)
 {
