@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 22:42:23 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/06/21 17:32:57 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/06/21 18:16:32 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 static t_dvec3	init_screen_size(void)
 {
-	t_dvec3 screen_size;
-
-	double const screen_width = tan(FOV / 2);
+	double const screen_width = 2 * tan(DEG_TO_RAD * FOV / 2);
 	double const screen_height = screen_width / W_WIDTH * W_HEIGHT;
 	return (dvec3(screen_width, screen_height, 0));
 }
