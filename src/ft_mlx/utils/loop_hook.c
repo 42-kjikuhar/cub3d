@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 16:49:56 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/21 18:43:28 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/06/21 18:49:06 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,13 +201,13 @@ t_img	*decide_hit_texture(t_mlx* mlx, enum e_hit_side	side)
 t_ivec2	calculate_texture_pixel(t_hit *hit)
 {
 	if (hit->side == NORTH_SIDE)
-		return (ivec2((int)(ceil(hit->pos.x) - hit->pos.x) * TEXTURE_SIZE, 0));
+		return (ivec2((int)((ceil(hit->pos.x) - hit->pos.x) * TEXTURE_SIZE), 0));
 	else if (hit->side == SOUTH_SIDE)
-		return (ivec2((int)(hit->pos.x - floor(hit->pos.x)) * TEXTURE_SIZE, 0));
+		return (ivec2((int)((hit->pos.x - floor(hit->pos.x)) * TEXTURE_SIZE), 0));
 	else if (hit->side == EAST_SIDE)
-		return (ivec2((int)(hit->pos.y - floor(hit->pos.y)) * TEXTURE_SIZE, 0));
+		return (ivec2((int)((hit->pos.y - floor(hit->pos.y)) * TEXTURE_SIZE), 0));
 	else if (hit->side == WEST_SIDE)
-		return (ivec2((int)(ceil(hit->pos.y) - hit->pos.y) * TEXTURE_SIZE, 0));
+		return (ivec2((int)((ceil(hit->pos.y) - hit->pos.y) * TEXTURE_SIZE), 0));
 	return (ivec2(0, 0));
 }
 
