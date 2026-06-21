@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dvec3.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stanaka2 <stanaka2@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 22:13:19 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/22 17:53:09 by stanaka2         ###   ########.fr       */
+/*   Updated: 2026/06/21 19:19:46 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ double	dvec3_dot(t_dvec3 a, t_dvec3 b);
 t_dvec3	dvec3_cross(t_dvec3 a, t_dvec3 b);
 double	dvec3_length(t_dvec3 v);
 t_dvec3	dvec3_normalize(t_dvec3 v);
+t_dvec3	dvec3_rotate(t_dvec3 v, t_dvec3 axis, double degree);
 
 #endif
