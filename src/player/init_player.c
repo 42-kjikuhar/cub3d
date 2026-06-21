@@ -6,18 +6,19 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 22:42:23 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/06/21 17:21:31 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/06/21 17:32:57 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static t_dvec3	calculate_screen_size(void)
+static t_dvec3	init_screen_size(void)
 {
 	t_dvec3 screen_size;
 
-	
-	return (screen_size);
+	double const screen_width = tan(FOV / 2);
+	double const screen_height = screen_width / W_WIDTH * W_HEIGHT;
+	return (dvec3(screen_width, screen_height, 0));
 }
 
 void	init_player(t_player *player, t_map const *map)
@@ -46,5 +47,5 @@ void	init_player(t_player *player, t_map const *map)
 		player->dir = dvec3(1, 0, 0);
 		player->plane = dvec3(0, plane_length, 0);
 	}
-	player->screen_size = calculate_screen_size();
+	player->screen_size = init_screen_size();
 }

@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 22:37:06 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/06/21 17:19:30 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/06/21 17:33:00 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,5 @@ struct		s_player
 };
 
 void	init_player(t_player *player, t_map const *map);
-void	init_screen_size(t_player *player);
 
 #endif
