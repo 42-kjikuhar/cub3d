@@ -164,9 +164,9 @@ t_hit	hit_wall(t_map *map, t_ray *ray)
 	while (true)
 	{
 		if (dda.dist_x < dda.dist_y)
-			dda.cell.x = dda.cell_step.x;
+			dda.cell.x += dda.cell_step.x;
 		else
-			dda.cell.y = dda.cell_step.y;
+			dda.cell.y += dda.cell_step.y;
 		if (map->data[dda.cell.y][dda.cell.x] == MAP_WALL)
 			return (calculate_hit(ray, &dda));
 		if (dda.dist_x < dda.dist_y)
