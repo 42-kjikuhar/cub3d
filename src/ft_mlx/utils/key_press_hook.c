@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 16:50:32 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/21 19:23:01 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/06/21 19:33:57 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,38 @@ static void	player_rotate_right(t_player *player)
 	player->plane = dvec3_rotate(player->plane, dvec3(0, 0, 1), -1);
 }
 
+static void	player_move_forward(t_player *player)
+{
+	t_dvec3	move;
+
+	move = dvec3_scale(PLAYER_SPEED, player->dir);
+	player->pos = dvec3_add(player->pos, move);
+}
+
+static void	player_move_back(t_player *player)
+{
+	t_dvec3	move;
+
+	move = dvec3_scale(-PLAYER_SPEED, player->dir);
+	player->pos = dvec3_add(player->pos, move);
+}
+
+static void	player_move_left(t_player *player)
+{
+	t_dvec3	move;
+
+	move = dvec3_scale(PLAYER_SPEED, dvec3_rotate(player->dir, dvec3(0, 0, 1), 90));
+	player->pos = dvec3_add(player->pos, move);
+}
+
+static void	player_move_right(t_player *player)
+{
+	t_dvec3	move;
+
+	move = dvec3_scale(PLAYER_SPEED, dvec3_rotate(player->dir, dvec3(0, 0, 1), -90));
+	player->pos = dvec3_add(player->pos, move);
+}
+
 int	key_press_hook(int keycode, void *param)
 {
 	t_cub3d	*cub3d;
@@ -35,5 +67,13 @@ int	key_press_hook(int keycode, void *param)
 		player_rotate_left(&(cub3d->player));
 	if (keycode == XK_Right)
 		player_rotate_right(&(cub3d->player));
+	if (keycode == XK_w)
+		player_move_forward(&(cub3d->player));
+	if (keycode == XK_a)
+		player_move_left(&(cub3d->player));
+	if (keycode == XK_s)
+		player_move_back(&(cub3d->player));
+	if (keycode == XK_d)
+		player_move_right(&(cub3d->player));
 	return (0);
 }
