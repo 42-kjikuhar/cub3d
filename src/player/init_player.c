@@ -6,11 +6,19 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 22:42:23 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/27 22:50:42 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/06/21 17:21:31 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static t_dvec3	calculate_screen_size(void)
+{
+	t_dvec3 screen_size;
+
+	
+	return (screen_size);
+}
 
 void	init_player(t_player *player, t_map const *map)
 {
@@ -38,4 +46,5 @@ void	init_player(t_player *player, t_map const *map)
 		player->dir = dvec3(1, 0, 0);
 		player->plane = dvec3(0, plane_length, 0);
 	}
+	player->screen_size = calculate_screen_size();
 }
