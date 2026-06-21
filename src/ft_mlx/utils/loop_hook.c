@@ -255,8 +255,8 @@ void	wall_drawer(t_mlx *mlx, t_map *map, t_player *player)
 	{
 		ray = create_ray(player, window_x);
 		hit = hit_wall(map, &ray);
-		wall = calculate_wall(mlx, &hit);
-		draw_wall(mlx, &wall, window_x);
+		wall = calculate_wall(mlx, &hit, player);
+		// draw_wall(mlx, &wall, window_x);
 		++window_x;
 	}
 }
@@ -265,7 +265,7 @@ void	drawer(t_cub3d *cub3d)
 {
 	floor_drawer(&(cub3d->mlx), &(cub3d->settings));
 	ceiling_drawer(&(cub3d->mlx), &(cub3d->settings));
-	wall_drawer(&(cub3d->mlx), &(cub3d->settings), &(cub3d->player));
+	wall_drawer(&(cub3d->mlx), &(cub3d->map), &(cub3d->player));
 	mlx_put_image_to_window(cub3d->mlx.mlx_ptr, cub3d->mlx.win_ptr, \
 		cub3d->mlx.win_img.img_ptr, 0, 0);
 }
