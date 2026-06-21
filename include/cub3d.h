@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 13:27:17 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/05/28 14:52:52 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/06/21 19:26:15 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@
 # define PLAYER_SOUTH 'S'
 # define PLAYER_WEST 'W'
 # define PLAYER_EAST 'E'
+# define PLAYER_OFFSET 0.05
+# define PLAYER_SPEED 0.05
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
