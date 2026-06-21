@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 16:49:56 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/21 18:16:13 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/06/21 18:43:28 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,8 +183,6 @@ typedef struct s_wall
 	int			size;
 	int			top;
 	int			bottom;
-	int			start;
-	int			end;
 }				t_wall;
 
 t_img	*decide_hit_texture(t_mlx* mlx, enum e_hit_side	side)
@@ -232,16 +230,31 @@ t_wall	calculate_wall(t_mlx *mlx, t_hit *hit, t_player *player)
 	wall.size = calculate_size(hit, player);
 	wall.top = W_HEIGHT / 2 - wall.size / 2;
 	wall.bottom = W_HEIGHT / 2 + wall.size / 2;
-	wall.start = (int)fmax((double)wall.top, 0);
-	wall.end = (int)fmin(wall.bottom, W_HEIGHT - 1);
 	return (wall);
 }
 
 
-// void	draw_wall(t_mlx *mlx, t_settings const *settings, int y)
-// {
-// 	(void)mlx;
-// }
+void	draw_wall(t_mlx *mlx, t_wall *wall, int window_x)
+{
+	int const	start = (int)fmax((double)wall->top, 0);
+	int const	end = (int)fmin(wall->bottom, W_HEIGHT - 1);
+	int			y;
+	double		texture_y;
+	double		step;
+
+	y = start;
+	step = TEXTURE_SIZE / (double)wall->size;
+	texture_y = (start - wall->top) * step;
+	while (y <= end)
+	{
+		wall->texture_pixel.y = (int)round(texture_y);
+		*get_pixel_addr(&(mlx->win_img), window_x, y) = *get_pixel_addr(\
+			wall->texture, wall->texture_pixel.x, wall->texture_pixel.y);
+		++y;
+		texture_y += step;
+	}
+
+}
 
 void	wall_drawer(t_mlx *mlx, t_map *map, t_player *player)
 {
@@ -256,7 +269,7 @@ void	wall_drawer(t_mlx *mlx, t_map *map, t_player *player)
 		ray = create_ray(player, window_x);
 		hit = hit_wall(map, &ray);
 		wall = calculate_wall(mlx, &hit, player);
-		// draw_wall(mlx, &wall, window_x);
+		draw_wall(mlx, &wall, window_x);
 		++window_x;
 	}
 }
