@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 16:50:32 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/21 19:33:57 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/06/21 20:09:23 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,21 @@ static void	player_rotate_right(t_player *player)
 	player->plane = dvec3_rotate(player->plane, dvec3(0, 0, 1), -1);
 }
 
+static bool	is_colliding_with_wall(t_dvec3 new_pos)
+{
+	int	left = 
+}
+
 static void	player_move_forward(t_player *player)
 {
 	t_dvec3	move;
+	t_dvec3	new_pos;
 
 	move = dvec3_scale(PLAYER_SPEED, player->dir);
-	player->pos = dvec3_add(player->pos, move);
+	new_pos = dvec3_add(player->pos, move);
+	if (is_colliding_with_wall(new_pos))
+		return ;
+	player->pos = new_pos;
 }
 
 static void	player_move_back(t_player *player)
