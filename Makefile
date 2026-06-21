@@ -6,7 +6,7 @@
 #    By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 13:25:37 by kjikuhar          #+#    #+#              #
-#    Updated: 2026/05/27 22:46:02 by kjikuhar         ###   ########.fr        #
+#    Updated: 2026/06/21 19:23:23 by kjikuhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -142,6 +142,7 @@ SRCS	+=	dvec3_add.c \
 			dvec3_cross.c \
 			dvec3_length.c \
 			dvec3_scale.c \
+			dvec3_rotate.c \
 			dvec3.c
 # ft_mlx
 SRCS	+=	ft_mlx_destroy.c \
