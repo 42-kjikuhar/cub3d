@@ -205,7 +205,7 @@ t_ivec2	calculate_texture_pixel(t_hit *hit)
 	if (hit->side == NORTH_SIDE)
 		return (ivec2((int)(ceil(hit->pos.x) - hit->pos.x) * TEXTURE_SIZE, 0));
 	else if (hit->side == SOUTH_SIDE)
-		return (ivec2((int)(hit->pos.x - floor(hit->pos.x) * TEXTURE_SIZE), 0));
+		return (ivec2((int)(hit->pos.x - floor(hit->pos.x)) * TEXTURE_SIZE, 0));
 	else if (hit->side == EAST_SIDE)
 		return (ivec2((int)(hit->pos.y - floor(hit->pos.y)) * TEXTURE_SIZE, 0));
 	else if (hit->side == WEST_SIDE)
