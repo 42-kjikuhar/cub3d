@@ -6,7 +6,7 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 16:49:56 by stanaka2          #+#    #+#             */
-/*   Updated: 2026/06/21 17:14:23 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/06/21 18:16:13 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,20 @@ enum e_hit_side
 	EAST_SIDE
 };
 
+static double	normalize_window_x(int window_x)
+{
+	return (((double)window_x - W_WIDTH / 2) / W_WIDTH * 2);
+}
+
 t_ray	create_ray(t_player *player, int window_x)
 {
 	t_ray			ray;
-	double const	t = normalize_window_x(window_x);
+	double const	t = (double)normalize_window_x(window_x);
 
 	ray.origin = player->pos;
 	ray.vector = dvec3_add(player->dir, dvec3_scale(t, player->plane));
 	ray.length = dvec3_length(dvec3(ray.vector.x, ray.vector.y, 0));
+	return (ray);
 }
 
 typedef struct s_dda
@@ -147,6 +153,7 @@ t_hit	calculate_hit(t_ray *ray, t_dda *dda)
 		else
 			hit.side = SOUTH_SIDE;
 	}
+	return (hit);
 }
 
 t_hit	hit_wall(t_map *map, t_ray *ray)
