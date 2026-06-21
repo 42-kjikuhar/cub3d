@@ -6,11 +6,10 @@
 /*   By: kjikuhar <kjikuhar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/21 18:55:47 by kjikuhar          #+#    #+#             */
-/*   Updated: 2026/06/21 19:19:20 by kjikuhar         ###   ########.fr       */
+/*   Updated: 2026/06/21 19:23:39 by kjikuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dvec3.h"
 #include "cub3d.h"
 
 /* r' = r cos + (1 - cos) * dot(r, axis)axis + cross(axis, r)sin*/
