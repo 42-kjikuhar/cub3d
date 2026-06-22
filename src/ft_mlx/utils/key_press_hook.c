@@ -24,45 +24,67 @@ static void	player_rotate_right(t_player *player)
 	player->plane = dvec3_rotate(player->plane, dvec3(0, 0, 1), -1);
 }
 
-static bool	is_colliding_with_wall(t_dvec3 new_pos)
+static bool	is_blocked_cell(t_map const *map, int x, int y)
 {
-	int	left = 
+	char	cell;
+
+	if (y < 0 || y >= map->y_size || x < 0 || x >= map->x_size)
+		return (true);
+	cell = map->data[y][x];
+	return (cell == MAP_WALL || cell == MAP_BLANK);
 }
 
-static void	player_move_forward(t_player *player)
+static bool	is_colliding_with_wall(t_map const *map, t_dvec3 new_pos)
 {
-	t_dvec3	move;
+	double const	corner_x[4] = {new_pos.x - PLAYER_OFFSET, \
+		new_pos.x + PLAYER_OFFSET, new_pos.x - PLAYER_OFFSET, \
+		new_pos.x + PLAYER_OFFSET};
+	double const	corner_y[4] = {new_pos.y - PLAYER_OFFSET, \
+		new_pos.y - PLAYER_OFFSET, new_pos.y + PLAYER_OFFSET, \
+		new_pos.y + PLAYER_OFFSET};
+	int				i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (is_blocked_cell(map, (int)floor(corner_x[i]), \
+				(int)floor(corner_y[i])))
+			return (true);
+		++i;
+	}
+	return (false);
+}
+
+static void	try_move(t_player *player, t_map const *map, t_dvec3 move)
+{
 	t_dvec3	new_pos;
 
-	move = dvec3_scale(PLAYER_SPEED, player->dir);
 	new_pos = dvec3_add(player->pos, move);
-	if (is_colliding_with_wall(new_pos))
+	if (is_colliding_with_wall(map, new_pos))
 		return ;
 	player->pos = new_pos;
 }
 
-static void	player_move_back(t_player *player)
+static void	player_move_forward(t_player *player, t_map const *map)
 {
-	t_dvec3	move;
-
-	move = dvec3_scale(-PLAYER_SPEED, player->dir);
-	player->pos = dvec3_add(player->pos, move);
+	try_move(player, map, dvec3_scale(PLAYER_SPEED, player->dir));
 }
 
-static void	player_move_left(t_player *player)
+static void	player_move_back(t_player *player, t_map const *map)
 {
-	t_dvec3	move;
-
-	move = dvec3_scale(PLAYER_SPEED, dvec3_rotate(player->dir, dvec3(0, 0, 1), 90));
-	player->pos = dvec3_add(player->pos, move);
+	try_move(player, map, dvec3_scale(-PLAYER_SPEED, player->dir));
 }
 
-static void	player_move_right(t_player *player)
+static void	player_move_left(t_player *player, t_map const *map)
 {
-	t_dvec3	move;
+	try_move(player, map, dvec3_scale(PLAYER_SPEED, \
+		dvec3_rotate(player->dir, dvec3(0, 0, 1), 90)));
+}
 
-	move = dvec3_scale(PLAYER_SPEED, dvec3_rotate(player->dir, dvec3(0, 0, 1), -90));
-	player->pos = dvec3_add(player->pos, move);
+static void	player_move_right(t_player *player, t_map const *map)
+{
+	try_move(player, map, dvec3_scale(PLAYER_SPEED, \
+		dvec3_rotate(player->dir, dvec3(0, 0, 1), -90)));
 }
 
 int	key_press_hook(int keycode, void *param)
@@ -77,12 +99,12 @@ int	key_press_hook(int keycode, void *param)
 	if (keycode == XK_Right)
 		player_rotate_right(&(cub3d->player));
 	if (keycode == XK_w)
-		player_move_forward(&(cub3d->player));
+		player_move_forward(&(cub3d->player), &(cub3d->map));
 	if (keycode == XK_a)
-		player_move_left(&(cub3d->player));
+		player_move_left(&(cub3d->player), &(cub3d->map));
 	if (keycode == XK_s)
-		player_move_back(&(cub3d->player));
+		player_move_back(&(cub3d->player), &(cub3d->map));
 	if (keycode == XK_d)
-		player_move_right(&(cub3d->player));
+		player_move_right(&(cub3d->player), &(cub3d->map));
 	return (0);
 }
