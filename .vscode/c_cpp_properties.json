@@ -1,0 +1,22 @@
+{
+	"configurations": [
+		{
+			"name": "Mac",
+			"includePath": [
+				"${workspaceFolder}/include",
+				"${workspaceFolder}/include/vector",
+				"${workspaceFolder}/libft/include",
+				"${workspaceFolder}/minilibx",
+				"/usr/X11/include",
+				"/opt/X11/include"
+			],
+			"defines": [],
+			"compilerPath": "/usr/bin/cc",
+			"cStandard": "c17",
+			"intelliSenseMode": "macos-clang-x64"
+		}
+	],
+	"version": 4,
+	"compilerPath": "/usr/bin/cc",
+	"compileCommands": "${workspaceFolder}/compile_commands.json"
+}
